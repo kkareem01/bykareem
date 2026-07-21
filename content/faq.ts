@@ -30,19 +30,23 @@ export const couplesFaq: Faq[] = [
 export const graduationFaq: Faq[] = [
   {
     q: "How much is a session?",
-    a: "$395, flat. That covers everything in the stack on this page — the full 90-minute session, 45+ edited photos, every digital, the headshot, and all three bonuses. No per-photo pricing, no watermarked “preview” links, no surprises after.",
+    a: "$297, flat. That covers everything in the stack on this page — the full 90-minute session, 45+ edited photos, every digital, the headshot, and the Closing Fifteen. No per-photo pricing, no watermarked “preview” links, no surprises after.",
   },
   {
     q: "When should I book?",
-    a: "Three to four weeks before you need the photos is ideal — grad-season slots are capped so turnaround stays at 72 hours. If you're tighter than that, book a call anyway; cancellations happen.",
+    a: "Three to four weeks before you need the photos is ideal — grad-season slots are capped so turnaround stays at 72 hours. If you're tighter than that, grab a date anyway; cancellations happen, and I'll tell you straight if your deadline is safe.",
+  },
+  {
+    q: "Do I pay anything today?",
+    a: "No — booking holds your date with no card required. The session is $297 flat, and I'll confirm payment details when I text you to lock in your meeting spot. Change of plans? Reply to any email or text and we'll move your date, no fees.",
   },
   {
     q: "Can my family or friends be in some shots?",
-    a: "Yes — the Closing Fifteen is built for exactly that. The last 15 minutes of every session is reserved, and you choose how to spend it: family portraits, your friends jumping in, or a solo second look. Included in the price, never upsold.",
+    a: "Yes — the Closing Fifteen is built for exactly that. Fifteen minutes of every session is reserved, and you choose how to spend it — and when: family portraits, your friends jumping in, or a solo second look. Included in the price, never upsold.",
   },
   {
     q: "What if my family can't make it — is it still worth it?",
-    a: "Completely. The reserved fifteen minutes is yours either way — most solo grads use it for a fresh outfit and the champagne send-off. This session is about you crossing the finish line, whoever's there to see it.",
+    a: "Completely. The reserved fifteen minutes is yours either way — most solo grads use it for a fresh outfit and a second look at their favorite spot. This session is about you crossing the finish line, whoever's there to see it.",
   },
   {
     q: "Will I have a photo in time for my commencement slide?",
@@ -50,7 +54,7 @@ export const graduationFaq: Faq[] = [
   },
   {
     q: "What should I wear or bring?",
-    a: "You'll get a one-page prep guide after booking: outfits that photograph well, what to bring (cap, gown, stole, cords — and a bottle if you want the champagne send-off), and how we'll use campus locations.",
+    a: "You'll get a one-page prep guide after booking: outfits that photograph well, what to bring (cap, gown, stole, cords), and how we'll use campus locations.",
   },
 ];
 

@@ -143,7 +143,7 @@ export const graduationOffer: Offer = {
       pain: "“Everyone's photos are the same three spots.”",
       outcome:
         "A 90-minute directed session across a pre-scouted route — 3+ locations in your campus's best light, unlimited outfit changes.",
-      valueLabel: "$550 value",
+      valueLabel: "$400 value",
       visual: {
         src: "/placeholders/offer/victory-lap.svg",
         alt: "Planned photo route across campus with a gold star at the best spot",
@@ -165,7 +165,7 @@ export const graduationOffer: Offer = {
       pain: "“My LinkedIn photo is a cropped party pic.”",
       outcome:
         "A retouched professional headshot from your session — LinkedIn-ready before your first day.",
-      valueLabel: "$200 value",
+      valueLabel: "$75 value",
       visual: {
         src: "/placeholders/offer/headshot.svg",
         alt: "Professional profile card with a polished graduate headshot",
@@ -176,7 +176,7 @@ export const graduationOffer: Offer = {
       pain: "Announcements and commencement slides have real due dates.",
       outcome:
         "Your full gallery in 72 hours, in writing — every select post-ready in feed, story, and banner crops, with your commencement-slide photo sized to your school's specs.",
-      valueLabel: "$150 value",
+      valueLabel: "$100 value",
       visual: {
         src: "/placeholders/offer/gallery-72h.svg",
         alt: "Phone notification: your gallery is ready, 72 hours after your session",
@@ -199,22 +199,11 @@ export const graduationOffer: Offer = {
       name: "The Closing Fifteen",
       pain: "The people who got you here — or just you.",
       outcome:
-        "The final 15 minutes, reserved and yours to choose: family portraits, your best friends jumping in, or a solo second look with a fresh outfit.",
-      valueLabel: "$285 value",
-      visual: {
-        src: "/placeholders/offer/closing-fifteen.svg",
-        alt: "Three ways to spend the final fifteen minutes: family, friends, or a solo second look",
-      },
-    },
-    {
-      name: "The Champagne Send-Off",
-      pain: "The shot everyone actually posts.",
-      outcome:
-        "A champagne-spray finale to close the session — you bring the bottle, I've got the timing, the angle, and the edit.",
+        "Fifteen minutes of your session, reserved and yours to choose: family portraits, your best friends jumping in, or a solo second look with a fresh outfit — whenever it fits the session best.",
       valueLabel: "$75 value",
       visual: {
-        src: "/placeholders/offer/champagne-sendoff.svg",
-        alt: "Champagne bottle mid-spray with gold confetti",
+        src: "/placeholders/offer/closing-fifteen.svg",
+        alt: "Three ways to spend your reserved fifteen minutes: family, friends, or a solo second look",
       },
     },
   ],
@@ -232,8 +221,8 @@ export const graduationOffer: Offer = {
       "Grad season is short, everyone books late, and the 72-hour turnaround is real — so the calendar is capped. When it's full, it's full.",
   },
   pricing: {
-    stackValueLabel: "$1,710+ in stacked value",
-    investmentLabel: "The full session: $395",
+    stackValueLabel: "$1,100+ in stacked value",
+    investmentLabel: "The full session: $297",
     note: "Every value above is anchored to published Georgia rates — the same sessions, headshots, and minis you can Google. One flat price, every digital included.",
   },
 };

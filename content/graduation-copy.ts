@@ -19,8 +19,11 @@ export const graduationCopy = {
     h1: "Grad photos you'll actually love —",
     h1Accent: "even if you swear you're not photogenic.",
     sub: "Directed sessions on your Georgia campus — every pose coached, and your full gallery back in 72 hours, guaranteed in writing.",
-    cta: "Book a Free Consult",
+    cta: "Book My Grad Session",
   },
+
+  /** One trust line under every CTA — pre-answers time, money, speed. */
+  ctaNote: "Takes ~2 minutes · No payment due today · Gallery back in 72 hours",
 
   /** Section 1 — where they are right now */
   problem: {
@@ -70,6 +73,11 @@ export const graduationCopy = {
     },
   },
 
+  /** Photo proof strip right before the offer pitch */
+  sessionStrip: {
+    heading: "Real sessions. Real grads.",
+  },
+
   /** Section 4 — the bridge */
   offerIntro: {
     heading: "Introducing The Milestone Session",
@@ -83,17 +91,17 @@ export const graduationCopy = {
   /** Below the offer stack — value tally, big CTA */
   offerClosing: {
     preValue: "That's",
-    stackValue: "$1,710+",
+    stackValue: "$1,100+",
     midValue: "of value",
     priceLead: "for only",
-    price: "$395.",
-    ctaPrimary: "YES KAREEM, I'M IN!",
-    ctaSecondary: "Book your Milestone Session",
+    price: "$297.",
+    ctaPrimary: "Yes Kareem, I'm In!",
+    ctaSecondary: "Book your grad session today",
   },
 
   finalCta: {
     heading: "Campus stops being yours in a few weeks.",
-    sub: "Grad season is short and the calendar is capped at 20. The price is on this page — the free call is 15 minutes to pick your date, plan your route, and hold your slot while you decide.",
-    cta: "Book a Free Consult",
+    sub: "Grad season is short and the calendar is capped at 20. The price is on this page — pick your date, pick your time, and you're booked in about two minutes. No payment due today.",
+    cta: "Book My Grad Session",
   },
 } as const;

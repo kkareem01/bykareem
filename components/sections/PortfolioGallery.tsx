@@ -14,6 +14,8 @@ type PortfolioGalleryProps = {
   /** gold italic links rendered under the wall (story page, niche page…) */
   links?: GalleryLink[];
   tone?: "plain" | "tint";
+  /** tighter vertical padding — matches the graduation page section rhythm */
+  dense?: boolean;
 };
 
 /**
@@ -29,10 +31,11 @@ export function PortfolioGallery({
   images,
   links = [],
   tone = "plain",
+  dense = false,
 }: PortfolioGalleryProps) {
   return (
     <section
-      className={`py-20 md:py-28 ${tone === "tint" ? "bg-mist/60" : ""}`}
+      className={`${dense ? "py-14 md:py-20" : "py-20 md:py-28"} ${tone === "tint" ? "bg-mist/60" : ""}`}
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading

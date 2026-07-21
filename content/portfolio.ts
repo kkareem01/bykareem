@@ -97,19 +97,96 @@ export const galleries: Record<Audience, PortfolioImage[]> = {
     shot("couples-14-3x2.svg", "3x2", "Closing image: night portrait, sparkler exit — placeholder"),
   ],
   graduation: [
-    shot("grad-1-4x5.svg", "4x5", "Opening image: graduate mid-laugh on campus steps — placeholder"),
-    shot("grad-2-3x2.svg", "3x2", "Wide campus landmark shot with graduate — placeholder"),
-    shot("grad-3-2x3.svg", "2x3", "Full-length gown portrait, editorial angle — placeholder"),
-    shot("grad-4-4x5.svg", "4x5", "Cap detail with tassel and class year — placeholder"),
-    shot("grad-5-16x9.svg", "16x9", "Cap toss against the sky, wide — placeholder"),
-    shot("grad-6-4x5.svg", "4x5", "Candid walk-and-talk through the quad — placeholder"),
-    shot("grad-7-3x2.svg", "3x2", "Graduate with family, documentary moment — placeholder"),
-    shot("grad-8-2x3.svg", "2x3", "Confident solo portrait, low angle — placeholder"),
-    shot("grad-9-4x5.svg", "4x5", "Champagne pop celebration shot — placeholder"),
-    shot("grad-10-3x2.svg", "3x2", "Golden hour portrait at the stadium — placeholder"),
-    shot("grad-11-4x5.svg", "4x5", "Close-up: stole and cords details — placeholder"),
-    shot("grad-12-2x3.svg", "2x3", "Editorial portrait outside the college of their major — placeholder"),
-    shot("grad-13-16x9.svg", "16x9", "Closing image: friends group celebration, wide — placeholder"),
+    {
+      src: "/photos/portfolio/grad/abdullah-cap-laugh.jpg",
+      alt: "Graduate mid-laugh in cap and gown, orange tassel swinging, on campus",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/grad/fares-stadium-wide.jpg",
+      alt: "Wide shot: graduate alone at the rail of an empty Sanford Stadium",
+      width: 1600,
+      height: 1066,
+    },
+    {
+      src: "/photos/portfolio/grad/suhayb-shades.jpg",
+      alt: "Terry College grad adjusting his sunglasses, red UGA stole over his gown",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/grad/cameron-downtown-walk.jpg",
+      alt: "Law graduate walking the centerline of downtown Athens at first light, gown catching the sun",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/grad/nizar-friends-pile.jpg",
+      alt: "Three grads stacked in a laughing pile on the lawn, green and black gowns",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/grad/emanuel-bell-swing.jpg",
+      alt: "Graduate swinging off the ground on the UGA Chapel Bell rope, gown flying",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/grad/fares-cap-toss.jpg",
+      alt: "Cap spinning high above a graduate on the concourse of Sanford Stadium",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/grad/emory-tunnel.jpg",
+      alt: "From above: a lone graduate in gown walking the stadium tunnel toward the field",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/grad/suhayb-bench.jpg",
+      alt: "Grad kicked back across a campus bench in sunglasses, cap in hand",
+      width: 1600,
+      height: 1066,
+    },
+    {
+      src: "/photos/portfolio/grad/abdullah-lamppost.jpg",
+      alt: "Graduate leaning on a black lamppost in fall color, cap and gown",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/grad/emory-stadium-dad.jpg",
+      alt: "Graduate and his dad side by side on the field under the Sanford Stadium scoreboard",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/grad/nizar-grad-glasses.jpg",
+      alt: "Close-up grin in novelty GRAD glasses, keffiyeh draped over the shoulders",
+      width: 1600,
+      height: 1066,
+    },
+    {
+      src: "/photos/portfolio/grad/grad-steps-laugh.jpg",
+      alt: "Master's grad cracking up on the steps at the base of a lamppost, hood over his gown",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/grad/cameron-rotunda.jpg",
+      alt: "Overhead frame: law graduate standing on the marble rotunda floor in JD regalia",
+      width: 1279,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/grad/fares-old-college.jpg",
+      alt: "Closing image: graduate laughing on the brick steps of Old College, red stole",
+      width: 1066,
+      height: 1600,
+    },
   ],
 };
 
@@ -147,28 +224,79 @@ export const stories: Story[] = [
     ],
   },
   {
-    slug: "sample-graduation-story",
+    slug: "fares-uga-milestone-session",
     audience: "graduation",
-    title: "PLACEHOLDER — Graduate's name",
-    location: "PLACEHOLDER — University, City, GA",
+    title: "Fares — The Milestone Session",
+    location: "University of Georgia — Athens, GA",
     intro:
-      "PLACEHOLDER — two or three sentences about this session: the graduate, their campus, and the moment from the shoot they still talk about.",
-    cover: shot(
-      "story-grad-1-4x5.svg",
-      "4x5",
-      "Cover: graduate portrait on their campus — placeholder",
-    ),
+      "An empty Sanford Stadium to ourselves, then the Arch, North Campus, and Old College before the crowds showed up. One directed session, start to finish — this is every chapter of it, exactly as delivered.",
+    cover: {
+      src: "/photos/portfolio/grad/fares-diploma-laugh.jpg",
+      alt: "Cover: Fares laughing with his diploma cover at Sanford Stadium, red UGA stole",
+      width: 1600,
+      height: 1066,
+    },
     images: [
-      shot("story-grad-1-4x5.svg", "4x5", "Opening portrait at the campus landmark — placeholder"),
-      shot("story-grad-2-3x2.svg", "3x2", "Wide shot walking the main lawn in gown — placeholder"),
-      shot("story-grad-3-2x3.svg", "2x3", "Full-length editorial portrait — placeholder"),
-      shot("story-grad-4-4x5.svg", "4x5", "Cap and stole details — placeholder"),
-      shot("story-grad-5-3x2.svg", "3x2", "Candid laugh between poses — placeholder"),
-      shot("story-grad-6-16x9.svg", "16x9", "Cap toss, wide against the sky — placeholder"),
-      shot("story-grad-7-4x5.svg", "4x5", "With family, documentary moment — placeholder"),
-      shot("story-grad-8-2x3.svg", "2x3", "Confident low-angle solo portrait — placeholder"),
-      shot("story-grad-9-3x2.svg", "3x2", "Champagne pop at golden hour — placeholder"),
-      shot("story-grad-10-4x5.svg", "4x5", "Closing portrait: quiet, proud, done — placeholder"),
+      {
+        src: "/photos/portfolio/grad/fares-stadium-wide.jpg",
+        alt: "Opening wide: Fares alone at the rail of an empty Sanford Stadium",
+        width: 1600,
+        height: 1066,
+      },
+      {
+        src: "/photos/portfolio/grad/fares-diploma-laugh.jpg",
+        alt: "Laughing with the diploma cover, stadium seats stretching behind",
+        width: 1600,
+        height: 1066,
+      },
+      {
+        src: "/photos/portfolio/grad/fares-cap-up.jpg",
+        alt: "Holding the cap up to ninety thousand empty seats",
+        width: 1066,
+        height: 1600,
+      },
+      {
+        src: "/photos/portfolio/grad/fares-cap-toss.jpg",
+        alt: "The cap toss on the stadium concourse",
+        width: 1066,
+        height: 1600,
+      },
+      {
+        src: "/photos/portfolio/grad/fares-stadium-back.jpg",
+        alt: "A quiet look back at the field, gown silhouetted against the stands",
+        width: 1600,
+        height: 1066,
+      },
+      {
+        src: "/photos/portfolio/grad/fares-arch.jpg",
+        alt: "Straightening the gown under the UGA Arch",
+        width: 1600,
+        height: 1066,
+      },
+      {
+        src: "/photos/portfolio/grad/fares-lawn-walk.jpg",
+        alt: "Mid-stride across the North Campus lawn, gown flowing",
+        width: 1066,
+        height: 1600,
+      },
+      {
+        src: "/photos/portfolio/grad/fares-walkway.jpg",
+        alt: "Cap in hand on the campus walkway between locations",
+        width: 1066,
+        height: 1600,
+      },
+      {
+        src: "/photos/portfolio/grad/fares-golden-hour.jpg",
+        alt: "Golden-hour portrait under the trees, red stole and tassel",
+        width: 1066,
+        height: 1600,
+      },
+      {
+        src: "/photos/portfolio/grad/fares-old-college.jpg",
+        alt: "Closing frame: cracking up on the brick steps of Old College",
+        width: 1066,
+        height: 1600,
+      },
     ],
   },
 ];
@@ -241,6 +369,51 @@ export const portfolioCopy = {
  * double duty. Separate from `galleries` on purpose: the 12–15 curation
  * rule applies to portfolio walls, not this proof strip.
  */
+/**
+ * Short proof strip for the graduation page, rendered right before the
+ * offer pitch — celebration energy (cap toss, friends, the Chapel Bell)
+ * so the "Introducing" section lands on someone already picturing it.
+ * Not a full wall on purpose; the 12–15 rule applies to `galleries`, not here.
+ */
+export const gradSessionStrip: PortfolioImage[] = [
+  {
+    src: "/photos/portfolio/grad/fares-cap-toss.jpg",
+    alt: "Cap spinning high above a graduate on the concourse of Sanford Stadium",
+    width: 1066,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/grad/nizar-friends-stack.jpg",
+    alt: "Three friends in gowns stacked up and laughing on the quad",
+    width: 1066,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/grad/suhayb-stadium-laugh.jpg",
+    alt: "Graduate laughing over his shoulder in the stands, green and white stole",
+    width: 1600,
+    height: 1066,
+  },
+  {
+    src: "/photos/portfolio/grad/emanuel-bell-swing.jpg",
+    alt: "Graduate swinging off the ground on the UGA Chapel Bell rope, gown flying",
+    width: 1066,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/grad/emory-stadium-dad.jpg",
+    alt: "Graduate and his dad side by side on the field under the Sanford Stadium scoreboard",
+    width: 1066,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/grad/nizar-fountain.jpg",
+    alt: "Grad in a green gown laughing by the Herty Field fountain",
+    width: 1066,
+    height: 1600,
+  },
+];
+
 export const gradCouldBeYouShots: PortfolioImage[] = [
   {
     src: "/photos/could-be-you/could-be-you-1.jpg",

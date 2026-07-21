@@ -8,6 +8,7 @@ type OfferClosing = {
   preValue: string;
   stackValue: string;
   midValue: string;
+  priceLead: string;
   price: string;
   ctaPrimary: string;
   ctaSecondary: string;
@@ -39,14 +40,14 @@ function ShowcaseCard({
   return (
     <Reveal delay={delay} className="relative">
       {/* value badge — floating pill overlaying the card's top edge */}
-      <p className="absolute -top-4 left-1/2 -translate-x-1/2 sm:left-9 sm:translate-x-0 z-10 whitespace-nowrap rounded-full bg-gold-light text-hunter text-sm font-semibold uppercase tracking-[0.12em] px-5 py-2 shadow-[0_8px_20px_rgba(30,61,47,0.25)]">
+      <p className="absolute -top-4 left-1/2 -translate-x-1/2 sm:left-9 sm:translate-x-0 z-10 whitespace-nowrap rounded-full bg-gold-light text-hunter text-sm font-extrabold uppercase tracking-[0.12em] px-5 py-2 shadow-[0_8px_20px_rgba(30,61,47,0.25)]">
         {badgeLabel(item.valueLabel)}
       </p>
 
       <div className="overflow-hidden rounded-3xl border border-line shadow-[0_20px_44px_rgba(30,61,47,0.10)]">
         {/* dark title band */}
         <div className="bg-hunter px-6 sm:px-9 pt-7 sm:pt-10 pb-7">
-          <h3 className="font-display text-2xl sm:text-3xl md:text-4xl text-snow">
+          <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-snow">
             {item.name}
           </h3>
         </div>
@@ -137,10 +138,15 @@ export function OfferShowcase({
       {/* below the stack: full-bleed value tally → big CTA */}
       <Reveal className="mt-20 px-5 sm:px-8 text-center">
         <h3 className="display text-[clamp(2rem,6.5vw,6rem)] leading-[1.05]">
-          {closing.preValue}{" "}
-          <s className="text-moss/60">{closing.stackValue}</s>{" "}
-          {closing.midValue}{" "}
-          <em className="not-italic text-gold">{closing.price}</em>
+          <span className="block">
+            {closing.preValue}{" "}
+            <s className="text-moss/60">{closing.stackValue}</s>{" "}
+            {closing.midValue}
+          </span>
+          <span className="block">
+            {closing.priceLead}{" "}
+            <em className="not-italic text-gold">{closing.price}</em>
+          </span>
         </h3>
 
         <Link

@@ -1,5 +1,4 @@
 import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 
 type FilterList = {
   title: string;

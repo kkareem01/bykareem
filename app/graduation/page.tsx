@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { graduationCopy } from "@/content/graduation-copy";
 import { gradReviewShots, images } from "@/content/site-config";
 import { graduationOffer } from "@/content/offers";
-import { graduationTestimonials } from "@/content/testimonials";
 import { graduationFaq } from "@/content/faq";
 import { capacity } from "@/content/booking-config";
 import {
@@ -16,7 +15,6 @@ import { NarrativeSection } from "@/components/sections/NarrativeSection";
 import { AudienceFilter } from "@/components/sections/AudienceFilter";
 import { OfferShowcase } from "@/components/sections/OfferShowcase";
 import { ReviewsWall } from "@/components/sections/ReviewsWall";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Reveal } from "@/components/ui/Reveal";
@@ -99,11 +97,6 @@ export default function GraduationPage() {
         bonusesIntro={graduationCopy.bonusesIntro}
         closing={graduationCopy.offerClosing}
         ctaHref="/book?type=graduation"
-      />
-
-      <Testimonials
-        heading="From “I don't take good photos” to this"
-        items={graduationTestimonials}
       />
 
       <FaqSection items={graduationFaq} eyebrow={null} />

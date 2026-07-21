@@ -49,6 +49,7 @@ export default function GraduationPage() {
         ctaHref="/book?type=graduation"
         ctaNote={graduationCopy.ctaNote}
         image={images.gradHero}
+        variant="stacked"
       />
 
       <section className="bg-mist/60">
@@ -89,18 +90,18 @@ export default function GraduationPage() {
         heading={portfolioCopy.nichePage.graduation.heading}
         shots={gradCouldBeYouShots}
         links={galleryLinks}
+      />
+
+      {/* 4 — self-select before the pitch, closed out by a booking button */}
+      <AudienceFilter
+        heading={graduationCopy.filter.heading}
+        notFor={graduationCopy.filter.notFor}
+        builtFor={graduationCopy.filter.builtFor}
         cta={{
           label: graduationCopy.hero.cta,
           href: "/book?type=graduation",
           note: graduationCopy.ctaNote,
         }}
-      />
-
-      {/* 4 — self-select before the pitch */}
-      <AudienceFilter
-        heading={graduationCopy.filter.heading}
-        notFor={graduationCopy.filter.notFor}
-        builtFor={graduationCopy.filter.builtFor}
       />
 
       {/* photo proof right before the pitch — celebration energy */}

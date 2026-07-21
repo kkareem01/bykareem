@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionCta, type SectionCtaContent } from "@/components/ui/SectionCta";
 
 type FilterList = {
   title: string;
@@ -11,6 +12,8 @@ type AudienceFilterProps = {
   sub?: string;
   notFor: FilterList;
   builtFor: FilterList;
+  /** closes the section with a booking button under the two boxes */
+  cta?: SectionCtaContent;
 };
 
 /**
@@ -23,6 +26,7 @@ export function AudienceFilter({
   sub,
   notFor,
   builtFor,
+  cta,
 }: AudienceFilterProps) {
   return (
     <section className="py-14 md:py-20">
@@ -81,6 +85,8 @@ export function AudienceFilter({
             </div>
           </Reveal>
         </div>
+
+        {cta ? <SectionCta cta={cta} /> : null}
       </div>
     </section>
   );

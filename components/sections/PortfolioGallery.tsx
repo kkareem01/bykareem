@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SectionCta, type SectionCtaContent } from "@/components/ui/SectionCta";
 import type { PortfolioImage } from "@/content/portfolio";
 
 export type GalleryLink = { label: string; href: string };
@@ -16,6 +17,8 @@ type PortfolioGalleryProps = {
   tone?: "plain" | "tint";
   /** tighter vertical padding — matches the graduation page section rhythm */
   dense?: boolean;
+  /** closes the section with a booking button under the wall */
+  cta?: SectionCtaContent;
 };
 
 /**
@@ -32,6 +35,7 @@ export function PortfolioGallery({
   links = [],
   tone = "plain",
   dense = false,
+  cta,
 }: PortfolioGalleryProps) {
   return (
     <section
@@ -79,6 +83,8 @@ export function PortfolioGallery({
             ))}
           </Reveal>
         ) : null}
+
+        {cta ? <SectionCta cta={cta} /> : null}
       </div>
     </section>
   );

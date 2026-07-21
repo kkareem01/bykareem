@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SectionCta, type SectionCtaContent } from "@/components/ui/SectionCta";
 
 type NarrativeSectionProps = {
   eyebrow?: string;
@@ -7,6 +8,8 @@ type NarrativeSectionProps = {
   paragraphs: readonly string[];
   /** alternate section background for visual rhythm between narratives */
   tone?: "light" | "tint";
+  /** closes the section with a booking button under the copy */
+  cta?: SectionCtaContent;
 };
 
 /**
@@ -18,6 +21,7 @@ export function NarrativeSection({
   heading,
   paragraphs,
   tone = "light",
+  cta,
 }: NarrativeSectionProps) {
   const bg = tone === "tint" ? "bg-mist/60" : "";
   return (
@@ -31,6 +35,7 @@ export function NarrativeSection({
             ))}
           </div>
         </Reveal>
+        {cta ? <SectionCta cta={cta} /> : null}
       </div>
     </section>
   );

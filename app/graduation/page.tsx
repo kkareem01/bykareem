@@ -19,7 +19,6 @@ import { OfferShowcase } from "@/components/sections/OfferShowcase";
 import { ReviewsWall } from "@/components/sections/ReviewsWall";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCta } from "@/components/sections/FinalCta";
-import { InlineCta } from "@/components/sections/InlineCta";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
@@ -61,22 +60,21 @@ export default function GraduationPage() {
         </Reveal>
       </section>
 
-      {/* 1 — their current circumstances */}
+      {/* 1 — their current circumstances, closed out by a booking button */}
       <NarrativeSection
         heading={graduationCopy.problem.heading}
         paragraphs={graduationCopy.problem.paragraphs}
+        cta={{
+          label: graduationCopy.hero.cta,
+          href: "/book?type=graduation",
+          note: graduationCopy.ctaNote,
+        }}
       />
 
       {/* social proof — real client messages, same wall as the home page */}
       <ReviewsWall
         heading={graduationCopy.socialProof.heading}
         shots={gradReviewShots}
-      />
-
-      <InlineCta
-        label={graduationCopy.hero.cta}
-        href="/book?type=graduation"
-        note={graduationCopy.ctaNote}
       />
 
       {/* 2 — the dream outcome */}
@@ -91,6 +89,11 @@ export default function GraduationPage() {
         heading={portfolioCopy.nichePage.graduation.heading}
         shots={gradCouldBeYouShots}
         links={galleryLinks}
+        cta={{
+          label: graduationCopy.hero.cta,
+          href: "/book?type=graduation",
+          note: graduationCopy.ctaNote,
+        }}
       />
 
       {/* 4 — self-select before the pitch */}
@@ -105,6 +108,11 @@ export default function GraduationPage() {
         heading={graduationCopy.sessionStrip.heading}
         images={gradSessionStrip}
         dense
+        cta={{
+          label: graduationCopy.hero.cta,
+          href: "/book?type=graduation",
+          note: graduationCopy.ctaNote,
+        }}
       />
 
       {/* 5 — the bridge: named offer + value stack */}

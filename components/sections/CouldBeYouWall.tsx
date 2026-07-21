@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionCta, type SectionCtaContent } from "@/components/ui/SectionCta";
 import type { GalleryLink } from "@/components/sections/PortfolioGallery";
 import type { PortfolioImage } from "@/content/portfolio";
 
@@ -8,6 +9,8 @@ type CouldBeYouWallProps = {
   heading: string;
   shots: PortfolioImage[];
   links?: GalleryLink[];
+  /** closes the section with a booking button under the gallery links */
+  cta?: SectionCtaContent;
 };
 
 /**
@@ -25,7 +28,12 @@ const SCATTER = [
   "-rotate-1 lg:translate-y-7",
 ];
 
-export function CouldBeYouWall({ heading, shots, links = [] }: CouldBeYouWallProps) {
+export function CouldBeYouWall({
+  heading,
+  shots,
+  links = [],
+  cta,
+}: CouldBeYouWallProps) {
   return (
     <section className="py-14 md:py-20 overflow-x-clip">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
@@ -69,6 +77,8 @@ export function CouldBeYouWall({ heading, shots, links = [] }: CouldBeYouWallPro
             ))}
           </Reveal>
         ) : null}
+
+        {cta ? <SectionCta cta={cta} className="mt-8" /> : null}
       </div>
     </section>
   );

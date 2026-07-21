@@ -58,7 +58,7 @@ function ShowcaseCard({
       <div className="overflow-hidden rounded-3xl border border-line shadow-[0_20px_44px_rgba(30,61,47,0.10)]">
         {/* slim dark title band — right side stays clear for the overlaying visual */}
         <div className="bg-hunter px-6 sm:px-9 pt-8 pb-3.5 sm:pt-10 sm:pb-5 md:pr-[44%]">
-          <h3 className="font-cinema font-extrabold text-[1.35rem] sm:text-[1.7rem] lg:text-[2.35rem] leading-[1.18] text-snow">
+          <h3 className="font-cinema font-extrabold text-[1.55rem] sm:text-[1.95rem] lg:text-[2.65rem] leading-[1.15] text-snow">
             <span className="[-webkit-text-stroke:0.4px_#ffffff]">{lead}</span>
             {rest ? (
               <>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, Fraunces, Instrument_Sans } from "next/font/google";
+import { Fraunces, Instrument_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { seo, site } from "@/content/site-config";
 import { Nav } from "@/components/layout/Nav";
@@ -19,9 +19,9 @@ const instrument = Instrument_Sans({
   subsets: ["latin"],
 });
 
-/* Trajan-style cinematic serif — offer-stack headlines only */
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
+/* Luxury editorial serif — offer-stack headlines only */
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
   weight: ["700", "800"],
 });
@@ -49,7 +49,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${fraunces.variable} ${instrument.variable} ${cinzel.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${instrument.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <AttributionCapture />

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f2f6f2"/>
+  <!-- abstract campus blocks -->
+  <rect x="70" y="90" width="150" height="100" rx="10" fill="#dbe3db" opacity="0.7"/>
+  <rect x="560" y="70" width="170" height="120" rx="10" fill="#dbe3db" opacity="0.7"/>
+  <rect x="110" y="400" width="180" height="110" rx="10" fill="#dbe3db" opacity="0.7"/>
+  <rect x="590" y="380" width="140" height="130" rx="10" fill="#dbe3db" opacity="0.7"/>
+  <ellipse cx="400" cy="300" rx="120" ry="80" fill="#e6eee6"/>
+  <!-- planned route -->
+  <path d="M120 160 C 260 220, 300 140, 400 220 S 560 380, 660 440"
+        fill="none" stroke="#b8912e" stroke-width="6" stroke-dasharray="2 18" stroke-linecap="round"/>
+  <!-- stop pins -->
+  <g fill="#1e3d2f">
+    <circle cx="120" cy="160" r="14"/>
+    <circle cx="400" cy="220" r="14"/>
+    <circle cx="540" cy="350" r="14"/>
+  </g>
+  <g fill="#fafcfa">
+    <circle cx="120" cy="160" r="5"/>
+    <circle cx="400" cy="220" r="5"/>
+    <circle cx="540" cy="350" r="5"/>
+  </g>
+  <!-- final stop: the star spot -->
+  <circle cx="660" cy="440" r="26" fill="#b8912e"/>
+  <path d="M660 426l4.6 9.3 10.3 1.5-7.4 7.3 1.7 10.2-9.2-4.8-9.2 4.8 1.7-10.2-7.4-7.3 10.3-1.5z" fill="#fafcfa"/>
+  <text x="80" y="560" font-family="Georgia, serif" font-size="26" fill="#5c7267" font-style="italic">Scouted before you arrive.</text>
+</svg>

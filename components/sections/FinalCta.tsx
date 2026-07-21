@@ -1,0 +1,27 @@
+import { Button } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
+
+type FinalCtaProps = {
+  heading: string;
+  sub: string;
+  cta: string;
+  ctaHref: string;
+};
+
+export function FinalCta({ heading, sub, cta, ctaHref }: FinalCtaProps) {
+  return (
+    <section className="py-24 md:py-32 bg-hunter text-snow">
+      <Reveal className="mx-auto max-w-3xl px-5 sm:px-8 text-center">
+        <h2 className="display text-3xl sm:text-4xl md:text-5xl text-snow">
+          {heading}
+        </h2>
+        <p className="mt-6 text-lg text-snow/70 leading-relaxed">{sub}</p>
+        <div className="mt-10">
+          <Button href={ctaHref} size="lg">
+            {cta}
+          </Button>
+        </div>
+      </Reveal>
+    </section>
+  );
+}

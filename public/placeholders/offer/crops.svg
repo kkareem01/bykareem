@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f2f6f2"/>
+  <!-- story 9:16 -->
+  <rect x="90" y="110" width="180" height="320" rx="14" fill="#1e3d2f"/>
+  <rect x="102" y="122" width="156" height="296" rx="8" fill="#5c7267"/>
+  <text x="180" y="470" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#5c7267">story</text>
+  <!-- feed 1:1 -->
+  <rect x="310" y="150" width="240" height="240" rx="14" fill="#b8912e"/>
+  <rect x="322" y="162" width="216" height="216" rx="8" fill="#e3c878"/>
+  <text x="430" y="430" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#5c7267">feed</text>
+  <!-- banner -->
+  <rect x="590" y="200" width="140" height="140" rx="14" fill="#dbe3db"/>
+  <rect x="560" y="230" width="200" height="80" rx="10" fill="#1e3d2f"/>
+  <rect x="568" y="238" width="184" height="64" rx="6" fill="#5c7267"/>
+  <text x="660" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#5c7267">banner</text>
+  <text x="90" y="550" font-family="Georgia, serif" font-size="24" font-style="italic" fill="#5c7267">Every photo, already sized for everywhere.</text>
+</svg>

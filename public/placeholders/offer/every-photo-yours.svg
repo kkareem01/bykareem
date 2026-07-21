@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f2f6f2"/>
+  <!-- gallery grid: every photo included -->
+  <g>
+    <rect x="90" y="80" width="180" height="130" rx="10" fill="#dbe3db"/>
+    <rect x="310" y="80" width="180" height="130" rx="10" fill="#e6eee6"/>
+    <rect x="530" y="80" width="180" height="130" rx="10" fill="#dbe3db"/>
+    <rect x="90" y="240" width="180" height="130" rx="10" fill="#e6eee6"/>
+    <rect x="310" y="240" width="180" height="130" rx="10" fill="#dbe3db"/>
+    <rect x="530" y="240" width="180" height="130" rx="10" fill="#e6eee6"/>
+  </g>
+  <!-- horizon + sun inside each frame -->
+  <g stroke="#1e3d2f" stroke-width="4" stroke-linecap="round" opacity="0.35">
+    <path d="M110 180 L 250 180"/>
+    <path d="M330 180 L 470 180"/>
+    <path d="M550 180 L 690 180"/>
+    <path d="M110 340 L 250 340"/>
+    <path d="M330 340 L 470 340"/>
+    <path d="M550 340 L 690 340"/>
+  </g>
+  <!-- gold check on every photo: all included -->
+  <g stroke="#b8912e" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M158 140 l14 16 30 -32"/>
+    <path d="M378 140 l14 16 30 -32"/>
+    <path d="M598 140 l14 16 30 -32"/>
+    <path d="M158 300 l14 16 30 -32"/>
+    <path d="M378 300 l14 16 30 -32"/>
+    <path d="M598 300 l14 16 30 -32"/>
+  </g>
+  <!-- crossed-out price tag: no per-photo pricing -->
+  <g transform="translate(560 400) rotate(-8)">
+    <rect x="0" y="0" width="150" height="70" rx="12" fill="#dbe3db"/>
+    <circle cx="26" cy="22" r="7" fill="#f2f6f2"/>
+    <text x="48" y="48" font-family="Georgia, serif" font-size="30" fill="#5c7267">$45</text>
+    <line x1="40" y1="52" x2="118" y2="24" stroke="#b8912e" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <text x="90" y="470" font-family="Georgia, serif" font-size="26" fill="#5c7267" font-style="italic">Every photo. Every digital. Yours.</text>
+</svg>

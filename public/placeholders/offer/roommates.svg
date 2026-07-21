@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="p1" gradientTransform="rotate(30 0.5 0.5)">
+      <stop offset="0%" stop-color="#C9A227"/><stop offset="100%" stop-color="#183327"/>
+    </linearGradient>
+    <linearGradient id="p2" gradientTransform="rotate(60 0.5 0.5)">
+      <stop offset="0%" stop-color="#5c7267"/><stop offset="100%" stop-color="#142b21"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="#f2f6f2"/>
+  <!-- photo strip -->
+  <g transform="rotate(-5 400 300)">
+    <rect x="300" y="50" width="200" height="520" fill="#fafcfa" stroke="#dbe3db"/>
+    <rect x="316" y="70" width="168" height="140" fill="url(#p1)"/>
+    <rect x="316" y="226" width="168" height="140" fill="url(#p2)"/>
+    <rect x="316" y="382" width="168" height="140" fill="url(#p1)"/>
+    <text x="400" y="552" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-style="italic" fill="#5c7267">the roommates · ’27</text>
+  </g>
+  <!-- confetti caps -->
+  <g fill="#1e3d2f">
+    <path d="M150 140l30 12-30 12-30-12z"/>
+    <path d="M640 120l26 10-26 10-26-10z"/>
+    <path d="M660 420l24 10-24 10-24-10z"/>
+  </g>
+  <circle cx="180" cy="420" r="8" fill="#b8912e"/>
+  <circle cx="620" cy="250" r="8" fill="#e3c878"/>
+  <circle cx="140" cy="280" r="6" fill="#b8912e"/>
+</svg>

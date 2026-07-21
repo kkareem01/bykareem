@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#F2F6F2"/>
+  <rect x="60" y="80" width="680" height="840" rx="28" fill="#FFFFFF" stroke="#DBE3DB" stroke-width="2"/>
+  <circle cx="150" cy="190" r="44" fill="#DCE8DC"/>
+  <rect x="220" y="160" width="220" height="24" rx="12" fill="#1E3D2F" opacity="0.85"/>
+  <rect x="220" y="198" width="140" height="16" rx="8" fill="#9DBBA8"/>
+  <g fill="#C9A227" transform="translate(106,270)">
+    <path id="s2" d="M20 0l6 12 14 2-10 10 2 14-12-6-12 6 2-14L0 14l14-2z"/>
+    <use href="#s2" x="52"/><use href="#s2" x="104"/><use href="#s2" x="156"/><use href="#s2" x="208"/>
+  </g>
+  <g fill="#5C7267" opacity="0.55">
+    <rect x="106" y="360" width="588" height="18" rx="9"/>
+    <rect x="106" y="398" width="540" height="18" rx="9"/>
+    <rect x="106" y="436" width="588" height="18" rx="9"/>
+    <rect x="106" y="474" width="460" height="18" rx="9"/>
+    <rect x="106" y="512" width="560" height="18" rx="9"/>
+    <rect x="106" y="550" width="380" height="18" rx="9"/>
+  </g>
+  <text x="400" y="760" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#1E3D2F">Review screenshot 2</text>
+  <text x="400" y="800" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#5C7267">placeholder — replace with a real review</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f2f6f2"/>
+  <!-- three ways to spend the final fifteen -->
+  <g>
+    <rect x="70" y="120" width="200" height="260" rx="14" fill="#dbe3db"/>
+    <rect x="300" y="120" width="200" height="260" rx="14" fill="#e6eee6"/>
+    <rect x="530" y="120" width="200" height="260" rx="14" fill="#dbe3db"/>
+  </g>
+  <!-- panel 1: family (three figures) -->
+  <g fill="#1e3d2f">
+    <circle cx="130" cy="220" r="18"/>
+    <rect x="112" y="244" width="36" height="60" rx="14"/>
+    <circle cx="210" cy="220" r="18"/>
+    <rect x="192" y="244" width="36" height="60" rx="14"/>
+    <circle cx="170" cy="250" r="14"/>
+    <rect x="157" y="268" width="26" height="44" rx="11"/>
+  </g>
+  <!-- panel 2: friends (two figures, caps) -->
+  <g fill="#1e3d2f">
+    <circle cx="365" cy="230" r="18"/>
+    <rect x="347" y="254" width="36" height="60" rx="14"/>
+    <circle cx="435" cy="230" r="18"/>
+    <rect x="417" y="254" width="36" height="60" rx="14"/>
+  </g>
+  <g fill="#b8912e">
+    <path d="M338 216 l27 -12 27 12 -27 12z"/>
+    <path d="M408 216 l27 -12 27 12 -27 12z"/>
+  </g>
+  <!-- panel 3: solo second look -->
+  <g fill="#1e3d2f">
+    <circle cx="630" cy="228" r="20"/>
+    <rect x="610" y="254" width="40" height="66" rx="16"/>
+  </g>
+  <path d="M630 178 l5.1 10.3 11.4 1.7 -8.2 8 1.9 11.3 -10.2 -5.3 -10.2 5.3 1.9 -11.3 -8.2 -8 11.4 -1.7z" fill="#b8912e"/>
+  <!-- the reserved fifteen: clock -->
+  <g transform="translate(400 440)">
+    <circle r="46" fill="#1e3d2f"/>
+    <circle r="38" fill="#f2f6f2"/>
+    <line x1="0" y1="0" x2="0" y2="-26" stroke="#1e3d2f" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="20" y2="10" stroke="#b8912e" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="70" y="560" font-family="Georgia, serif" font-size="26" fill="#5c7267" font-style="italic">The last fifteen — you choose.</text>
+</svg>

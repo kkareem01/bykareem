@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f2f6f2"/>
+  <!-- bottle, tilted for the pop -->
+  <g transform="translate(300 420) rotate(-24)">
+    <rect x="-34" y="-40" width="68" height="180" rx="26" fill="#1e3d2f"/>
+    <rect x="-14" y="-130" width="28" height="96" rx="12" fill="#1e3d2f"/>
+    <rect x="-14" y="-150" width="28" height="26" rx="8" fill="#b8912e"/>
+    <rect x="-26" y="10" width="52" height="60" rx="8" fill="#e6eee6"/>
+  </g>
+  <!-- spray arc -->
+  <path d="M330 240 C 400 130, 540 90, 680 110"
+        fill="none" stroke="#e6eee6" stroke-width="26" stroke-linecap="round"/>
+  <path d="M330 240 C 400 130, 540 90, 680 110"
+        fill="none" stroke="#dbe3db" stroke-width="12" stroke-linecap="round"/>
+  <!-- confetti -->
+  <g fill="#b8912e">
+    <circle cx="420" cy="120" r="9"/>
+    <circle cx="500" cy="180" r="7"/>
+    <circle cx="590" cy="70" r="8"/>
+    <rect x="450" y="60" width="16" height="16" rx="3" transform="rotate(18 458 68)"/>
+    <rect x="640" y="160" width="14" height="14" rx="3" transform="rotate(-24 647 167)"/>
+    <rect x="540" y="130" width="12" height="12" rx="3" transform="rotate(40 546 136)"/>
+  </g>
+  <g fill="#1e3d2f" opacity="0.55">
+    <circle cx="470" cy="100" r="6"/>
+    <circle cx="620" cy="120" r="6"/>
+    <rect x="390" y="170" width="12" height="12" rx="3" transform="rotate(30 396 176)"/>
+  </g>
+  <text x="290" y="500" font-family="Georgia, serif" font-size="26" fill="#5c7267" font-style="italic">Bring the bottle — I'll get the shot.</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="photo" gradientTransform="rotate(40 0.5 0.5)">
+      <stop offset="0%" stop-color="#C9A227"/>
+      <stop offset="100%" stop-color="#183327"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="#f2f6f2"/>
+  <!-- hanging wire -->
+  <path d="M400 40 L250 130 M400 40 L550 130" stroke="#5c7267" stroke-width="3" fill="none"/>
+  <circle cx="400" cy="38" r="6" fill="#b8912e"/>
+  <!-- gold frame -->
+  <rect x="210" y="130" width="380" height="300" rx="6" fill="#b8912e"/>
+  <rect x="228" y="148" width="344" height="264" fill="#fafcfa"/>
+  <rect x="258" y="178" width="284" height="204" fill="url(#photo)"/>
+  <!-- family silhouettes -->
+  <g fill="#142b21" opacity="0.55">
+    <circle cx="340" cy="270" r="18"/><path d="M310 340 q30 -40 60 0 v42 h-60z"/>
+    <circle cx="400" cy="255" r="22"/><path d="M366 340 q34 -50 68 0 v42 h-68z"/>
+    <circle cx="462" cy="272" r="18"/><path d="M432 340 q30 -40 60 0 v42 h-60z"/>
+  </g>
+  <text x="210" y="510" font-family="Georgia, serif" font-size="26" font-style="italic" fill="#5c7267">The one that ends up on the wall.</text>
+</svg>

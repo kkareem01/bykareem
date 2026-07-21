@@ -3,12 +3,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { nav, site } from "@/content/site-config";
+import { ctaForPath, nav, site } from "@/content/site-config";
 import { Button } from "@/components/ui/Button";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const cta = ctaForPath(pathname);
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-snow/85 backdrop-blur-md border-b border-line/60">
@@ -34,8 +35,8 @@ export function Nav() {
               {link.label}
             </Link>
           ))}
-          <Button href={nav.cta.href} size="md">
-            {nav.cta.label}
+          <Button href={cta.href} size="md">
+            {cta.label}
           </Button>
         </nav>
 
@@ -68,8 +69,8 @@ export function Nav() {
             </Link>
           ))}
           <div onClickCapture={() => setOpen(false)}>
-            <Button href={nav.cta.href} size="lg" className="w-full">
-              {nav.cta.label}
+            <Button href={cta.href} size="lg" className="w-full">
+              {cta.label}
             </Button>
           </div>
         </nav>

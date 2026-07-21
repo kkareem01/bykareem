@@ -24,13 +24,17 @@ function env(name: string, fallback = ""): string {
 export function bookingIcs(booking: Booking): string {
   const label =
     bookingConfig.consultTypes[booking.audience]?.label ?? "Consult call";
+  const description =
+    booking.audience === "graduation"
+      ? `Your graduation session. I'll text you at ${booking.customer.phone} to confirm the campus meeting spot. Ref ${booking.id}.`
+      : `Free consult call. I'll call you at ${booking.customer.phone}. Ref ${booking.id}.`;
   return buildICS({
     id: booking.id,
     slot: { date: booking.slot.date, time: booking.slot.time },
     durationMinutes: booking.slot.durationMinutes,
     tz: booking.slot.tz,
     summary: `${env("BUSINESS_NAME", "bykareem")} — ${label}`,
-    description: `Free consult call. I'll call you at ${booking.customer.phone}. Ref ${booking.id}.`,
+    description,
     uidDomain: "bykareem.com",
   });
 }

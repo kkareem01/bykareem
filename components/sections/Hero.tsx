@@ -14,6 +14,8 @@ type HeroProps = {
   sub: string;
   cta: string;
   ctaHref: string;
+  /** one-line trust note directly under the CTA button */
+  ctaNote?: string;
   image: ImageSlot;
   /** short trust bullets under the CTA (home hero) */
   trust?: readonly string[];
@@ -28,6 +30,7 @@ export function Hero({
   sub,
   cta,
   ctaHref,
+  ctaNote,
   image,
   trust,
 }: HeroProps) {
@@ -73,6 +76,9 @@ export function Hero({
             <Button href={ctaHref} size="lg">
               {cta}
             </Button>
+            {ctaNote ? (
+              <p className="mt-3 text-xs text-moss">{ctaNote}</p>
+            ) : null}
           </div>
           {trust ? (
             <ul className="mt-8 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2">

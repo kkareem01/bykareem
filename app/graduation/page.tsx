@@ -7,8 +7,10 @@ import { capacity } from "@/content/booking-config";
 import {
   getStoryByAudience,
   gradCouldBeYouShots,
+  gradSessionStrip,
   portfolioCopy,
 } from "@/content/portfolio";
+import { PortfolioGallery } from "@/components/sections/PortfolioGallery";
 import { Hero } from "@/components/sections/Hero";
 import { CouldBeYouWall } from "@/components/sections/CouldBeYouWall";
 import { NarrativeSection } from "@/components/sections/NarrativeSection";
@@ -17,6 +19,7 @@ import { OfferShowcase } from "@/components/sections/OfferShowcase";
 import { ReviewsWall } from "@/components/sections/ReviewsWall";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCta } from "@/components/sections/FinalCta";
+import { InlineCta } from "@/components/sections/InlineCta";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
@@ -45,6 +48,7 @@ export default function GraduationPage() {
         sub={graduationCopy.hero.sub}
         cta={graduationCopy.hero.cta}
         ctaHref="/book?type=graduation"
+        ctaNote={graduationCopy.ctaNote}
         image={images.gradHero}
       />
 
@@ -69,6 +73,12 @@ export default function GraduationPage() {
         shots={gradReviewShots}
       />
 
+      <InlineCta
+        label={graduationCopy.hero.cta}
+        href="/book?type=graduation"
+        note={graduationCopy.ctaNote}
+      />
+
       {/* 2 — the dream outcome */}
       <NarrativeSection
         heading={graduationCopy.dream.heading}
@@ -90,6 +100,13 @@ export default function GraduationPage() {
         builtFor={graduationCopy.filter.builtFor}
       />
 
+      {/* photo proof right before the pitch — celebration energy */}
+      <PortfolioGallery
+        heading={graduationCopy.sessionStrip.heading}
+        images={gradSessionStrip}
+        dense
+      />
+
       {/* 5 — the bridge: named offer + value stack */}
       <OfferShowcase
         offer={graduationOffer}
@@ -97,6 +114,7 @@ export default function GraduationPage() {
         bonusesIntro={graduationCopy.bonusesIntro}
         closing={graduationCopy.offerClosing}
         ctaHref="/book?type=graduation"
+        ctaNote={graduationCopy.ctaNote}
       />
 
       <FaqSection items={graduationFaq} eyebrow={null} />
@@ -106,6 +124,7 @@ export default function GraduationPage() {
         sub={graduationCopy.finalCta.sub}
         cta={graduationCopy.finalCta.cta}
         ctaHref="/book?type=graduation"
+        ctaNote={graduationCopy.ctaNote}
       />
     </>
   );

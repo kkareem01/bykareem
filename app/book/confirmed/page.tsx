@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { bookingCopy } from "@/content/copy";
+import { getBookingCopy } from "@/content/copy";
 import { ensureBootstrapped } from "@/lib/booking/db";
 import { formatLongDate, formatTime12h } from "@/lib/booking/format";
 import { BOOKING_ID_RE } from "@/lib/booking/id";
@@ -33,7 +33,7 @@ export default async function ConfirmedPage({
           <>
             <p className="eyebrow eyebrow--gold mb-4">confirmed</p>
             <h1 className="display text-4xl sm:text-5xl">
-              {bookingCopy.confirmed.heading}
+              {getBookingCopy(booking.audience).confirmed.heading}
             </h1>
             <p className="mt-6 rounded-xl bg-mist border border-line px-4 py-3">
               {formatLongDate(booking.slot.date)} at{" "}
@@ -42,9 +42,11 @@ export default async function ConfirmedPage({
                 Ref {booking.id}
               </span>
             </p>
-            <p className="mt-6 text-moss">{bookingCopy.confirmed.sub}</p>
+            <p className="mt-6 text-moss">
+              {getBookingCopy(booking.audience).confirmed.sub}
+            </p>
             <ol className="mt-8 space-y-4 text-left">
-              {bookingCopy.confirmed.steps.map((step, i) => (
+              {getBookingCopy(booking.audience).confirmed.steps.map((step, i) => (
                 <li key={step} className="flex gap-4">
                   <span className="font-display italic text-2xl text-gold">
                     {i + 1}
@@ -71,7 +73,7 @@ export default async function ConfirmedPage({
             </p>
             <div className="mt-10">
               <Link href="/book" className="text-gold hover:text-gold-deep">
-                ← Book a consult
+                ← Back to booking
               </Link>
             </div>
           </>

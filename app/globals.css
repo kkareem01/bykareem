@@ -22,6 +22,7 @@
   /* type */
   --font-display: var(--font-fraunces), "Fraunces", serif;
   --font-sans: var(--font-instrument), "Instrument Sans", sans-serif;
+  --font-cinema: var(--font-cinzel), "Cinzel", serif;
 
   /* motion */
   --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
@@ -90,8 +91,9 @@ body::after {
 
 .display em,
 .italic-accent {
-  font-style: italic;
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  font-style: normal;
+  font-weight: 500;
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
   color: var(--color-gold);
 }
 
@@ -112,6 +114,35 @@ body::after {
 }
 .gold-sheen:hover {
   background-position: 85% 0;
+}
+
+/* reflective-gold surface for the offer value badges — runs a step darker
+   than .gold-sheen so white text stays legible across the highlight */
+.gold-bar {
+  background: linear-gradient(
+    120deg,
+    #8f6d1d 0%,
+    #b8912e 28%,
+    #dcbd5c 50%,
+    #b8912e 72%,
+    #8f6d1d 100%
+  );
+}
+
+/* reflective gold clipped to text — offer-stack headlines on dark bands.
+   Stops stay bright end-to-end: dark stops sink into the hunter band. */
+.text-gold-foil {
+  background: linear-gradient(
+    100deg,
+    #c9a227 0%,
+    #e3c878 26%,
+    #f7ecc0 48%,
+    #ecd489 64%,
+    #d4af37 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* horizontal rules with a center dot, used between editorial sections */

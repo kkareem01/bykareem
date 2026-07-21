@@ -37,7 +37,13 @@ function firstName(booking: Booking): string {
   return booking.customer.firstName || "there";
 }
 
+/** Graduation books the session itself; everything else books a consult call. */
+function isSession(booking: Booking): boolean {
+  return booking.audience === "graduation";
+}
+
 export function customerConfirmationEmail(ctx: TemplateContext): EmailContent {
+  if (isSession(ctx.booking)) return sessionConfirmationEmail(ctx);
   const { booking, businessName, confirmUrl } = ctx;
   const when = whenLine(booking);
   const subject = `Your ${businessName} consult is booked — ${when}`;
@@ -66,6 +72,38 @@ Details: ${confirmUrl}
   return { subject, html, text };
 }
 
+function sessionConfirmationEmail(ctx: TemplateContext): EmailContent {
+  const { booking, businessName, confirmUrl } = ctx;
+  const when = whenLine(booking);
+  const subject = `Your ${businessName} grad session is booked — ${when}`;
+  const html = `${WRAPPER_OPEN}
+<h1 style="font-size:22px;font-weight:normal;">You're on the calendar, ${escapeHtml(firstName(booking))}.</h1>
+<p>Your Milestone Session is confirmed:</p>
+<table style="border-collapse:collapse;margin:16px 0;">
+<tr><td style="padding:4px 12px 4px 0;color:#6b6156;">When</td><td style="padding:4px 0;">${escapeHtml(when)}</td></tr>
+<tr><td style="padding:4px 12px 4px 0;color:#6b6156;">Where</td><td style="padding:4px 0;">Your campus — I'll text you at ${escapeHtml(booking.customer.phone)} to lock the exact meeting spot</td></tr>
+<tr><td style="padding:4px 12px 4px 0;color:#6b6156;">Ref</td><td style="padding:4px 0;">${escapeHtml(booking.id)}</td></tr>
+</table>
+<p>Here's what happens next: I'll text you within 24 hours to confirm your campus, your route, and where we meet — and you'll get the one-page prep guide (outfits, cap &amp; gown, what to bring). Then you just show up; you're directed every second.</p>
+<p>Your full gallery lands in your inbox within 72 hours of the session — in writing.</p>
+<p>A calendar invite is attached. Booking details: <a href="${escapeHtml(confirmUrl)}" style="color:#96603a;">${escapeHtml(confirmUrl)}</a></p>
+${WRAPPER_CLOSE}`;
+  const text = `You're on the calendar, ${firstName(booking)}.
+
+Your Milestone Session is confirmed:
+When: ${when}
+Where: your campus — I'll text you at ${booking.customer.phone} to lock the exact meeting spot
+Ref: ${booking.id}
+
+Next: I'll text you within 24 hours to confirm your campus, route, and meeting spot, and you'll get the one-page prep guide. Your full gallery lands within 72 hours of the session.
+
+A calendar invite is attached.
+Details: ${confirmUrl}
+
+— ${businessName}`;
+  return { subject, html, text };
+}
+
 export function ownerNotificationEmail(
   ctx: Omit<TemplateContext, "confirmUrl"> & { audienceLabel: string },
 ): EmailContent {
@@ -80,7 +118,7 @@ export function ownerNotificationEmail(
     )
     .join("\n");
   const html = `${WRAPPER_OPEN}
-<h1 style="font-size:20px;font-weight:normal;">New consult booking</h1>
+<h1 style="font-size:20px;font-weight:normal;">New booking</h1>
 <table style="border-collapse:collapse;margin:16px 0;">
 <tr><td style="padding:4px 12px 4px 0;color:#6b6156;">Type</td><td style="padding:4px 0;">${escapeHtml(audienceLabel)}</td></tr>
 <tr><td style="padding:4px 12px 4px 0;color:#6b6156;">Name</td><td style="padding:4px 0;">${escapeHtml(c.firstName)} ${escapeHtml(c.lastName)}</td></tr>
@@ -91,7 +129,7 @@ export function ownerNotificationEmail(
 ${answerRows}
 </table>
 ${WRAPPER_CLOSE}`;
-  const text = `New consult booking
+  const text = `New booking
 Type: ${audienceLabel}
 Name: ${c.firstName} ${c.lastName}
 Phone: ${c.phone}
@@ -106,6 +144,7 @@ ${Object.entries(booking.answers)
 }
 
 export function reminderT1Email(ctx: TemplateContext): EmailContent {
+  if (isSession(ctx.booking)) return sessionReminderT1Email(ctx);
   const { booking, businessName, confirmUrl } = ctx;
   const when = whenLine(booking);
   const subject = `Tomorrow: your ${businessName} consult call — ${formatTime12h(booking.slot.time)}`;
@@ -125,7 +164,29 @@ Details: ${confirmUrl}
   return { subject, html, text };
 }
 
+function sessionReminderT1Email(ctx: TemplateContext): EmailContent {
+  const { booking, businessName, confirmUrl } = ctx;
+  const when = whenLine(booking);
+  const subject = `Tomorrow: your ${businessName} grad session — ${formatTime12h(booking.slot.time)}`;
+  const html = `${WRAPPER_OPEN}
+<h1 style="font-size:22px;font-weight:normal;">See you tomorrow, ${escapeHtml(firstName(booking))}.</h1>
+<p>Quick reminder — your Milestone Session is <strong>${escapeHtml(when)}</strong> at our confirmed meeting spot.</p>
+<p>Bring your cap, gown, stole, and cords — plus your outfits from the prep guide, and a bottle if you want the champagne send-off. If anything changes, just reply to this email or text me.</p>
+<p><a href="${escapeHtml(confirmUrl)}" style="color:#96603a;">Booking details</a></p>
+${WRAPPER_CLOSE}`;
+  const text = `See you tomorrow, ${firstName(booking)}.
+
+Your Milestone Session is ${when} at our confirmed meeting spot.
+Bring your cap, gown, stole, and cords — plus your outfits, and a bottle if you want the champagne send-off.
+If anything changes, reply to this email or text me.
+Details: ${confirmUrl}
+
+— ${businessName}`;
+  return { subject, html, text };
+}
+
 export function reminderDayOfEmail(ctx: TemplateContext): EmailContent {
+  if (isSession(ctx.booking)) return sessionReminderDayOfEmail(ctx);
   const { booking, businessName, confirmUrl } = ctx;
   const time = formatTime12h(booking.slot.time);
   const subject = `Today at ${time}: your ${businessName} consult call`;
@@ -137,6 +198,24 @@ ${WRAPPER_CLOSE}`;
   const text = `Talk soon, ${firstName(booking)}.
 
 Your free consult call is today at ${time}. I'll call you at ${booking.customer.phone}.
+Details: ${confirmUrl}
+
+— ${businessName}`;
+  return { subject, html, text };
+}
+
+function sessionReminderDayOfEmail(ctx: TemplateContext): EmailContent {
+  const { booking, businessName, confirmUrl } = ctx;
+  const time = formatTime12h(booking.slot.time);
+  const subject = `Today at ${time}: your ${businessName} grad session`;
+  const html = `${WRAPPER_OPEN}
+<h1 style="font-size:22px;font-weight:normal;">Today's the day, ${escapeHtml(firstName(booking))}.</h1>
+<p>Your Milestone Session is <strong>today at ${escapeHtml(time)}</strong> at our confirmed meeting spot. Cap, gown, outfits — and I've got everything else.</p>
+<p><a href="${escapeHtml(confirmUrl)}" style="color:#96603a;">Booking details</a></p>
+${WRAPPER_CLOSE}`;
+  const text = `Today's the day, ${firstName(booking)}.
+
+Your Milestone Session is today at ${time} at our confirmed meeting spot. Cap, gown, outfits — I've got everything else.
 Details: ${confirmUrl}
 
 — ${businessName}`;

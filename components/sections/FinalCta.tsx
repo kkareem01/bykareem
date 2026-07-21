@@ -6,9 +6,11 @@ type FinalCtaProps = {
   sub: string;
   cta: string;
   ctaHref: string;
+  /** one-line trust note directly under the CTA button */
+  ctaNote?: string;
 };
 
-export function FinalCta({ heading, sub, cta, ctaHref }: FinalCtaProps) {
+export function FinalCta({ heading, sub, cta, ctaHref, ctaNote }: FinalCtaProps) {
   return (
     <section className="py-24 md:py-32 bg-hunter text-snow">
       <Reveal className="mx-auto max-w-3xl px-5 sm:px-8 text-center">
@@ -20,6 +22,9 @@ export function FinalCta({ heading, sub, cta, ctaHref }: FinalCtaProps) {
           <Button href={ctaHref} size="lg">
             {cta}
           </Button>
+          {ctaNote ? (
+            <p className="mt-3 text-xs text-snow/60">{ctaNote}</p>
+          ) : null}
         </div>
       </Reveal>
     </section>

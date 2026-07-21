@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { footer, nav, site } from "@/content/site-config";
+import { FooterCtaLink } from "./FooterCtaLink";
 
 export function Footer() {
   return (
@@ -23,12 +24,7 @@ export function Footer() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href={nav.cta.href}
-            className="text-gold-light hover:text-snow transition-colors"
-          >
-            {nav.cta.label}
-          </Link>
+          <FooterCtaLink />
         </nav>
 
         <div className="flex flex-col gap-3 text-sm">

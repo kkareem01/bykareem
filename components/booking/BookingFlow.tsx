@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { bookingCopy } from "@/content/copy";
+import { getBookingCopy } from "@/content/copy";
 import { bookingConfig } from "@/content/booking-config";
 import { CONSULT_TYPES, FIELD_SCHEMAS } from "@/lib/booking/consult-types";
 import type { ConsultType } from "@/lib/booking/types";
@@ -33,7 +33,14 @@ function monthIndex(m: MonthState): number {
 
 const MAX_MONTHS_AHEAD = Math.ceil(bookingConfig.maxAdvanceDays / 30);
 
-export function BookingFlow({ initialType }: { initialType: ConsultType }) {
+export function BookingFlow({
+  initialType,
+  lockType = false,
+}: {
+  initialType: ConsultType;
+  /** true when the page arrived with a preset type — hides the type picker */
+  lockType?: boolean;
+}) {
   const router = useRouter();
   const [audience, setAudience] = useState<ConsultType>(initialType);
   const [step, setStep] = useState<Step>("date");
@@ -188,38 +195,51 @@ export function BookingFlow({ initialType }: { initialType: ConsultType }) {
   const inputCls =
     "w-full rounded-xl border border-line bg-porcelain px-4 py-3 text-sm text-hunter placeholder:text-moss/50 focus:outline-none focus:border-gold";
 
+  const copy = getBookingCopy(audience);
+
   return (
     <div className="max-w-xl mx-auto">
-      {/* step 1: consult type */}
-      <p className="eyebrow eyebrow--gold mb-3">{bookingCopy.steps.type}</p>
-      <div className="flex flex-wrap gap-2 mb-10">
-        {CONSULT_TYPES.map((t) => (
-          <button
-            key={t}
-            type="button"
-            onClick={() => pickType(t)}
-            aria-pressed={audience === t}
-            className={`px-4 py-2.5 rounded-full text-sm border transition-colors ${
-              audience === t
-                ? "bg-gold text-porcelain border-gold"
-                : "border-line text-hunter hover:border-gold"
-            }`}
-          >
-            {bookingConfig.consultTypes[t]?.label ?? t}
-          </button>
-        ))}
-      </div>
+      {/* step 1: consult type — hidden when the page arrived pre-picked */}
+      {lockType ? (
+        <p className="mb-10 text-sm text-moss">
+          Booking something else?{" "}
+          <a href="/book" className="text-gold hover:text-gold-deep">
+            See all options →
+          </a>
+        </p>
+      ) : (
+        <>
+          <p className="eyebrow eyebrow--gold mb-3">{copy.steps.type}</p>
+          <div className="flex flex-wrap gap-2 mb-10">
+            {CONSULT_TYPES.map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => pickType(t)}
+                aria-pressed={audience === t}
+                className={`px-4 py-2.5 rounded-full text-sm border transition-colors ${
+                  audience === t
+                    ? "bg-gold text-porcelain border-gold"
+                    : "border-line text-hunter hover:border-gold"
+                }`}
+              >
+                {bookingConfig.consultTypes[t]?.label ?? t}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
 
       {slotTaken ? (
         <p className="mb-6 rounded-xl bg-mist border border-line px-4 py-3 text-sm">
-          {bookingCopy.slotTaken}
+          {copy.slotTaken}
         </p>
       ) : null}
 
       {step === "date" ? (
         <>
           {/* step 2: date */}
-          <p className="eyebrow eyebrow--gold mb-3">{bookingCopy.steps.date}</p>
+          <p className="eyebrow eyebrow--gold mb-3">{copy.steps.date}</p>
           <Calendar
             year={cursor.year}
             month={cursor.month}
@@ -246,7 +266,7 @@ export function BookingFlow({ initialType }: { initialType: ConsultType }) {
           {selectedDate ? (
             <div className="mt-10">
               <p className="eyebrow eyebrow--gold mb-1">
-                {bookingCopy.steps.time}
+                {copy.steps.time}
               </p>
               <p className="text-sm text-moss mb-4">
                 {formatLongDate(selectedDate)} · times shown in{" "}
@@ -298,7 +318,7 @@ export function BookingFlow({ initialType }: { initialType: ConsultType }) {
         >
           {/* step 4: details */}
           <div className="flex items-baseline justify-between">
-            <p className="eyebrow eyebrow--gold">{bookingCopy.steps.details}</p>
+            <p className="eyebrow eyebrow--gold">{copy.steps.details}</p>
             <button
               type="button"
               onClick={() => setStep("date")}
@@ -431,10 +451,10 @@ export function BookingFlow({ initialType }: { initialType: ConsultType }) {
             className="w-full"
             disabled={!detailsValid || submitting}
           >
-            {submitting ? "Booking…" : bookingCopy.steps.confirm}
+            {submitting ? "Booking…" : copy.steps.confirm}
           </Button>
           <p className="text-xs text-moss text-center">
-            {bookingCopy.confirmNote}
+            {copy.confirmNote}
           </p>
         </form>
       )}

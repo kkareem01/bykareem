@@ -172,7 +172,27 @@ export const contactCopy = {
   },
 } as const;
 
-export const bookingCopy = {
+export type BookingCopy = {
+  title: string;
+  sub: string;
+  steps: {
+    type: string;
+    date: string;
+    time: string;
+    details: string;
+    confirm: string;
+  };
+  confirmNote: string;
+  slotTaken: string;
+  confirmed: {
+    heading: string;
+    sub: string;
+    steps: readonly string[];
+  };
+};
+
+/** Consult-call copy — couples and general inquiries book a free call. */
+export const bookingCopy: BookingCopy = {
   title: "Book your free consult call",
   sub: "Pick a time that works. The call is 20–30 minutes, obligation-free, and ends with an exact quote.",
   steps: {
@@ -195,4 +215,38 @@ export const bookingCopy = {
       "You get an exact quote before we hang up. Decide whenever you're ready.",
     ],
   },
-} as const;
+};
+
+/**
+ * Graduation books the Milestone Session itself — no consult call in
+ * between. Copy keeps the promise of the page CTA: date, time, done.
+ */
+export const gradBookingCopy: BookingCopy = {
+  title: "Book your grad session",
+  sub: "Pick your date, pick your start time, tell me about you — you're on the calendar in about two minutes. No payment due today.",
+  steps: {
+    type: "What's the occasion?",
+    date: "Pick your session day",
+    time: "Pick your start time",
+    details: "Tell me about you",
+    confirm: "Book My Grad Session",
+  },
+  confirmNote:
+    "You'll get an email confirmation with a calendar invite, and I'll text you to lock in your campus meeting spot. No payment due today.",
+  slotTaken:
+    "Ah — someone just grabbed that time. Here are the times still open:",
+  confirmed: {
+    heading: "You're on the calendar.",
+    sub: "Check your inbox for the confirmation and calendar invite. Here's what happens next:",
+    steps: [
+      "I text you within 24 hours to confirm your campus, your route, and where we meet.",
+      "You get the one-page prep guide — outfits, cap and gown, what to bring.",
+      "Show up and get directed every second. Your full gallery lands within 72 hours.",
+    ],
+  },
+};
+
+/** Booking copy for a consult type — graduation gets session copy. */
+export function getBookingCopy(audience: string): BookingCopy {
+  return audience === "graduation" ? gradBookingCopy : bookingCopy;
+}

@@ -4,6 +4,8 @@
  * never hardcode copy. Swap placeholders here; see content/README.md.
  */
 
+import { graduationCopy } from "./graduation-copy";
+
 export const site = {
   name: "bykareem",
   legalName: "bykareem photo & film",
@@ -28,6 +30,24 @@ export const nav = {
   ],
   cta: { label: "Book a Free Consult", href: "/book?type=couples" },
 } as const;
+
+export type NavCta = { label: string; href: string; note?: string };
+
+/**
+ * Route-aware nav/sticky CTA — the graduation page keeps one common CTA
+ * everywhere (nav, sticky bar, page sections); every other route gets the
+ * default consult CTA.
+ */
+export function ctaForPath(pathname: string): NavCta {
+  if (pathname.startsWith("/graduation")) {
+    return {
+      label: graduationCopy.hero.cta,
+      href: "/book?type=graduation",
+      note: graduationCopy.ctaNote,
+    };
+  }
+  return nav.cta;
+}
 
 export const footer = {
   positioning:
@@ -112,10 +132,12 @@ export const reviewShots: ReviewShot[] = [
     height: 332,
   },
   {
-    src: "/photos/reviews/review-2.jpg",
+    /* cropped to end at the client's last message — the original
+       review-2.jpg (with the highlight-film reply) stays on disk unused */
+    src: "/photos/reviews/review-2-cropped.jpg",
     alt: "Client text messages: “Kareem these pics r amazing — genuinely the editing is phenomenal”",
     width: 1206,
-    height: 982,
+    height: 672,
   },
   {
     src: "/photos/reviews/review-7.jpg",
@@ -151,10 +173,16 @@ export const reviewShots: ReviewShot[] = [
 
 /**
  * Subset for the graduation page wall — drops the two tall wedding chat
- * threads (review-1, review-8) so the wall stays compact there. The home
- * page keeps the full set.
+ * threads (review-1, review-8) and the "made me tear up" message
+ * (review-3). The cropped editing-is-phenomenal thread stays in.
+ * The home page keeps the full set.
  */
+const gradExcludedReviews = [
+  "/review-1.jpg",
+  "/review-8.jpg",
+  "/review-3.jpg",
+];
+
 export const gradReviewShots: ReviewShot[] = reviewShots.filter(
-  (shot) =>
-    !shot.src.endsWith("/review-1.jpg") && !shot.src.endsWith("/review-8.jpg"),
+  (shot) => !gradExcludedReviews.some((name) => shot.src.endsWith(name)),
 );

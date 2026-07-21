@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Instrument_Sans } from "next/font/google";
+import { Cinzel, Fraunces, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { seo, site } from "@/content/site-config";
 import { Nav } from "@/components/layout/Nav";
@@ -17,6 +17,13 @@ const fraunces = Fraunces({
 const instrument = Instrument_Sans({
   variable: "--font-instrument",
   subsets: ["latin"],
+});
+
+/* Trajan-style cinematic serif — offer-stack headlines only */
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+  weight: ["700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -42,7 +49,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${fraunces.variable} ${instrument.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${instrument.variable} ${cinzel.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <AttributionCapture />

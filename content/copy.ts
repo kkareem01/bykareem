@@ -159,17 +159,8 @@ export const weddingsCopy = {
 } as const;
 
 export const contactCopy = {
-  hero: {
-    eyebrow: "general inquiries",
-    h1: "Not a wedding? Not graduating?",
-    h1Accent: "Still worth a call.",
-    sub: "Proposals, birthdays, brand shoots, events — a limited number of other projects make the calendar each month. Tell me what you're planning and let's find out if yours fits.",
-    cta: "Book a Free Call",
-  },
-  direct: {
-    heading: "Prefer to just reach out?",
-    sub: "Email or DM anytime — every message gets a reply within 24 hours. That's not a slogan; it's in writing on every contract.",
-  },
+  eyebrow: "contact",
+  heading: "Let's talk.",
 } as const;
 
 export type BookingCopy = {

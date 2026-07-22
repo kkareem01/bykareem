@@ -203,12 +203,6 @@ export const reviewShots: ReviewShot[] = [
     width: 930,
     height: 540,
   },
-  {
-    src: "/photos/reviews/review-13.jpg",
-    alt: "Client messages reacting to their graduation gallery: “woohhooo — aura 😈😈😈 — fire job kareemy — thank u wallah”",
-    width: 1206,
-    height: 1448,
-  },
 ];
 
 /**
@@ -228,9 +222,25 @@ const gradExcludedReviews = [
   "/review-12.jpg",
 ];
 
-export const gradReviewShots: ReviewShot[] = reviewShots.filter(
-  (shot) => !gradExcludedReviews.some((name) => shot.src.endsWith(name)),
-);
+/**
+ * Grad-only: the grad-gallery reaction thread (with the pic-time gallery
+ * preview). Leads the graduation wall and appears nowhere else.
+ */
+const gradOnlyReviewShots: ReviewShot[] = [
+  {
+    src: "/photos/reviews/review-13.jpg",
+    alt: "Client messages reacting to their graduation gallery: “woohhooo — aura 😈😈😈 — fire job kareemy — thank u wallah”",
+    width: 1206,
+    height: 1448,
+  },
+];
+
+export const gradReviewShots: ReviewShot[] = [
+  ...gradOnlyReviewShots,
+  ...reviewShots.filter(
+    (shot) => !gradExcludedReviews.some((name) => shot.src.endsWith(name)),
+  ),
+];
 
 /**
  * Subset for the weddings page wall — leads with the wedding-flavored
@@ -241,8 +251,7 @@ export const gradReviewShots: ReviewShot[] = reviewShots.filter(
 const couplesExcludedReviews = [
   "/review-7.jpg",
   "/review-6.jpg",
-  // grad-session screenshots — home + grad walls only
-  "/review-13.jpg",
+  // grad-session screenshot — home + grad walls only
   "/review-14.jpg",
 ];
 

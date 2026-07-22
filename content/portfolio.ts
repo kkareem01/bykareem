@@ -370,21 +370,18 @@ export const portfolioCopy = {
  * rule applies to portfolio walls, not this proof strip.
  */
 /**
- * Short proof strip for the graduation page, rendered right before the
- * offer pitch — celebration energy (cap toss, friends, the Chapel Bell)
- * so the "Introducing" section lands on someone already picturing it.
- * Not a full wall on purpose; the 12–15 rule applies to `galleries`, not here.
+ * Proof set for the graduation page, rendered right before the offer
+ * pitch as a static editorial collage (<SessionCollage/>) — celebration
+ * energy (cap toss, friends, the Chapel Bell) so the "Introducing"
+ * section lands on someone already picturing it.
+ * Ordered portrait/landscape alternating for the collage's rhythm; keep
+ * 8–14 images so the staggered columns stay balanced.
+ * Not a full wall; the 12–15 rule applies to `galleries`, not here.
  */
 export const gradSessionStrip: PortfolioImage[] = [
   {
     src: "/photos/portfolio/grad/fares-cap-toss.jpg",
     alt: "Cap spinning high above a graduate on the concourse of Sanford Stadium",
-    width: 1066,
-    height: 1600,
-  },
-  {
-    src: "/photos/portfolio/grad/nizar-friends-stack.jpg",
-    alt: "Three friends in gowns stacked up and laughing on the quad",
     width: 1066,
     height: 1600,
   },
@@ -395,16 +392,40 @@ export const gradSessionStrip: PortfolioImage[] = [
     height: 1066,
   },
   {
+    src: "/photos/portfolio/grad/nizar-friends-stack.jpg",
+    alt: "Three friends in gowns stacked up and laughing on the quad",
+    width: 1066,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/grad/fares-diploma-laugh.jpg",
+    alt: "Graduate laughing with his diploma cover at Sanford Stadium, red UGA stole",
+    width: 1600,
+    height: 1066,
+  },
+  {
     src: "/photos/portfolio/grad/emanuel-bell-swing.jpg",
     alt: "Graduate swinging off the ground on the UGA Chapel Bell rope, gown flying",
     width: 1066,
     height: 1600,
   },
   {
+    src: "/photos/portfolio/grad/fares-arch.jpg",
+    alt: "Graduate straightening his gown under the UGA Arch",
+    width: 1600,
+    height: 1066,
+  },
+  {
     src: "/photos/portfolio/grad/emory-stadium-dad.jpg",
     alt: "Graduate and his dad side by side on the field under the Sanford Stadium scoreboard",
     width: 1066,
     height: 1600,
+  },
+  {
+    src: "/photos/portfolio/grad/nizar-grad-glasses.jpg",
+    alt: "Close-up grin in novelty GRAD glasses, keffiyeh draped over the shoulders",
+    width: 1600,
+    height: 1066,
   },
   {
     src: "/photos/portfolio/grad/nizar-fountain.jpg",

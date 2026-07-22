@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   filmReel,
   galleries,
+  gradSessionStrip,
   portfolioCopy,
   stories,
   type PortfolioImage,
@@ -87,6 +88,25 @@ describe("featured stories", () => {
       expectNoDuplicates(story.images, story.slug);
     },
   );
+});
+
+describe("grad session strip (editorial collage)", () => {
+  it("holds 8–14 images so the staggered columns stay balanced", () => {
+    expect(gradSessionStrip.length).toBeGreaterThanOrEqual(8);
+    expect(gradSessionStrip.length).toBeLessThanOrEqual(14);
+  });
+
+  it("images are valid and unique", () => {
+    gradSessionStrip.forEach(expectValidImage);
+    expectNoDuplicates(gradSessionStrip, "gradSessionStrip");
+  });
+
+  it("mixes portrait and landscape for the strip's rhythm", () => {
+    const portrait = gradSessionStrip.filter((i) => i.height > i.width);
+    const landscape = gradSessionStrip.filter((i) => i.width > i.height);
+    expect(portrait.length).toBeGreaterThan(0);
+    expect(landscape.length).toBeGreaterThan(0);
+  });
 });
 
 describe("film reel", () => {

@@ -6,6 +6,7 @@ import { couplesFaq } from "@/content/faq";
 import { Hero } from "@/components/sections/Hero";
 import { ReviewsWall } from "@/components/sections/ReviewsWall";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { GuaranteeSection } from "@/components/sections/GuaranteeSection";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -56,6 +57,8 @@ export default function Home() {
       </section>
 
       <FaqSection items={couplesFaq} />
+
+      <GuaranteeSection />
 
       <FinalCta
         heading={homeCopy.finalCta.heading}

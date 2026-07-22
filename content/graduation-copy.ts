@@ -76,6 +76,7 @@ export const graduationCopy = {
   /** Photo proof strip right before the offer pitch */
   sessionStrip: {
     heading: "Real sessions. Real grads.",
+    sub: "Straight from this season's camera rolls — every laugh on this wall was directed, not lucky.",
   },
 
   /** Section 4 — the bridge */

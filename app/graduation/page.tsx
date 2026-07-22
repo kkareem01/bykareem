@@ -3,14 +3,13 @@ import { graduationCopy } from "@/content/graduation-copy";
 import { gradReviewShots, images } from "@/content/site-config";
 import { graduationOffer } from "@/content/offers";
 import { graduationFaq } from "@/content/faq";
-import { capacity } from "@/content/booking-config";
 import {
   getStoryByAudience,
   gradCouldBeYouShots,
   gradSessionStrip,
   portfolioCopy,
 } from "@/content/portfolio";
-import { PortfolioGallery } from "@/components/sections/PortfolioGallery";
+import { SessionCollage } from "@/components/sections/SessionCollage";
 import { Hero } from "@/components/sections/Hero";
 import { CouldBeYouWall } from "@/components/sections/CouldBeYouWall";
 import { NarrativeSection } from "@/components/sections/NarrativeSection";
@@ -18,8 +17,7 @@ import { AudienceFilter } from "@/components/sections/AudienceFilter";
 import { OfferShowcase } from "@/components/sections/OfferShowcase";
 import { ReviewsWall } from "@/components/sections/ReviewsWall";
 import { FaqSection } from "@/components/sections/FaqSection";
-import { FinalCta } from "@/components/sections/FinalCta";
-import { Reveal } from "@/components/ui/Reveal";
+import { GuaranteeSection } from "@/components/sections/GuaranteeSection";
 
 export const metadata: Metadata = {
   title: "Graduation Sessions — The Milestone Session",
@@ -51,15 +49,6 @@ export default function GraduationPage() {
         image={images.gradHero}
         variant="stacked"
       />
-
-      <section className="bg-mist/60">
-        <Reveal className="mx-auto max-w-6xl px-5 sm:px-8 py-8 text-center">
-          <p className="eyebrow eyebrow--gold">
-            {capacity.gradSlotsRemaining} session slots remaining this grad
-            season
-          </p>
-        </Reveal>
-      </section>
 
       {/* 1 — their current circumstances, closed out by a booking button */}
       <NarrativeSection
@@ -104,11 +93,12 @@ export default function GraduationPage() {
         }}
       />
 
-      {/* photo proof right before the pitch — celebration energy */}
-      <PortfolioGallery
+      {/* photo proof right before the pitch — celebration energy as a
+          static editorial collage */}
+      <SessionCollage
         heading={graduationCopy.sessionStrip.heading}
+        sub={graduationCopy.sessionStrip.sub}
         images={gradSessionStrip}
-        dense
         cta={{
           label: graduationCopy.hero.cta,
           href: "/book?type=graduation",
@@ -128,12 +118,13 @@ export default function GraduationPage() {
 
       <FaqSection items={graduationFaq} eyebrow={null} />
 
-      <FinalCta
-        heading={graduationCopy.finalCta.heading}
-        sub={graduationCopy.finalCta.sub}
-        cta={graduationCopy.finalCta.cta}
-        ctaHref="/book?type=graduation"
-        ctaNote={graduationCopy.ctaNote}
+      {/* the guarantee closes the page — booking CTA sits under the promise */}
+      <GuaranteeSection
+        cta={{
+          label: graduationCopy.finalCta.cta,
+          href: "/book?type=graduation",
+          note: graduationCopy.ctaNote,
+        }}
       />
     </>
   );

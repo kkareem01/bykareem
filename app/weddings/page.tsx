@@ -15,6 +15,7 @@ import { PortfolioGallery } from "@/components/sections/PortfolioGallery";
 import { OfferStack } from "@/components/sections/OfferStack";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { GuaranteeSection } from "@/components/sections/GuaranteeSection";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -122,6 +123,8 @@ export default function WeddingsPage() {
       />
 
       <FaqSection items={couplesFaq} />
+
+      <GuaranteeSection />
 
       <FinalCta
         heading={weddingsCopy.finalCta.heading}

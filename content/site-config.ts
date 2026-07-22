@@ -173,6 +173,30 @@ export const reviewShots: ReviewShot[] = [
     width: 1206,
     height: 326,
   },
+  {
+    src: "/photos/reviews/review-9.jpg",
+    alt: "Client message: “You did a phenomenal job with the photos Masha Allah!!!! I absolutely love them and am so so so glad I chose you! You are our family's official photographer/videographer now”",
+    width: 1206,
+    height: 959,
+  },
+  {
+    src: "/photos/reviews/review-10.jpg",
+    alt: "Client message: “We took a look at the photos and they came out crazyyy Allahuma Barik”",
+    width: 1206,
+    height: 220,
+  },
+  {
+    src: "/photos/reviews/review-11.jpg",
+    alt: "Client message: “Jzk Kareem! Thanks so much for being very accommodating and great to work with during our wedding! Insha Allah looking forward to working with you in the future”",
+    width: 1206,
+    height: 601,
+  },
+  {
+    src: "/photos/reviews/review-12.jpg",
+    alt: "Client message: “The photo book sounds great! I also loved the photoshop you did — everyone loved it ❤️”",
+    width: 1206,
+    height: 547,
+  },
 ];
 
 /**
@@ -185,6 +209,11 @@ const gradExcludedReviews = [
   "/review-1.jpg",
   "/review-8.jpg",
   "/review-3.jpg",
+  // home-page-only additions (wedding/family flavored)
+  "/review-9.jpg",
+  "/review-10.jpg",
+  "/review-11.jpg",
+  "/review-12.jpg",
 ];
 
 export const gradReviewShots: ReviewShot[] = reviewShots.filter(
@@ -197,7 +226,15 @@ export const gradReviewShots: ReviewShot[] = reviewShots.filter(
  * tear up" message, the long photographer thread) and drops the two
  * short grad-leaning hype texts. The home page keeps the full set.
  */
-const couplesExcludedReviews = ["/review-7.jpg", "/review-6.jpg"];
+const couplesExcludedReviews = [
+  "/review-7.jpg",
+  "/review-6.jpg",
+  // home-page-only additions — keep the weddings wall as curated
+  "/review-9.jpg",
+  "/review-10.jpg",
+  "/review-11.jpg",
+  "/review-12.jpg",
+];
 
 export const couplesReviewShots: ReviewShot[] = reviewShots.filter(
   (shot) => !couplesExcludedReviews.some((name) => shot.src.endsWith(name)),

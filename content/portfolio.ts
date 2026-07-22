@@ -81,20 +81,90 @@ export const filmReel = {
  */
 export const galleries: Record<Audience, PortfolioImage[]> = {
   couples: [
-    shot("couples-1-3x2.svg", "3x2", "Opening image: couple at golden hour, wide — placeholder"),
-    shot("couples-2-4x5.svg", "4x5", "Intimate close-up during vows — placeholder"),
-    shot("couples-3-2x3.svg", "2x3", "Full-length editorial portrait of the couple — placeholder"),
-    shot("couples-4-16x9.svg", "16x9", "Wide ceremony establishing shot — placeholder"),
-    shot("couples-5-4x5.svg", "4x5", "Ring and letter details, styled flat lay — placeholder"),
-    shot("couples-6-3x2.svg", "3x2", "First dance under string lights — placeholder"),
-    shot("couples-7-2x3.svg", "2x3", "Bride's portrait, window light — placeholder"),
-    shot("couples-8-4x5.svg", "4x5", "Candid laughter during toasts — placeholder"),
-    shot("couples-9-3x2.svg", "3x2", "Couple walking through the venue grounds — placeholder"),
-    shot("couples-10-4x5.svg", "4x5", "Father of the bride reaction, documentary moment — placeholder"),
-    shot("couples-11-16x9.svg", "16x9", "Reception wide shot, dance floor energy — placeholder"),
-    shot("couples-12-2x3.svg", "2x3", "Engagement session portrait in the field — placeholder"),
-    shot("couples-13-4x5.svg", "4x5", "Quiet in-between moment, foreheads together — placeholder"),
-    shot("couples-14-3x2.svg", "3x2", "Closing image: night portrait, sparkler exit — placeholder"),
+    {
+      src: "/photos/portfolio/couples/wokie-flower-path.jpg",
+      alt: "Groom in an embroidered kufi glancing back at his bride as they walk hand in hand through a garden in full bloom",
+      width: 1279,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/couples/fares-rolls-royce.jpg",
+      alt: "Couple face to face over the fender of a vintage white Rolls-Royce at dusk, bouquet between them",
+      width: 1600,
+      height: 1279,
+    },
+    {
+      src: "/photos/portfolio/couples/jenan-proposal-kneel.jpg",
+      alt: "Groom on one knee at a candlelit rooftop proposal, rose petals scattered across the floor",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/couples/ayesha-twirl.jpg",
+      alt: "Bride twirling under her groom's arm in a gold-embroidered lehenga, dupatta in motion",
+      width: 1600,
+      height: 1066,
+    },
+    {
+      src: "/photos/portfolio/couples/khadija-settee-laugh.jpg",
+      alt: "Bride and groom laughing together on a settee beneath a chandelier and cascading light backdrop",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/couples/jenan-ring-macro.jpg",
+      alt: "Close-up of the engagement ring and gold hand chain against the groom's white shirt",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/couples/wokie-kufi-closeup.jpg",
+      alt: "Over the bride's shoulder: the groom's embroidered kufi and a quiet embrace in the garden",
+      width: 1600,
+      height: 1066,
+    },
+    {
+      src: "/photos/portfolio/couples/ayesha-rainbow-sendoff.jpg",
+      alt: "Groom leaning into the send-off car for one more look at his bride, a rainbow breaking in the sky behind",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/couples/jenan-street-carry.jpg",
+      alt: "Groom carrying his bride across a rain-slicked street, her heels off the ground",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/couples/fares-night-lift.jpg",
+      alt: "Groom hoisted on shoulders mid-laugh, surrounded by the crowd under the tent at night",
+      width: 1600,
+      height: 1000,
+    },
+    {
+      src: "/photos/portfolio/couples/wokie-hydrangea-embrace.jpg",
+      alt: "Couple wrapped in an embrace beside blooming hydrangeas, her embroidered shawl catching the light",
+      width: 1279,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/couples/ayesha-cake-boop.jpg",
+      alt: "Bride booping frosting onto her groom's nose at the cake table, henna hands mid-mischief",
+      width: 1600,
+      height: 1066,
+    },
+    {
+      src: "/photos/portfolio/couples/jenan-running.jpg",
+      alt: "Couple running hand in hand down the street, both mid-laugh",
+      width: 1066,
+      height: 1600,
+    },
+    {
+      src: "/photos/portfolio/couples/wokie-veil-lift.jpg",
+      alt: "Closing image: groom lifting his bride on a tree-lined path, her embroidered veil trailing to the ground",
+      width: 1279,
+      height: 1600,
+    },
   ],
   graduation: [
     {
@@ -197,30 +267,73 @@ export const galleries: Record<Audience, PortfolioImage[]> = {
  */
 export const stories: Story[] = [
   {
-    slug: "sample-wedding-story",
+    slug: "ayesha-faisal-wedding",
     audience: "couples",
-    title: "PLACEHOLDER — Couple's names",
-    location: "PLACEHOLDER — Venue, City, GA",
+    title: "Ayesha & Faisal — Nikkah to Walima",
+    location: "Atlanta, GA",
     intro:
-      "PLACEHOLDER — two or three sentences about this wedding: who the couple is, what the day felt like, and one detail that made it unmistakably theirs.",
-    cover: shot(
-      "story-wedding-1-3x2.svg",
-      "3x2",
-      "Cover: couple at their venue, golden hour — placeholder",
-    ),
+      "Two celebrations, one story — a nikkah in blush and gold, and a walima in mint and grey. Between them, the rain broke just long enough for a rainbow over the send-off car. Every chapter of it, exactly as delivered.",
+    cover: {
+      src: "/photos/portfolio/couples/ayesha-floral-hoop.jpg",
+      alt: "Cover: Ayesha and Faisal seated inside a circular floral arch against a blush pink backdrop",
+      width: 1600,
+      height: 1066,
+    },
     images: [
-      shot("story-wedding-1-3x2.svg", "3x2", "Getting ready: dress hanging in the bridal suite — placeholder"),
-      shot("story-wedding-2-4x5.svg", "4x5", "Getting ready: final mirror check — placeholder"),
-      shot("story-wedding-3-2x3.svg", "2x3", "First look reaction — placeholder"),
-      shot("story-wedding-4-3x2.svg", "3x2", "Ceremony wide: the walk down the aisle — placeholder"),
-      shot("story-wedding-5-4x5.svg", "4x5", "Vows close-up, tears — placeholder"),
-      shot("story-wedding-6-16x9.svg", "16x9", "The kiss, wide with full wedding party — placeholder"),
-      shot("story-wedding-7-4x5.svg", "4x5", "Golden hour couple portraits — placeholder"),
-      shot("story-wedding-8-2x3.svg", "2x3", "Editorial portrait of the bride — placeholder"),
-      shot("story-wedding-9-3x2.svg", "3x2", "Reception details: tablescape and candles — placeholder"),
-      shot("story-wedding-10-4x5.svg", "4x5", "Toasts: best man mid-story, couple laughing — placeholder"),
-      shot("story-wedding-11-3x2.svg", "3x2", "First dance, room lights low — placeholder"),
-      shot("story-wedding-12-16x9.svg", "16x9", "Sparkler exit, night wide shot — placeholder"),
+      {
+        src: "/photos/portfolio/couples/ayesha-entrance.jpg",
+        alt: "The first dance-in: Ayesha in her rose and gold lehenga meeting Faisal on the ballroom floor",
+        width: 1066,
+        height: 1600,
+      },
+      {
+        src: "/photos/portfolio/couples/ayesha-floral-hoop.jpg",
+        alt: "Seated together inside the circular floral arch, sharing a look between poses",
+        width: 1600,
+        height: 1066,
+      },
+      {
+        src: "/photos/portfolio/couples/ayesha-hoop-embrace.jpg",
+        alt: "Faisal wrapping Ayesha from behind under the floral hoop, her henna hands over his",
+        width: 1600,
+        height: 1066,
+      },
+      {
+        src: "/photos/portfolio/couples/ayesha-twirl.jpg",
+        alt: "A twirl under his arm, the gold-embroidered lehenga in full motion",
+        width: 1600,
+        height: 1066,
+      },
+      {
+        src: "/photos/portfolio/couples/ayesha-embrace.jpg",
+        alt: "A quiet close embrace, foreheads nearly touching, before rejoining the celebration",
+        width: 1600,
+        height: 1066,
+      },
+      {
+        src: "/photos/portfolio/couples/ayesha-rainbow-sendoff.jpg",
+        alt: "The send-off: Faisal leaning into the car for one more look at his bride, a rainbow overhead",
+        width: 1066,
+        height: 1600,
+      },
+      {
+        src: "/photos/portfolio/couples/ayesha-walima-arch.jpg",
+        alt: "Walima day: Ayesha in mint and silver glancing back under the white floral arch",
+        width: 1066,
+        height: 1600,
+      },
+      {
+        src: "/photos/portfolio/couples/ayesha-walima-portrait.jpg",
+        alt: "Face to face at the walima, mint gown and grey suit against the white florals",
+        width: 900,
+        height: 1600,
+      },
+      {
+        src: "/photos/portfolio/couples/ayesha-cake-boop.jpg",
+        alt: "Closing frame: frosting booped onto Faisal's nose at the cake table",
+        width: 1600,
+        height: 1066,
+      },
     ],
   },
   {
@@ -345,8 +458,6 @@ export const portfolioCopy = {
   storyPage: {
     backLabel: "← All work",
     backHref: "/portfolio",
-    otherStoryEyebrow: "keep looking",
-    otherStoryLabel: "Next story",
   },
   nichePage: {
     couples: {
@@ -449,63 +560,112 @@ export const gradSessionStrip: PortfolioImage[] = [
 /**
  * Proof set for the weddings page, rendered right before the offer pitch
  * as a static editorial collage (<SessionCollage/>) — celebration energy
- * (first dance, toasts, the sparkler exit) so the "Introducing" section
+ * (the proposal, the crowd, the cake) so the "Introducing" section
  * lands on a couple already picturing their own day.
- * Reuses the couples placeholder slots (cross-array reuse is fine — the
- * 12–15 rule and per-array dup checks apply to `galleries`, not here);
- * swap for real wedding frames alongside the gallery.
+ * Cross-array reuse with `galleries` and the story is fine — the 12–15
+ * rule and per-array dup checks apply to `galleries`, not here.
  * Ordered portrait/landscape alternating for the collage's rhythm; keep
  * 8–14 images so the staggered columns stay balanced.
  */
 export const couplesSessionStrip: PortfolioImage[] = [
-  shot("couples-8-4x5.svg", "4x5", "Couple cracking up mid-toast at the reception — placeholder"),
-  shot("couples-6-3x2.svg", "3x2", "First dance under string lights — placeholder"),
-  shot("couples-2-4x5.svg", "4x5", "Vow exchange close-up, teary laugh — placeholder"),
-  shot("couples-14-3x2.svg", "3x2", "Sparkler exit, night wide shot — placeholder"),
-  shot("couples-13-4x5.svg", "4x5", "Quiet in-between moment, foreheads together — placeholder"),
-  shot("couples-9-3x2.svg", "3x2", "Couple mid-stride through the venue grounds — placeholder"),
-  shot("couples-10-4x5.svg", "4x5", "Father of the bride's reaction, caught candid — placeholder"),
-  shot("couples-11-16x9.svg", "16x9", "Dance floor at full tilt, reception wide — placeholder"),
-  shot("couples-12-2x3.svg", "2x3", "Engagement session portrait in the field — placeholder"),
-  shot("couples-4-16x9.svg", "16x9", "Ceremony wide, the walk back up the aisle — placeholder"),
-];
-
-/**
- * Placeholder Instagram-post mocks for the weddings page "This could be
- * you two..." wall. Swap for screenshots of real client posts (likes and
- * comments visible) the way the graduation wall does — same intrinsic
- * sizes as real IG screenshots so nothing reflows on swap.
- */
-export const couplesCouldBeYouShots: PortfolioImage[] = [
   {
-    src: "/placeholders/could-be-you/couples-1.svg",
-    alt: "Instagram post: couple's first dance under string lights — placeholder",
-    width: 1206,
-    height: 1540,
-  },
-  {
-    src: "/placeholders/could-be-you/couples-2.svg",
-    alt: "Instagram post: sparkler exit at the end of the night — placeholder",
-    width: 1206,
-    height: 1620,
-  },
-  {
-    src: "/placeholders/could-be-you/couples-3.svg",
-    alt: "Instagram post: golden hour portrait from the engagement session — placeholder",
-    width: 1206,
-    height: 1560,
-  },
-  {
-    src: "/placeholders/could-be-you/couples-4.svg",
-    alt: "Instagram post: bride mid-spin, veil in motion — placeholder",
-    width: 1206,
+    src: "/photos/portfolio/couples/fares-stage-celebration.jpg",
+    alt: "Couple celebrating on the flower-lined stage, a little boy in white looking up at them",
+    width: 1066,
     height: 1600,
   },
   {
-    src: "/placeholders/could-be-you/couples-5.svg",
-    alt: "Instagram post: glasses raised during the toasts — placeholder",
-    width: 1206,
-    height: 1500,
+    src: "/photos/portfolio/couples/fares-shoulder-lift.jpg",
+    alt: "Groom hoisted above the crowd under the tent chandelier, guests reaching up around him",
+    width: 1600,
+    height: 1066,
+  },
+  {
+    src: "/photos/portfolio/couples/jenan-proposal-wide.jpg",
+    alt: "The proposal: down on one knee among candles and white rose petals, her hand over her mouth",
+    width: 1066,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/couples/ayesha-embrace.jpg",
+    alt: "Bride and groom in a close embrace against the blush backdrop, mid-laugh",
+    width: 1600,
+    height: 1066,
+  },
+  {
+    src: "/photos/portfolio/couples/wokie-shawl-hug.jpg",
+    alt: "Groom sweeping his bride into a hug, her embroidered shawl swinging with the spin",
+    width: 1279,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/couples/wokie-meadow-dance.jpg",
+    alt: "Couple dancing on the open lawn, her white gown and veil catching the summer light",
+    width: 1600,
+    height: 1066,
+  },
+  {
+    src: "/photos/portfolio/couples/jenan-staircase.jpg",
+    alt: "Engagement portrait at the base of the staircase, white drapery and Arabic calligraphy behind them",
+    width: 1066,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/couples/jenan-back-to-back.jpg",
+    alt: "Back-to-back grins under the plum tree, arms crossed like a movie poster",
+    width: 1600,
+    height: 1066,
+  },
+  {
+    src: "/photos/portfolio/couples/khadija-cake-candles.jpg",
+    alt: "Cutting the cake together by candlelight, her rose-gold shawl glowing against his black sherwani",
+    width: 1066,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/couples/ayesha-floral-hoop.jpg",
+    alt: "Seated together inside a circular floral arch against the blush pink backdrop",
+    width: 1600,
+    height: 1066,
+  },
+];
+
+/**
+ * Photos for the weddings page "This could be you two..." wall — real
+ * frames shown as-is (unlike the grad wall's IG screenshots), one per
+ * couple, all portrait so the tilted cards sit at a consistent height.
+ * None of these repeat elsewhere on /weddings (hero + session collage).
+ */
+export const couplesCouldBeYouShots: PortfolioImage[] = [
+  {
+    src: "/photos/portfolio/couples/wokie-flower-path.jpg",
+    alt: "Groom in an embroidered kufi glancing back at his bride as they walk hand in hand through a garden in full bloom",
+    width: 1279,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/couples/jenan-proposal-kneel.jpg",
+    alt: "Groom on one knee at a candlelit rooftop proposal, rose petals scattered across the floor",
+    width: 1066,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/couples/ayesha-rainbow-sendoff.jpg",
+    alt: "Groom leaning into the send-off car for one more look at his bride, a rainbow breaking in the sky behind",
+    width: 1066,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/couples/khadija-settee-laugh.jpg",
+    alt: "Bride and groom laughing together on a settee beneath a chandelier and cascading light backdrop",
+    width: 1066,
+    height: 1600,
+  },
+  {
+    src: "/photos/portfolio/couples/fares-rolls-bouquet.jpg",
+    alt: "Couple holding a peach bouquet in front of a vintage white Rolls-Royce at dusk",
+    width: 1066,
+    height: 1600,
   },
 ];
 

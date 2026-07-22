@@ -99,8 +99,8 @@ export const images: Record<string, ImageSlot> = {
   homeGallery5: { src: "/placeholders/gallery-5.svg", alt: "Golden hour embrace — placeholder" },
   homeGallery6: { src: "/placeholders/gallery-6.svg", alt: "Getting-ready detail — placeholder" },
   weddingsHero: {
-    src: "/placeholders/weddings-hero.svg",
-    alt: "Bride and groom during golden hour portraits — placeholder",
+    src: "/photos/weddings-hero.jpg",
+    alt: "Couple walking hand in hand up a garden path toward a vine-covered arch, her cream gown and veil trailing",
   },
   gradHero: {
     src: "/photos/grad-hero.jpg",
@@ -245,12 +245,13 @@ export const gradReviewShots: ReviewShot[] = [
 /**
  * Subset for the weddings page wall — leads with the wedding-flavored
  * threads (the "best wedding video I've ever seen" chat, the "made me
- * tear up" message, the long photographer thread) and drops the two
+ * tear up" message, the long photographer thread) and drops the three
  * short grad-leaning hype texts. The home page keeps the full set.
  */
 const couplesExcludedReviews = [
   "/review-7.jpg",
   "/review-6.jpg",
+  "/review-5.jpg",
   // grad-session screenshot — home + grad walls only
   "/review-14.jpg",
 ];

@@ -27,7 +27,7 @@ export const graduationCopy = {
 
   /** Section 1 — where they are right now */
   problem: {
-    heading: "Grad photos are on your list. They keep not happening.",
+    heading: "Grad photos won't book themselves.",
     paragraphs: [
       "Finals. Job interviews. Family asking about flights and dates you don't know yet. And then there are the photos — the one thing you can't push back. In a few weeks, campus won't be yours anymore.",
       "You've seen how it goes for other people. The university's contract photographer wants $45 for one watermarked download of a handshake. The cheap shooter rushes you through the same three spots. And every alum says the same thing: the ones who skipped photos still regret it.",

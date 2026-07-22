@@ -241,8 +241,9 @@ export const gradReviewShots: ReviewShot[] = reviewShots.filter(
 const couplesExcludedReviews = [
   "/review-7.jpg",
   "/review-6.jpg",
-  // grad-gallery reaction thread — home + grad walls only
+  // grad-session screenshots — home + grad walls only
   "/review-13.jpg",
+  "/review-14.jpg",
 ];
 
 export const couplesReviewShots: ReviewShot[] = reviewShots.filter(

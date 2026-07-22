@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/Button";
 
 /**
  * Persistent bottom CTA bar on mobile. Appears after the hero scrolls past;
- * hidden on the booking flow itself (no competing CTAs there) and on the
- * graduation page, which uses inline CTAs between sections instead.
+ * hidden on the home page, the booking flow (no competing CTAs there), and
+ * the graduation page, which uses inline CTAs between sections instead.
  */
 export function MobileStickyCTA() {
   const pathname = usePathname();
@@ -21,7 +21,11 @@ export function MobileStickyCTA() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (pathname.startsWith("/book") || pathname.startsWith("/graduation")) {
+  if (
+    pathname === "/" ||
+    pathname.startsWith("/book") ||
+    pathname.startsWith("/graduation")
+  ) {
     return null;
   }
 

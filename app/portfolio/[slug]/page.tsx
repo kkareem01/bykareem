@@ -41,8 +41,6 @@ export default async function StoryPage({ params }: StoryPageProps) {
   const story = getStory(slug);
   if (!story) notFound();
 
-  const nextStory = stories.find((s) => s.slug !== story.slug);
-
   return (
     <>
       <section className="pt-28 md:pt-36 pb-16 md:pb-20">
@@ -89,20 +87,6 @@ export default async function StoryPage({ params }: StoryPageProps) {
               </Reveal>
             ))}
           </div>
-
-          {nextStory ? (
-            <Reveal className="mt-14 text-center">
-              <p className="eyebrow eyebrow--gold mb-3">
-                {portfolioCopy.storyPage.otherStoryEyebrow}
-              </p>
-              <Link
-                href={`/portfolio/${nextStory.slug}`}
-                className="font-display italic text-xl text-gold hover:text-gold-deep transition-colors"
-              >
-                {portfolioCopy.storyPage.otherStoryLabel}: {nextStory.title} →
-              </Link>
-            </Reveal>
-          ) : null}
         </div>
       </section>
 

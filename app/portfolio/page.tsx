@@ -9,10 +9,8 @@ import {
 import { FeaturedStories } from "@/components/sections/FeaturedStories";
 import { FilmReel } from "@/components/sections/FilmReel";
 import { FinalCta } from "@/components/sections/FinalCta";
-import {
-  PortfolioGallery,
-  type GalleryLink,
-} from "@/components/sections/PortfolioGallery";
+import { type GalleryLink } from "@/components/sections/PortfolioGallery";
+import { SessionCollage } from "@/components/sections/SessionCollage";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -53,7 +51,7 @@ export default function PortfolioPage() {
         fallbackNote={portfolioCopy.film.videoFallbackNote}
       />
 
-      <PortfolioGallery
+      <SessionCollage
         eyebrow={portfolioCopy.couplesGallery.eyebrow}
         heading={portfolioCopy.couplesGallery.heading}
         images={galleries.couples}
@@ -81,7 +79,7 @@ export default function PortfolioPage() {
         cardCta={portfolioCopy.stories.cardCta}
       />
 
-      <PortfolioGallery
+      <SessionCollage
         eyebrow={portfolioCopy.gradGallery.eyebrow}
         heading={portfolioCopy.gradGallery.heading}
         images={galleries.graduation}

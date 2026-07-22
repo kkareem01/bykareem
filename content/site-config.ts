@@ -197,6 +197,18 @@ export const reviewShots: ReviewShot[] = [
     width: 1206,
     height: 547,
   },
+  {
+    src: "/photos/reviews/review-14.jpg",
+    alt: "Client messages: “kareem my mom loved them — she asked if u can do my wedding” and “one day inshaAllah”",
+    width: 930,
+    height: 540,
+  },
+  {
+    src: "/photos/reviews/review-13.jpg",
+    alt: "Client messages reacting to their graduation gallery: “woohhooo — aura 😈😈😈 — fire job kareemy — thank u wallah”",
+    width: 1206,
+    height: 1448,
+  },
 ];
 
 /**
@@ -209,7 +221,7 @@ const gradExcludedReviews = [
   "/review-1.jpg",
   "/review-8.jpg",
   "/review-3.jpg",
-  // home-page-only additions (wedding/family flavored)
+  // wedding/family flavored — shown on the home + weddings walls, not grad
   "/review-9.jpg",
   "/review-10.jpg",
   "/review-11.jpg",
@@ -229,11 +241,8 @@ export const gradReviewShots: ReviewShot[] = reviewShots.filter(
 const couplesExcludedReviews = [
   "/review-7.jpg",
   "/review-6.jpg",
-  // home-page-only additions — keep the weddings wall as curated
-  "/review-9.jpg",
-  "/review-10.jpg",
-  "/review-11.jpg",
-  "/review-12.jpg",
+  // grad-gallery reaction thread — home + grad walls only
+  "/review-13.jpg",
 ];
 
 export const couplesReviewShots: ReviewShot[] = reviewShots.filter(

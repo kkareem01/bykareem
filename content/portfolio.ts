@@ -351,8 +351,7 @@ export const portfolioCopy = {
   nichePage: {
     couples: {
       eyebrow: "the work",
-      heading: "Proof, before the pitch.",
-      sub: "Twelve-plus favorites from real weddings and engagements. Want to see a full day, not just highlights?",
+      heading: "This could be you two...",
       storyLinkLabel: "View a complete wedding story →",
     },
     graduation: {
@@ -444,6 +443,69 @@ export const gradSessionStrip: PortfolioImage[] = [
     alt: "Grad in a green gown laughing by the Herty Field fountain",
     width: 1066,
     height: 1600,
+  },
+];
+
+/**
+ * Proof set for the weddings page, rendered right before the offer pitch
+ * as a static editorial collage (<SessionCollage/>) — celebration energy
+ * (first dance, toasts, the sparkler exit) so the "Introducing" section
+ * lands on a couple already picturing their own day.
+ * Reuses the couples placeholder slots (cross-array reuse is fine — the
+ * 12–15 rule and per-array dup checks apply to `galleries`, not here);
+ * swap for real wedding frames alongside the gallery.
+ * Ordered portrait/landscape alternating for the collage's rhythm; keep
+ * 8–14 images so the staggered columns stay balanced.
+ */
+export const couplesSessionStrip: PortfolioImage[] = [
+  shot("couples-8-4x5.svg", "4x5", "Couple cracking up mid-toast at the reception — placeholder"),
+  shot("couples-6-3x2.svg", "3x2", "First dance under string lights — placeholder"),
+  shot("couples-2-4x5.svg", "4x5", "Vow exchange close-up, teary laugh — placeholder"),
+  shot("couples-14-3x2.svg", "3x2", "Sparkler exit, night wide shot — placeholder"),
+  shot("couples-13-4x5.svg", "4x5", "Quiet in-between moment, foreheads together — placeholder"),
+  shot("couples-9-3x2.svg", "3x2", "Couple mid-stride through the venue grounds — placeholder"),
+  shot("couples-10-4x5.svg", "4x5", "Father of the bride's reaction, caught candid — placeholder"),
+  shot("couples-11-16x9.svg", "16x9", "Dance floor at full tilt, reception wide — placeholder"),
+  shot("couples-12-2x3.svg", "2x3", "Engagement session portrait in the field — placeholder"),
+  shot("couples-4-16x9.svg", "16x9", "Ceremony wide, the walk back up the aisle — placeholder"),
+];
+
+/**
+ * Placeholder Instagram-post mocks for the weddings page "This could be
+ * you two..." wall. Swap for screenshots of real client posts (likes and
+ * comments visible) the way the graduation wall does — same intrinsic
+ * sizes as real IG screenshots so nothing reflows on swap.
+ */
+export const couplesCouldBeYouShots: PortfolioImage[] = [
+  {
+    src: "/placeholders/could-be-you/couples-1.svg",
+    alt: "Instagram post: couple's first dance under string lights — placeholder",
+    width: 1206,
+    height: 1540,
+  },
+  {
+    src: "/placeholders/could-be-you/couples-2.svg",
+    alt: "Instagram post: sparkler exit at the end of the night — placeholder",
+    width: 1206,
+    height: 1620,
+  },
+  {
+    src: "/placeholders/could-be-you/couples-3.svg",
+    alt: "Instagram post: golden hour portrait from the engagement session — placeholder",
+    width: 1206,
+    height: 1560,
+  },
+  {
+    src: "/placeholders/could-be-you/couples-4.svg",
+    alt: "Instagram post: bride mid-spin, veil in motion — placeholder",
+    width: 1206,
+    height: 1600,
+  },
+  {
+    src: "/placeholders/could-be-you/couples-5.svg",
+    alt: "Instagram post: glasses raised during the toasts — placeholder",
+    width: 1206,
+    height: 1500,
   },
 ];
 

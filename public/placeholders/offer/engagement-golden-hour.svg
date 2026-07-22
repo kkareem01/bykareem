@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f2f6f2"/>
+  <!-- golden hour sun -->
+  <circle cx="400" cy="330" r="140" fill="#b8912e" opacity="0.28"/>
+  <circle cx="400" cy="330" r="92" fill="#b8912e" opacity="0.45"/>
+  <!-- horizon field -->
+  <path d="M0 430 C 200 400, 600 400, 800 430 L800 600 L0 600 Z" fill="#e6eee6"/>
+  <path d="M0 470 C 250 440, 550 440, 800 470 L800 600 L0 600 Z" fill="#dbe3db"/>
+  <!-- silhouetted couple -->
+  <g fill="#1e3d2f">
+    <circle cx="372" cy="330" r="20"/>
+    <path d="M352 352h40l6 88h-52z"/>
+    <circle cx="432" cy="334" r="18"/>
+    <path d="M414 354h36l6 84h-48z"/>
+    <!-- joined hands -->
+    <rect x="390" y="382" width="26" height="10" rx="5"/>
+  </g>
+  <text x="80" y="560" font-family="Georgia, serif" font-size="26" fill="#5c7267" font-style="italic">Your dry run, at golden hour.</text>
+</svg>

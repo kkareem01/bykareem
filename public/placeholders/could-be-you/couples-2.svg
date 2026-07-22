@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1206" height="1620" viewBox="0 0 1206 1620">
+  <rect width="1206" height="1620" fill="#fafcfa"/>
+  <!-- post header -->
+  <circle cx="90" cy="80" r="44" fill="#dbe3db"/>
+  <rect x="160" y="56" width="240" height="24" rx="12" fill="#dbe3db"/>
+  <rect x="160" y="92" width="200" height="18" rx="9" fill="#e6eee6"/>
+  <!-- photo: sparkler exit at night -->
+  <rect x="0" y="160" width="1206" height="1180" fill="#1e3d2f"/>
+  <g stroke="#b8912e" stroke-width="6" stroke-linecap="round" opacity="0.85">
+    <path d="M200 500l60 60M260 500l-60 60M230 480v100"/>
+    <path d="M940 480l60 60M1000 480l-60 60M970 460v100"/>
+    <path d="M320 900l50 50M370 900l-50 50M345 880v90"/>
+    <path d="M880 920l50 50M930 920l-50 50M905 900v90"/>
+  </g>
+  <g fill="#fafcfa">
+    <circle cx="560" cy="760" r="60"/>
+    <path d="M505 828h110l22 300H483z"/>
+    <circle cx="690" cy="770" r="54"/>
+    <path d="M642 832h96l20 296H622z"/>
+  </g>
+  <!-- action row -->
+  <path d="M80 1410c-18-24-58-18-58 14 0 24 34 44 58 62 24-18 58-38 58-62 0-32-40-38-58-14z" fill="#1e3d2f"/>
+  <circle cx="220" cy="1440" r="34" fill="none" stroke="#1e3d2f" stroke-width="8"/>
+  <path d="M330 1410l50 30-50 30z" fill="none" stroke="#1e3d2f" stroke-width="8" stroke-linejoin="round"/>
+  <!-- likes + caption -->
+  <rect x="60" y="1510" width="260" height="22" rx="11" fill="#dbe3db"/>
+  <rect x="60" y="1550" width="580" height="20" rx="10" fill="#e6eee6"/>
+  <text x="900" y="1528" font-family="Georgia, serif" font-size="30" fill="#5c7267" font-style="italic">placeholder</text>
+</svg>

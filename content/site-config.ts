@@ -5,6 +5,7 @@
  */
 
 import { graduationCopy } from "./graduation-copy";
+import { weddingsCopy } from "./weddings-copy";
 
 export const site = {
   name: "bykareem",
@@ -34,9 +35,9 @@ export const nav = {
 export type NavCta = { label: string; href: string; note?: string };
 
 /**
- * Route-aware nav/sticky CTA — the graduation page keeps one common CTA
- * everywhere (nav, sticky bar, page sections); every other route gets the
- * default consult CTA.
+ * Route-aware nav/sticky CTA — the niche landing pages keep one common
+ * CTA everywhere (nav, sticky bar, page sections); every other route
+ * gets the default consult CTA.
  */
 export function ctaForPath(pathname: string): NavCta {
   if (pathname.startsWith("/graduation")) {
@@ -44,6 +45,13 @@ export function ctaForPath(pathname: string): NavCta {
       label: graduationCopy.hero.cta,
       href: "/book?type=graduation",
       note: graduationCopy.ctaNote,
+    };
+  }
+  if (pathname.startsWith("/weddings")) {
+    return {
+      label: weddingsCopy.hero.cta,
+      href: "/book?type=couples",
+      note: weddingsCopy.ctaNote,
     };
   }
   return nav.cta;
@@ -93,10 +101,6 @@ export const images: Record<string, ImageSlot> = {
   weddingsHero: {
     src: "/placeholders/weddings-hero.svg",
     alt: "Bride and groom during golden hour portraits — placeholder",
-  },
-  weddingsStory: {
-    src: "/placeholders/weddings-story.svg",
-    alt: "Documentary moment between vows — placeholder",
   },
   gradHero: {
     src: "/photos/grad-hero.jpg",
@@ -185,4 +189,16 @@ const gradExcludedReviews = [
 
 export const gradReviewShots: ReviewShot[] = reviewShots.filter(
   (shot) => !gradExcludedReviews.some((name) => shot.src.endsWith(name)),
+);
+
+/**
+ * Subset for the weddings page wall — leads with the wedding-flavored
+ * threads (the "best wedding video I've ever seen" chat, the "made me
+ * tear up" message, the long photographer thread) and drops the two
+ * short grad-leaning hype texts. The home page keeps the full set.
+ */
+const couplesExcludedReviews = ["/review-7.jpg", "/review-6.jpg"];
+
+export const couplesReviewShots: ReviewShot[] = reviewShots.filter(
+  (shot) => !couplesExcludedReviews.some((name) => shot.src.endsWith(name)),
 );

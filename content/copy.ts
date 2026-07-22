@@ -107,57 +107,6 @@ export const homeCopy = {
   },
 } as const;
 
-export const weddingsCopy = {
-  hero: {
-    eyebrow: "the flagship experience",
-    h1: "The last wedding vendor decision",
-    h1Accent: "you'll actually enjoy making.",
-    sub: "One team for photos and film. A process built around the moments that can't be re-staged. Proof in your inbox 48 hours later.",
-    cta: "Book a Free Consult",
-  },
-  narrative: {
-    eyebrow: "the truth about wedding media",
-    heading: "Why most wedding galleries feel the same",
-    body: [
-      "Because most of them are made the same way: show up, run the standard shot list, pose the couple like furniture, disappear into a four-month editing queue.",
-      "The parts of your day you'll actually ache to relive — the shaky breath before the aisle, your people laughing at dinner, the last song — don't survive that process. They were never in the plan.",
-      "The Heirloom Experience exists because those moments deserve a plan of their own.",
-    ],
-  },
-  offerIntro: {
-    eyebrow: "the offer",
-    heading: "Everything inside The Heirloom Experience",
-    sub: "Each piece exists to kill a specific way weddings get ruined for couples. Nothing here is filler.",
-  },
-  bonusesIntro: {
-    eyebrow: "included bonuses",
-    heading: "And because you shouldn't have to ask —",
-  },
-  caseStudies: {
-    eyebrow: "recent stories",
-    heading: "Three couples, three completely different days.",
-    items: [
-      {
-        title: "The rain plan that became the favorite photo",
-        body: "A downpour at an outdoor ceremony in Athens. Because the Story Map had a weather plan, the umbrella shot became the one they printed over the fireplace. PLACEHOLDER — replace with a real story.",
-      },
-      {
-        title: "The toast nobody else caught",
-        body: "The film team was on the couple; the photo side was pre-positioned on dad. Both got it. One team, one plan. PLACEHOLDER — replace with a real story.",
-      },
-      {
-        title: "Married Saturday, sneak peek Monday",
-        body: "Their gallery preview and teaser film landed before they boarded the honeymoon flight. PLACEHOLDER — replace with a real story.",
-      },
-    ],
-  },
-  finalCta: {
-    heading: "If your date is open, it won't stay open.",
-    sub: "The free call takes 20 minutes and ends with an exact quote. No deposit, no pressure — just a straight answer.",
-    cta: "Book a Free Consult",
-  },
-} as const;
-
 export const contactCopy = {
   eyebrow: "contact",
   heading: "Let's talk.",

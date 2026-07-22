@@ -39,75 +39,118 @@ export type Offer = {
   };
 };
 
+/**
+ * Couples stack values are anchored to published Atlanta/Georgia market
+ * rates (researched July 2026): established Atlanta wedding photography
+ * medians ~$3,150 with base packages $1,800–4,500 (Rateven, The Knot);
+ * Atlanta videography typically $2,000–10,000 with $2,133–2,607 the
+ * typical hire (Roose Film Co, Wedding Report); standalone engagement
+ * sessions $300–1,000, $500–1,500 for two hours (Simply Eloped, local
+ * studios). Pain research: post-payment ghosting and 10–12-month
+ * delivery horror stories, missed-moment galleries, and the #1 married
+ * regret — skipping video (see content/weddings-copy.ts header).
+ */
 export const couplesOffer: Offer = {
-  name: "The Heirloom Experience",
+  name: "The Whole Story Experience",
   audience: "couples",
   promise:
-    "Your wedding, photographed and filmed by one team — directed so you look like yourselves, delivered while the champagne is still cold.",
+    "Your wedding in photos and cinema from one directed team — every moment mapped before the day, and proof in your inbox 48 hours after it.",
   items: [
     {
-      name: "The Direction Session",
-      pain: "“We're so awkward in front of a camera.”",
+      name: "One Team, Photo + Cinema",
+      pain: "“Our biggest regret was skipping the video.”",
       outcome:
-        "A private session before your day where you learn my prompt-based direction — movement and moments, never stiff poses. By the wedding, the camera is just furniture.",
-      valueLabel: "$350 value",
+        "Full-day photography and a cinematic wedding film from one unified team — one style, one story, nothing to coordinate. You never have to join the couples who saved money on film and talk about it forever.",
+      valueLabel: "$5,200 value",
+      visual: {
+        src: "/placeholders/offer/one-team.svg",
+        alt: "One team capturing photo and film together — a camera and a cinema frame sharing the same moment",
+      },
     },
     {
-      name: "The Story Map",
-      pain: "“What if the important moments get missed?”",
+      name: "The Moments Map",
+      pain: "“Our photographer missed the shots that actually mattered.”",
       outcome:
-        "We co-write a shot map of every person, detail, and moment that matters — grandma's hands, the letter from your dad — then I build your photo timeline around it so nothing is left to luck.",
+        "Before the day, we co-write the list of every person, detail, and moment that matters — you with your bridesmaids, the letter from your dad, grandma dancing — and your coverage timeline is built around it. Nothing important is left to luck.",
       valueLabel: "$250 value",
+      visual: {
+        src: "/placeholders/offer/moments-map.svg",
+        alt: "A written moments checklist, every must-have moment ticked off",
+      },
     },
     {
-      name: "One Team, Photo + Film",
-      pain: "“The photographer and videographer kept getting in each other's shots.”",
+      name: "Directed, Never Posed",
+      pain: "“We're just not photogenic.”",
       outcome:
-        "Photos and cinema from one unified team, choreographed together. No elbowing vendors, no duplicated direction, one consistent style across everything you receive.",
-      valueLabel: "$900 value",
+        "You two are directed every second the camera is up — prompts, movement, real reactions, never stiff poses. It works even if you've hated every photo of yourselves. Especially then.",
+      valueLabel: "included",
+      visual: {
+        src: "/placeholders/offer/direction-day.svg",
+        alt: "Direction prompt card: “Walk toward me — now look at each other and laugh.”",
+      },
     },
     {
       name: "The 48-Hour Sneak Peek",
-      pain: "“Why does everyone wait 4 months for their photos?”",
+      pain: "“Couples wait months — some wait a year — for their photos.”",
       outcome:
-        "25+ fully edited photos and a 60-second teaser film in your inbox within 48 hours of your wedding — posted, shared, and relived while it still feels like yesterday. Because it was.",
+        "25+ fully edited photos and a 60-second teaser film in your inbox within 48 hours of your wedding — shared, posted, and relived while it still feels like yesterday. Because it was.",
       valueLabel: "$400 value",
+      visual: {
+        src: "/placeholders/offer/sneak-peek-48h.svg",
+        alt: "Phone notification: your sneak peek is ready, 48 hours after the wedding",
+      },
     },
     {
-      name: "The Communication Promise",
-      pain: "“I've heard horror stories about vendors ghosting.”",
+      name: "The In-Writing Promise",
+      pain: "“I've read the ghosting horror stories.”",
       outcome:
-        "Every message answered within 24 hours, every delivery date in writing before you sign, and a single point of contact from first call to final gallery.",
+        "Every delivery date in your contract before you sign, every message answered within 24 hours, and one point of contact from the first call to the final gallery. Booked means booked.",
       valueLabel: "included",
+      visual: {
+        src: "/placeholders/offer/in-writing.svg",
+        alt: "A signed contract page with the delivery dates highlighted in gold",
+      },
     },
   ],
   bonuses: [
     {
-      name: "Golden Hour Engagement Session",
-      pain: "You want to practice before the big day.",
+      name: "The Golden Hour Engagement Session",
+      pain: "You want a dry run before the big day.",
       outcome:
-        "A full engagement shoot at golden hour — your save-the-dates, your dry run, your first taste of the direction style.",
+        "A full directed engagement shoot at golden hour — your save-the-dates, your practice round, and proof the direction works before the day that counts.",
       valueLabel: "$450 value",
+      visual: {
+        src: "/placeholders/offer/engagement-golden-hour.svg",
+        alt: "Couple silhouetted at golden hour during their engagement session",
+      },
     },
     {
       name: "The Social Cuts",
       pain: "You want to share it everywhere, instantly.",
       outcome:
-        "Three vertical edits cut for Instagram and TikTok, delivered with your sneak peek.",
+        "Three vertical edits cut for Instagram and TikTok, delivered with your sneak peek — while your wedding is still the group chat's main story.",
       valueLabel: "$300 value",
+      visual: {
+        src: "/placeholders/offer/social-cuts.svg",
+        alt: "Three vertical phone frames of wedding film clips, cut for social",
+      },
     },
     {
       name: "The Private Cinema Gallery",
       pain: "A USB in a drawer isn't a legacy.",
       outcome:
-        "Your full gallery and 4K film in a private online cinema you can share with anyone, hosted for life.",
+        "Your full gallery and 4K film in a private online cinema — share it with anyone, stream it on any anniversary, hosted for life.",
       valueLabel: "$200 value",
+      visual: {
+        src: "/placeholders/offer/cinema-gallery.svg",
+        alt: "A private online cinema screen playing the wedding film",
+      },
     },
   ],
   guarantee: {
-    name: "The Heirloom Guarantee",
+    name: "The Whole Story Guarantee",
     terms:
-      "If your sneak peek isn't in your inbox within 48 hours of your wedding, $500 comes off your balance. And if you don't love your engagement session photos, we reshoot it — free, no questions.",
+      "If your sneak peek isn't in your inbox within 48 hours of your wedding, $500 comes off your balance. If you don't love your engagement session, we reshoot it free. And every delivery date lives in your contract — if one slips, you're compensated in writing too.",
     finePrint:
       "PLACEHOLDER terms — confirm the exact guarantee you'll honor before launch.",
   },
@@ -115,11 +158,11 @@ export const couplesOffer: Offer = {
     limit: 12,
     window: "per season",
     reason:
-      "Every wedding gets the full weight of my attention — the Direction Session, the Story Map, the 48-hour edit. That doesn't scale, so I don't try to.",
+      "Every wedding gets the Moments Map, full direction, and the 48-hour edit. That doesn't scale, so the calendar is capped — when the season is full, it's full.",
   },
   pricing: {
-    stackValueLabel: "$2,850+ in stacked value",
-    investmentLabel: "Experiences begin at $2,000",
+    stackValueLabel: "$6,800+ in stacked value",
+    investmentLabel: "Collections start at $3,000",
     note: "PLACEHOLDER anchors — set real numbers before launch. Exact quote designed on your consult call.",
   },
 };

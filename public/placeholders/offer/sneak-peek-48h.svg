@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f2f6f2"/>
+  <!-- phone -->
+  <rect x="290" y="70" width="220" height="420" rx="32" fill="#fafcfa" stroke="#dbe3db" stroke-width="5"/>
+  <rect x="360" y="92" width="80" height="10" rx="5" fill="#dbe3db"/>
+  <!-- notification card -->
+  <rect x="312" y="140" width="176" height="86" rx="14" fill="#e6eee6"/>
+  <circle cx="342" cy="170" r="14" fill="#b8912e"/>
+  <path d="M336 170l4 5 8-9" fill="none" stroke="#fafcfa" stroke-width="3" stroke-linecap="round"/>
+  <rect x="366" y="158" width="104" height="10" rx="5" fill="#dbe3db"/>
+  <rect x="366" y="176" width="80" height="10" rx="5" fill="#dbe3db"/>
+  <rect x="326" y="200" width="90" height="10" rx="5" fill="#dbe3db"/>
+  <!-- gallery thumbnails -->
+  <g fill="#dbe3db">
+    <rect x="316" y="250" width="54" height="54" rx="8"/>
+    <rect x="376" y="250" width="54" height="54" rx="8"/>
+    <rect x="436" y="250" width="50" height="54" rx="8"/>
+    <rect x="316" y="310" width="54" height="54" rx="8"/>
+    <rect x="436" y="310" width="50" height="54" rx="8"/>
+  </g>
+  <!-- teaser film tile -->
+  <rect x="376" y="310" width="54" height="54" rx="8" fill="#1e3d2f"/>
+  <path d="M394 327l22 10-22 10z" fill="#b8912e"/>
+  <!-- 48h badge -->
+  <circle cx="560" cy="160" r="52" fill="#b8912e"/>
+  <text x="560" y="172" font-family="Georgia, serif" font-size="34" fill="#fafcfa" text-anchor="middle">48h</text>
+  <text x="80" y="560" font-family="Georgia, serif" font-size="26" fill="#5c7267" font-style="italic">In your inbox before the honeymoon lands.</text>
+</svg>

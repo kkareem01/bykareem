@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f2f6f2"/>
+  <!-- contract page -->
+  <rect x="200" y="60" width="400" height="440" rx="16" fill="#fafcfa" stroke="#dbe3db" stroke-width="4"/>
+  <rect x="240" y="100" width="200" height="20" rx="10" fill="#dbe3db"/>
+  <rect x="240" y="150" width="320" height="14" rx="7" fill="#e6eee6"/>
+  <rect x="240" y="178" width="300" height="14" rx="7" fill="#e6eee6"/>
+  <!-- highlighted delivery dates -->
+  <rect x="232" y="216" width="336" height="34" rx="8" fill="#b8912e" opacity="0.25"/>
+  <rect x="240" y="226" width="240" height="14" rx="7" fill="#b8912e"/>
+  <rect x="232" y="262" width="336" height="34" rx="8" fill="#b8912e" opacity="0.25"/>
+  <rect x="240" y="272" width="200" height="14" rx="7" fill="#b8912e"/>
+  <rect x="240" y="320" width="320" height="14" rx="7" fill="#e6eee6"/>
+  <rect x="240" y="348" width="280" height="14" rx="7" fill="#e6eee6"/>
+  <!-- signature line -->
+  <path d="M240 430 C 270 410, 290 445, 320 425 S 370 415, 400 428" fill="none" stroke="#1e3d2f" stroke-width="4" stroke-linecap="round"/>
+  <rect x="240" y="446" width="180" height="4" rx="2" fill="#dbe3db"/>
+  <!-- gold seal -->
+  <circle cx="530" cy="430" r="34" fill="#b8912e"/>
+  <circle cx="530" cy="430" r="24" fill="none" stroke="#fafcfa" stroke-width="3"/>
+  <path d="M522 430l6 7 11-13" fill="none" stroke="#fafcfa" stroke-width="4" stroke-linecap="round"/>
+  <text x="80" y="560" font-family="Georgia, serif" font-size="26" fill="#5c7267" font-style="italic">Every date in the contract. Booked means booked.</text>
+</svg>

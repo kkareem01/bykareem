@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f2f6f2"/>
+  <!-- prompt card -->
+  <g transform="rotate(-3 400 280)">
+    <rect x="170" y="150" width="460" height="260" rx="20" fill="#fafcfa" stroke="#dbe3db" stroke-width="4"/>
+    <rect x="210" y="200" width="380" height="24" rx="12" fill="#dbe3db"/>
+    <rect x="210" y="250" width="320" height="24" rx="12" fill="#dbe3db"/>
+    <rect x="210" y="300" width="250" height="24" rx="12" fill="#e6eee6"/>
+    <circle cx="210" cy="360" r="6" fill="#b8912e"/>
+    <circle cx="232" cy="360" r="6" fill="#b8912e"/>
+    <circle cx="254" cy="360" r="6" fill="#b8912e"/>
+  </g>
+  <!-- two walking figures being directed -->
+  <g fill="#1e3d2f">
+    <circle cx="620" cy="440" r="18"/>
+    <rect x="602" y="462" width="36" height="60" rx="16"/>
+  </g>
+  <g fill="#5c7267">
+    <circle cx="676" cy="444" r="16"/>
+    <rect x="660" y="464" width="32" height="56" rx="14"/>
+  </g>
+  <!-- direction arrow -->
+  <path d="M180 480 C 300 520, 440 520, 560 480"
+        fill="none" stroke="#b8912e" stroke-width="6" stroke-dasharray="2 18" stroke-linecap="round"/>
+  <path d="M560 480l-20-2 12 16z" fill="#b8912e"/>
+  <text x="80" y="560" font-family="Georgia, serif" font-size="26" fill="#5c7267" font-style="italic">“Walk toward me — now laugh.”</text>
+</svg>

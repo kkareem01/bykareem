@@ -1,29 +1,28 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { weddingsCopy } from "@/content/copy";
-import { images } from "@/content/site-config";
+import { weddingsCopy } from "@/content/weddings-copy";
+import { couplesReviewShots, images } from "@/content/site-config";
 import { couplesOffer } from "@/content/offers";
-import { couplesTestimonials } from "@/content/testimonials";
 import { couplesFaq } from "@/content/faq";
 import {
-  galleries,
+  couplesCouldBeYouShots,
+  couplesSessionStrip,
   getStoryByAudience,
   portfolioCopy,
 } from "@/content/portfolio";
+import { SessionCollage } from "@/components/sections/SessionCollage";
 import { Hero } from "@/components/sections/Hero";
-import { PortfolioGallery } from "@/components/sections/PortfolioGallery";
-import { OfferStack } from "@/components/sections/OfferStack";
-import { Testimonials } from "@/components/sections/Testimonials";
+import { CouldBeYouWall } from "@/components/sections/CouldBeYouWall";
+import { NarrativeSection } from "@/components/sections/NarrativeSection";
+import { AudienceFilter } from "@/components/sections/AudienceFilter";
+import { OfferShowcase } from "@/components/sections/OfferShowcase";
+import { ReviewsWall } from "@/components/sections/ReviewsWall";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { GuaranteeSection } from "@/components/sections/GuaranteeSection";
-import { FinalCta } from "@/components/sections/FinalCta";
-import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Weddings & Engagements — The Heirloom Experience",
+  title: "Weddings & Engagements — The Whole Story Experience",
   description:
-    "One team for your wedding photos and film in Georgia. Directed so you look like yourselves, sneak peek in 48 hours, delivery dates in writing.",
+    "Wedding photos and cinema from one directed team in Georgia. Every moment mapped before the day, sneak peek in 48 hours — guaranteed in writing.",
 };
 
 export default function WeddingsPage() {
@@ -46,91 +45,86 @@ export default function WeddingsPage() {
         sub={weddingsCopy.hero.sub}
         cta={weddingsCopy.hero.cta}
         ctaHref="/book?type=couples"
+        ctaNote={weddingsCopy.ctaNote}
         image={images.weddingsHero}
+        variant="stacked"
       />
 
-      {/* narrative */}
-      <section className="py-20 md:py-28 bg-mist/60">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 grid gap-12 md:grid-cols-2 md:items-center">
-          <div>
-            <SectionHeading
-              eyebrow={weddingsCopy.narrative.eyebrow}
-              heading={weddingsCopy.narrative.heading}
-            />
-            <Reveal delay={1}>
-              <div className="mt-6 space-y-5 text-moss leading-relaxed">
-                {weddingsCopy.narrative.body.map((para) => (
-                  <p key={para.slice(0, 24)}>{para}</p>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-          <Reveal delay={1} className="relative">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem]">
-              <Image
-                src={images.weddingsStory.src}
-                alt={images.weddingsStory.alt}
-                fill
-                sizes="(min-width: 768px) 45vw, 90vw"
-                className="object-cover img-warm"
-              />
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* 1 — their current circumstances, closed out by a consult button */}
+      <NarrativeSection
+        heading={weddingsCopy.problem.heading}
+        paragraphs={weddingsCopy.problem.paragraphs}
+        cta={{
+          label: weddingsCopy.hero.cta,
+          href: "/book?type=couples",
+          note: weddingsCopy.ctaNote,
+        }}
+      />
 
-      {/* the work — proof before the pitch */}
-      <PortfolioGallery
-        eyebrow={portfolioCopy.nichePage.couples.eyebrow}
+      {/* social proof — real client messages, same wall as the home page */}
+      <ReviewsWall
+        heading={weddingsCopy.socialProof.heading}
+        shots={couplesReviewShots}
+      />
+
+      {/* 2 — the dream outcome */}
+      <NarrativeSection
+        heading={weddingsCopy.dream.heading}
+        paragraphs={weddingsCopy.dream.paragraphs}
+        tone="tint"
+      />
+
+      {/* 3 — show the dream, don't just describe it */}
+      <CouldBeYouWall
         heading={portfolioCopy.nichePage.couples.heading}
-        sub={portfolioCopy.nichePage.couples.sub}
-        images={galleries.couples}
+        shots={couplesCouldBeYouShots}
         links={galleryLinks}
       />
 
-      <OfferStack
+      {/* 4 — self-select before the pitch, closed out by a consult button */}
+      <AudienceFilter
+        heading={weddingsCopy.filter.heading}
+        notFor={weddingsCopy.filter.notFor}
+        builtFor={weddingsCopy.filter.builtFor}
+        cta={{
+          label: weddingsCopy.hero.cta,
+          href: "/book?type=couples",
+          note: weddingsCopy.ctaNote,
+        }}
+      />
+
+      {/* photo proof right before the pitch — celebration energy as a
+          static editorial collage */}
+      <SessionCollage
+        heading={weddingsCopy.sessionStrip.heading}
+        sub={weddingsCopy.sessionStrip.sub}
+        images={couplesSessionStrip}
+        cta={{
+          label: weddingsCopy.hero.cta,
+          href: "/book?type=couples",
+          note: weddingsCopy.ctaNote,
+        }}
+      />
+
+      {/* 5 — the bridge: named offer + value stack */}
+      <OfferShowcase
         offer={couplesOffer}
         intro={weddingsCopy.offerIntro}
         bonusesIntro={weddingsCopy.bonusesIntro}
-      />
-
-      {/* case studies */}
-      <section className="py-20 md:py-28 bg-mist/60">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <SectionHeading
-            eyebrow={weddingsCopy.caseStudies.eyebrow}
-            heading={weddingsCopy.caseStudies.heading}
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {weddingsCopy.caseStudies.items.map((story, i) => (
-              <Reveal key={story.title} delay={(i % 3) as 0 | 1 | 2}>
-                <article className="h-full bg-porcelain border border-line rounded-2xl p-7">
-                  <h3 className="font-display text-xl">{story.title}</h3>
-                  <p className="mt-3 text-sm text-moss leading-relaxed">
-                    {story.body}
-                  </p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <Testimonials
-        eyebrow="real couples"
-        heading="What it's like from the other side of the camera"
-        items={couplesTestimonials}
-      />
-
-      <FaqSection items={couplesFaq} />
-
-      <GuaranteeSection />
-
-      <FinalCta
-        heading={weddingsCopy.finalCta.heading}
-        sub={weddingsCopy.finalCta.sub}
-        cta={weddingsCopy.finalCta.cta}
+        closing={weddingsCopy.offerClosing}
         ctaHref="/book?type=couples"
+        ctaNote={weddingsCopy.ctaNote}
+      />
+
+      <FaqSection items={couplesFaq} eyebrow={null} />
+
+      {/* the guarantee closes the page — consult CTA sits under the promise */}
+      <GuaranteeSection
+        cta={{
+          label: weddingsCopy.finalCta.cta,
+          href: "/book?type=couples",
+          note: weddingsCopy.ctaNote,
+        }}
       />
     </>
   );

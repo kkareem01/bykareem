@@ -3,27 +3,35 @@ export type Faq = { q: string; a: string };
 export const couplesFaq: Faq[] = [
   {
     q: "How much does it cost?",
-    a: "Every wedding is quoted as one complete experience, not a menu of line items — most couples invest between the starting figure on this page and about double it, depending on coverage. You'll get an exact, in-writing quote on your free consult call, and it will never change after you sign.",
+    a: "Collections start at $3,000, and every wedding is quoted as one complete experience — not a menu of line items. Most couples land between the starting figure and about double it, depending on coverage. You'll get an exact, in-writing quote on your free consult call, and it never changes after you sign.",
+  },
+  {
+    q: "Why a call instead of prices on the page?",
+    a: "Because no two weddings need the same coverage, and a package grid can't know yours. The call is 30 minutes, free, and ends with an exact number in writing — not a “starting at” tease. Worst case, you leave with a straight answer and zero obligation.",
   },
   {
     q: "We're really awkward in front of cameras. Will this work for us?",
-    a: "That's the exact reason the Direction Session exists. You'll never be posed like mannequins — you'll be given prompts and things to do, and the moments get caught in between. Almost every couple says some version of “we're the awkward ones” on the first call. None of their galleries look awkward.",
+    a: "Almost every couple says some version of “we're the awkward ones” on the first call — it's why everything is directed. You're given prompts and things to do, never mannequin poses, and the engagement session is your practice round before the day that counts. None of those couples' galleries look awkward.",
   },
   {
     q: "How fast do we actually get everything?",
-    a: "Sneak peek — 25+ edited photos and a 60-second teaser — within 48 hours, guaranteed in writing. Full gallery and film on a delivery date you'll know before you ever sign.",
-  },
-  {
-    q: "Do you travel outside Georgia?",
-    a: "Yes. Anywhere in Georgia is home turf with no travel fees. Beyond that, travel is quoted transparently on your call.",
+    a: "Sneak peek — 25+ edited photos and a 60-second teaser film — within 48 hours of your wedding, guaranteed in writing. Full gallery and film land on a delivery date that's in your contract before you ever sign.",
   },
   {
     q: "Can we book photo only, or film only?",
     a: "Yes — the experience is built around having one team for both, but photo-only and film-only versions exist. Ask on your call.",
   },
   {
+    q: "Do you travel outside Georgia?",
+    a: "Yes. Anywhere in Georgia is home turf with no travel fees. Beyond that, travel is quoted transparently on your call.",
+  },
+  {
+    q: "How far out should we book?",
+    a: "Most couples book 6–14 months ahead, and only twelve weddings make the calendar each season — popular dates go first. If your date is closer than that, book the call anyway; if your date is already spoken for, you'll hear it straight on the call, not after a deposit.",
+  },
+  {
     q: "What happens on the consult call?",
-    a: "Twenty to thirty relaxed minutes: you talk about your day and what matters most, I explain how the experience works, and you leave with an exact quote. No deposit is taken on the call, and there's zero obligation.",
+    a: "Thirty relaxed minutes: you talk about your day and what matters most, I explain how the experience works, and you leave with an exact quote. No deposit is taken on the call, and there's zero obligation.",
   },
 ];
 

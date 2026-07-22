@@ -38,7 +38,7 @@ function Headline({
       className={
         typeof h1 === "string"
           ? "display text-5xl sm:text-6xl md:text-5xl lg:text-6xl"
-          : "display text-[7vw] md:text-5xl lg:text-6xl"
+          : "display text-[9vw] sm:text-6xl md:text-5xl lg:text-6xl"
       }
     >
       {typeof h1 === "string" ? (
@@ -127,7 +127,7 @@ export function Hero({
 
   return (
     <section className="pt-24 md:pt-32 pb-16 md:pb-24">
-      {/* Mobile: centered stack (headline → sub → CTA → photo).
+      {/* Mobile: centered stack (headline → photo → sub → CTA).
           Desktop (md+): split layout, copy left / imagery right. */}
       <div className="mx-auto max-w-6xl px-5 sm:px-8 grid gap-12 md:grid-cols-2 md:items-center">
         <Reveal className="text-center md:text-left">
@@ -141,7 +141,17 @@ export function Hero({
           ) : null}
           {eyebrow ? <p className="eyebrow eyebrow--gold mb-6">{eyebrow}</p> : null}
           <Headline h1={h1} h1Accent={h1Accent} />
-          <p className="mt-7 text-base sm:text-lg text-moss leading-relaxed max-w-lg mx-auto md:mx-0">
+          <div className="relative mt-8 aspect-[4/5] overflow-hidden rounded-t-full rounded-b-[2rem] md:hidden">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              preload
+              sizes="(min-width: 768px) 45vw, 90vw"
+              className="object-cover"
+            />
+          </div>
+          <p className="mt-7 text-sm sm:text-lg text-moss leading-relaxed max-w-lg mx-auto md:mx-0">
             {sub}
           </p>
           <CtaBlock cta={cta} ctaHref={ctaHref} ctaNote={ctaNote} />
@@ -162,7 +172,7 @@ export function Hero({
           ) : null}
         </Reveal>
 
-        <Reveal delay={1} className="relative">
+        <Reveal delay={1} className="relative hidden md:block">
           <div className="relative aspect-[4/5] overflow-hidden rounded-t-full rounded-b-[2rem]">
             <Image
               src={image.src}

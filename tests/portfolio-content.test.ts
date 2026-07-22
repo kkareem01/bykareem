@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
+  couplesCouldBeYouShots,
+  couplesSessionStrip,
   filmReel,
   galleries,
+  gradCouldBeYouShots,
   gradSessionStrip,
   portfolioCopy,
   stories,
@@ -90,22 +93,46 @@ describe("featured stories", () => {
   );
 });
 
-describe("grad session strip (editorial collage)", () => {
-  it("holds 8–14 images so the staggered columns stay balanced", () => {
-    expect(gradSessionStrip.length).toBeGreaterThanOrEqual(8);
-    expect(gradSessionStrip.length).toBeLessThanOrEqual(14);
+describe("session strips (editorial collages)", () => {
+  const strips: [string, PortfolioImage[]][] = [
+    ["gradSessionStrip", gradSessionStrip],
+    ["couplesSessionStrip", couplesSessionStrip],
+  ];
+
+  it.each(strips)(
+    "%s holds 8–14 images so the staggered columns stay balanced",
+    (_, strip) => {
+      expect(strip.length).toBeGreaterThanOrEqual(8);
+      expect(strip.length).toBeLessThanOrEqual(14);
+    },
+  );
+
+  it.each(strips)("%s images are valid and unique", (name, strip) => {
+    strip.forEach(expectValidImage);
+    expectNoDuplicates(strip, name);
   });
 
-  it("images are valid and unique", () => {
-    gradSessionStrip.forEach(expectValidImage);
-    expectNoDuplicates(gradSessionStrip, "gradSessionStrip");
-  });
+  it.each(strips)(
+    "%s mixes portrait and landscape for the strip's rhythm",
+    (_, strip) => {
+      const portrait = strip.filter((i) => i.height > i.width);
+      const landscape = strip.filter((i) => i.width > i.height);
+      expect(portrait.length).toBeGreaterThan(0);
+      expect(landscape.length).toBeGreaterThan(0);
+    },
+  );
+});
 
-  it("mixes portrait and landscape for the strip's rhythm", () => {
-    const portrait = gradSessionStrip.filter((i) => i.height > i.width);
-    const landscape = gradSessionStrip.filter((i) => i.width > i.height);
-    expect(portrait.length).toBeGreaterThan(0);
-    expect(landscape.length).toBeGreaterThan(0);
+describe("could-be-you walls (social proof strips)", () => {
+  const walls: [string, PortfolioImage[]][] = [
+    ["gradCouldBeYouShots", gradCouldBeYouShots],
+    ["couplesCouldBeYouShots", couplesCouldBeYouShots],
+  ];
+
+  it.each(walls)("%s is non-empty with valid, unique images", (name, wall) => {
+    expect(wall.length).toBeGreaterThan(0);
+    wall.forEach(expectValidImage);
+    expectNoDuplicates(wall, name);
   });
 });
 

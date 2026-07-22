@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1206" height="1560" viewBox="0 0 1206 1560">
+  <rect width="1206" height="1560" fill="#fafcfa"/>
+  <!-- post header -->
+  <circle cx="90" cy="80" r="44" fill="#dbe3db"/>
+  <rect x="160" y="56" width="300" height="24" rx="12" fill="#dbe3db"/>
+  <rect x="160" y="92" width="160" height="18" rx="9" fill="#e6eee6"/>
+  <!-- photo: golden hour field portrait -->
+  <rect x="0" y="160" width="1206" height="1120" fill="#f2f6f2"/>
+  <circle cx="603" cy="620" r="260" fill="#b8912e" opacity="0.3"/>
+  <circle cx="603" cy="620" r="170" fill="#b8912e" opacity="0.4"/>
+  <path d="M0 1060 C 300 1000, 900 1000, 1206 1060 L1206 1280 L0 1280 Z" fill="#dbe3db"/>
+  <g fill="#1e3d2f">
+    <circle cx="556" cy="640" r="58"/>
+    <path d="M504 704h104l22 320H482z"/>
+    <circle cx="676" cy="650" r="52"/>
+    <path d="M630 708h92l18 316H612z"/>
+    <rect x="596" y="800" width="44" height="16" rx="8"/>
+  </g>
+  <!-- action row -->
+  <path d="M80 1350c-18-24-58-18-58 14 0 24 34 44 58 62 24-18 58-38 58-62 0-32-40-38-58-14z" fill="#1e3d2f"/>
+  <circle cx="220" cy="1380" r="34" fill="none" stroke="#1e3d2f" stroke-width="8"/>
+  <path d="M330 1350l50 30-50 30z" fill="none" stroke="#1e3d2f" stroke-width="8" stroke-linejoin="round"/>
+  <!-- likes + caption -->
+  <rect x="60" y="1450" width="240" height="22" rx="11" fill="#dbe3db"/>
+  <rect x="60" y="1490" width="620" height="20" rx="10" fill="#e6eee6"/>
+  <text x="900" y="1468" font-family="Georgia, serif" font-size="30" fill="#5c7267" font-style="italic">placeholder</text>
+</svg>

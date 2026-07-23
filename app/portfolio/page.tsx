@@ -35,7 +35,7 @@ const jumpSections: JumpSection[] = [
 
 /**
  * Film-first landing: the reel proves the feeling in ten seconds, the
- * curated walls stay segmented by audience, and the full stories answer
+ * curated walls stay segmented by audience, and the stories answer
  * the cherry-picking doubt. A soft CTA sits at peak-emotion mid-scroll,
  * not just at the bottom.
  */
@@ -114,7 +114,7 @@ export default function PortfolioPage() {
         <FinalCta
           heading="Like what you see?"
           sub="The free consult call takes 20 minutes and ends with an exact quote for your date."
-          cta="Book a Free Consult"
+          cta="Tell Me About Your Day"
           ctaHref="/book"
         />
       </div>

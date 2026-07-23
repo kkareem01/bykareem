@@ -32,7 +32,7 @@ const bookHref = {
 } as const;
 
 /**
- * A complete event, start to finish — the anti-cherry-picking page.
+ * A single day told start to finish — the anti-cherry-picking page.
  * Narrower two-column masonry so it reads like an album, every image at
  * its natural ratio, no lightbox: scroll is the whole interaction.
  */
@@ -93,7 +93,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
       <FinalCta
         heading="Want a day that looks like this?"
         sub="The free consult call takes 20 minutes and ends with an exact quote for your date."
-        cta="Book a Free Consult"
+        cta="Tell Me About Your Day"
         ctaHref={bookHref[story.audience]}
       />
     </>

@@ -32,7 +32,7 @@ export const nav = {
     { label: "Graduation", href: "/graduation" },
     { label: "Contact", href: "/contact" },
   ],
-  cta: { label: "Book a Free Consult", href: "/book?type=couples" },
+  cta: { label: "Talk to Kareem", href: "/book?type=couples" },
 } as const;
 
 export type NavCta = { label: string; href: string; note?: string };

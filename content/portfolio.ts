@@ -261,9 +261,9 @@ export const galleries: Record<Audience, PortfolioImage[]> = {
 };
 
 /**
- * Featured stories — complete events shown start to finish. This is the
- * proof the curated wall can't provide: consistency across a whole day,
- * not cherry-picked highlights.
+ * Featured stories — a single day told start to finish. The proof the
+ * curated wall can't provide: consistency across a day, not cherry-picked
+ * highlights.
  */
 export const stories: Story[] = [
   {
@@ -272,7 +272,7 @@ export const stories: Story[] = [
     title: "Ayesha & Faisal — Nikkah to Walima",
     location: "Atlanta, GA",
     intro:
-      "Two celebrations, one story — a nikkah in blush and gold, and a walima in mint and grey. Between them, the rain broke just long enough for a rainbow over the send-off car. Every chapter of it, exactly as delivered.",
+      "Two celebrations, one story — a nikkah in blush and gold, and a walima in mint and grey. Between them, the rain broke just long enough for a rainbow over the send-off car. The day, told the way it unfolded.",
     cover: {
       src: "/photos/portfolio/couples/ayesha-floral-hoop.jpg",
       alt: "Cover: Ayesha and Faisal seated inside a circular floral arch against a blush pink backdrop",
@@ -342,7 +342,7 @@ export const stories: Story[] = [
     title: "Fares — The Milestone Session",
     location: "University of Georgia — Athens, GA",
     intro:
-      "An empty Sanford Stadium to ourselves, then the Arch, North Campus, and Old College before the crowds showed up. One directed session, start to finish — this is every chapter of it, exactly as delivered.",
+      "An empty Sanford Stadium to ourselves, then the Arch, North Campus, and Old College before the crowds showed up. One directed session, told start to finish — the way the morning actually went.",
     cover: {
       src: "/photos/portfolio/grad/fares-diploma-laugh.jpg",
       alt: "Cover: Fares laughing with his diploma cover at Sanford Stadium, red UGA stole",
@@ -427,7 +427,7 @@ export const portfolioCopy = {
   hero: {
     eyebrow: "the work",
     heading: "Moments, not poses.",
-    sub: "A small, honest selection — and two full stories so you can see what an entire day looks like, not just the highlights.",
+    sub: "A small, honest selection — and two stories so you can see how a day unfolds, not just the highlights.",
   },
   film: {
     eyebrow: "photo + film, one team",
@@ -445,14 +445,14 @@ export const portfolioCopy = {
     cta: { label: "See the milestone session", href: "/graduation" },
   },
   stories: {
-    eyebrow: "full stories",
+    eyebrow: "stories",
     heading: "One day, start to finish.",
-    sub: "Highlight walls are easy to cherry-pick. These are complete events — every chapter of the day, exactly as delivered.",
-    cardCta: "View the full story",
+    sub: "Highlight walls are easy to cherry-pick. These follow a single day in order — the arc of it, chapter to chapter, not just the peaks.",
+    cardCta: "View the story",
   },
   midCta: {
     text: "Picturing your own day yet?",
-    linkLabel: "Book a free consult →",
+    linkLabel: "Tell me about your day →",
     href: "/book",
   },
   storyPage: {

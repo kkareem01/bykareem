@@ -9,7 +9,7 @@ import {
   getStoryByAudience,
   portfolioCopy,
 } from "@/content/portfolio";
-import { filmsCopy, reactionFilm, weddingFilm } from "@/content/films";
+import { faresYasmeenFilm, filmsCopy, reactionFilm } from "@/content/films";
 import { SessionCollage } from "@/components/sections/SessionCollage";
 import { FilmPlayer } from "@/components/sections/FilmPlayer";
 import { Hero } from "@/components/sections/Hero";
@@ -56,7 +56,7 @@ export default function WeddingsPage() {
       <FilmPlayer
         eyebrow={filmsCopy.weddingsFilm.eyebrow}
         heading={filmsCopy.weddingsFilm.heading}
-        film={weddingFilm}
+        film={faresYasmeenFilm}
       />
 
       {/* 1 — their current circumstances, closed out by a consult button */}

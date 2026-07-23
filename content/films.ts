@@ -49,10 +49,26 @@ export const nikkahFilm: Film = {
 };
 
 /**
- * Huda — a full wedding film. Anchors the weddings page high up, so a
- * couple sees motion and sound before they scroll the stills.
+ * Fares & Yasmeen — a full wedding film. Anchors the weddings page high up,
+ * so a couple sees motion and sound before they scroll the stills.
  */
-export const weddingFilm: Film = {
+export const faresYasmeenFilm: Film = {
+  youtubeId: "cJsghAu3wc8",
+  poster: {
+    src: "/photos/films/fares-yasmeen-film.jpg",
+    alt: "Bride in a cream gown and hijab and groom in a tan suit cutting their flower-topped wedding cake, both laughing — a still from their wedding film",
+    width: 1600,
+    height: 900,
+  },
+  title: "Fares & Yasmeen — the wedding film",
+  fallbackNote: "Full film coming soon — keep scrolling for the stills.",
+};
+
+/**
+ * Huda & Khizar — a full wedding film. Shown on /portfolio alongside the
+ * nikkah film as the second piece of film work.
+ */
+export const hudaFilm: Film = {
   youtubeId: "47wFrO7Z_vg",
   poster: {
     src: "/photos/films/huda-wedding-film.jpg",

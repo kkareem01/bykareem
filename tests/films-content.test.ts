@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
+  faresYasmeenFilm,
   filmsCopy,
+  hudaFilm,
   nikkahFilm,
   reactionFilm,
-  weddingFilm,
   type Film,
 } from "@/content/films";
 
@@ -16,7 +17,8 @@ import {
 
 const films: [string, Film][] = [
   ["nikkahFilm", nikkahFilm],
-  ["weddingFilm", weddingFilm],
+  ["faresYasmeenFilm", faresYasmeenFilm],
+  ["hudaFilm", hudaFilm],
   ["reactionFilm", reactionFilm],
 ];
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { galleries, portfolioCopy, stories } from "@/content/portfolio";
-import { filmsCopy, nikkahFilm } from "@/content/films";
+import { filmsCopy, hudaFilm, nikkahFilm } from "@/content/films";
 import { FeaturedStories } from "@/components/sections/FeaturedStories";
 import { FilmPlayer } from "@/components/sections/FilmPlayer";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -60,6 +60,8 @@ export default function PortfolioPage() {
           heading={filmsCopy.portfolio.heading}
           film={nikkahFilm}
         />
+        {/* second film, grouped under the same heading (no heading of its own) */}
+        <FilmPlayer film={hudaFilm} />
       </div>
 
       <div id="couples" className="scroll-mt-20">

@@ -7,8 +7,10 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { Film } from "@/content/films";
 
 type FilmPlayerProps = {
-  eyebrow: string;
-  heading: string;
+  eyebrow?: string;
+  /** omit to render a bare player (no section heading) — used when several
+   *  films sit under one shared heading on a page */
+  heading?: string;
   film: Film;
   /** softer background variant for the second film section on a page */
   tone?: "mist" | "plain";
@@ -38,14 +40,18 @@ export function FilmPlayer({
     ? `https://www.youtube-nocookie.com/embed/${film.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`
     : null;
 
-  return (
-    <section
-      className={`py-20 md:py-28 ${tone === "mist" ? "bg-mist/60" : ""}`}
-    >
-      <div className="mx-auto max-w-5xl px-5 sm:px-8">
-        <SectionHeading eyebrow={eyebrow} heading={heading} align="center" />
+  // no heading → a bare player grouped under a shared heading above it, so
+  // drop the top padding to sit closer to the preceding player
+  const padding = heading ? "py-20 md:py-28" : "pb-20 md:pb-28";
 
-        <Reveal delay={1} className="mt-12 md:mt-16">
+  return (
+    <section className={`${padding} ${tone === "mist" ? "bg-mist/60" : ""}`}>
+      <div className="mx-auto max-w-5xl px-5 sm:px-8">
+        {heading ? (
+          <SectionHeading eyebrow={eyebrow} heading={heading} align="center" />
+        ) : null}
+
+        <Reveal delay={1} className={heading ? "mt-12 md:mt-16" : ""}>
           <div className="relative aspect-video overflow-hidden rounded-[2rem] bg-hunter-deep">
             {playing && embedSrc ? (
               <iframe

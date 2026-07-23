@@ -14,6 +14,8 @@ type HeroProps = {
   sub: string;
   cta: string;
   ctaHref: string;
+  /** optional second, outlined CTA next to the primary (two-path funnel) */
+  secondaryCta?: { label: string; href: string };
   /** one-line trust note directly under the CTA button */
   ctaNote?: string;
   image: ImageSlot;
@@ -60,17 +62,32 @@ function Headline({
 function CtaBlock({
   cta,
   ctaHref,
+  secondaryCta,
   ctaNote,
+  centered = false,
 }: {
   cta: string;
   ctaHref: string;
+  secondaryCta?: { label: string; href: string };
   ctaNote?: string;
+  centered?: boolean;
 }) {
   return (
     <div className="mt-9">
-      <Button href={ctaHref} size="lg">
-        {cta}
-      </Button>
+      <div
+        className={`flex flex-col items-center gap-3 ${
+          centered ? "" : "md:items-start"
+        }`}
+      >
+        <Button href={ctaHref} size="lg">
+          {cta}
+        </Button>
+        {secondaryCta ? (
+          <Button href={secondaryCta.href} size="lg" variant="ghost">
+            {secondaryCta.label}
+          </Button>
+        ) : null}
+      </div>
       {ctaNote ? <p className="mt-3 text-xs text-moss">{ctaNote}</p> : null}
     </div>
   );
@@ -85,6 +102,7 @@ export function Hero({
   sub,
   cta,
   ctaHref,
+  secondaryCta,
   ctaNote,
   image,
   trust,
@@ -118,7 +136,13 @@ export function Hero({
             <p className="mt-9 text-base sm:text-lg text-moss leading-relaxed max-w-lg mx-auto">
               {sub}
             </p>
-            <CtaBlock cta={cta} ctaHref={ctaHref} ctaNote={ctaNote} />
+            <CtaBlock
+              cta={cta}
+              ctaHref={ctaHref}
+              secondaryCta={secondaryCta}
+              ctaNote={ctaNote}
+              centered
+            />
           </Reveal>
         </div>
       </section>
@@ -154,7 +178,12 @@ export function Hero({
           <p className="mt-7 text-sm sm:text-lg text-moss leading-relaxed max-w-lg mx-auto md:mx-0">
             {sub}
           </p>
-          <CtaBlock cta={cta} ctaHref={ctaHref} ctaNote={ctaNote} />
+          <CtaBlock
+            cta={cta}
+            ctaHref={ctaHref}
+            secondaryCta={secondaryCta}
+            ctaNote={ctaNote}
+          />
           {trust ? (
             <ul className="mt-8 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2">
               {trust.map((item) => (

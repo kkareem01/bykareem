@@ -79,6 +79,7 @@ export default function WeddingsPage() {
         heading={portfolioCopy.nichePage.couples.heading}
         shots={couplesCouldBeYouShots}
         links={galleryLinks}
+        size="lg"
       />
 
       {/* 4 — self-select before the pitch, closed out by a consult button */}

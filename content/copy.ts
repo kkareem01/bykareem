@@ -19,13 +19,25 @@ export const homeCopy = {
       "in Atlanta, Georgia.",
     ],
     h1Accent: "100+ Captured.",
-    sub: "bykareem is a one-team photo and film experience for couples in Georgia — directed so you look like yourselves, delivered while it still feels like yesterday.",
-    cta: "View Portfolio",
+    sub: "bykareem is a one-team photo and film experience for Georgia's biggest moments — directed so you look like yourselves, delivered while it still feels like yesterday.",
     trust: [
       "Super fast turnaround",
       "Love your photo guarantee",
       "Planning done easy",
     ],
+  },
+  /**
+   * The only two doors on the home page — every CTA funnels visitors
+   * into one of the two niche landing pages, never straight to booking.
+   */
+  paths: {
+    weddings: { label: "We're Getting Married", href: "/weddings" },
+    graduation: { label: "I'm Graduating", href: "/graduation" },
+  },
+  pathCta: {
+    eyebrow: "two experiences",
+    heading: "Big day, or big milestone?",
+    sub: "Everything here is built for one of two chapters. Pick yours — each page walks you through exactly how it works.",
   },
   pains: {
     eyebrow: "sound familiar?",
@@ -97,13 +109,8 @@ export const homeCopy = {
     heading: "The reviews say “awkward.” The galleries say otherwise.",
   },
   finalCta: {
-    heading: "Your date is being asked about by other couples right now.",
-    sub: "That's not a scare tactic — it's a small calendar. Book the free call; the worst case is a great conversation and an exact quote.",
-    cta: "Book a Free Consult",
-  },
-  gradStrip: {
-    text: "Graduating this year?",
-    linkLabel: "The Milestone Session →",
+    heading: "Ready when you are.",
+    sub: "Two experiences, one team behind the camera. Pick yours and see exactly how it works — and what it costs.",
   },
 } as const;
 

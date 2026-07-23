@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { homeCopy } from "@/content/copy";
 import { images, reviewShots } from "@/content/site-config";
 import { couplesFaq } from "@/content/faq";
@@ -10,6 +9,7 @@ import { GuaranteeSection } from "@/components/sections/GuaranteeSection";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Button } from "@/components/ui/Button";
 
 export default function Home() {
   return (
@@ -19,8 +19,9 @@ export default function Home() {
         h1={homeCopy.hero.h1}
         h1Accent={homeCopy.hero.h1Accent}
         sub={homeCopy.hero.sub}
-        cta={homeCopy.hero.cta}
-        ctaHref="/portfolio"
+        cta={homeCopy.paths.weddings.label}
+        ctaHref={homeCopy.paths.weddings.href}
+        secondaryCta={homeCopy.paths.graduation}
         image={images.homeHero}
         trust={homeCopy.hero.trust}
       />
@@ -56,6 +57,34 @@ export default function Home() {
         </div>
       </section>
 
+      {/* path picker — the only two doors on this site */}
+      <section className="border-y border-line bg-porcelain">
+        <div className="mx-auto max-w-3xl px-5 sm:px-8 py-16 md:py-20">
+          <Reveal className="text-center">
+            <SectionHeading
+              eyebrow={homeCopy.pathCta.eyebrow}
+              heading={homeCopy.pathCta.heading}
+              align="center"
+            />
+            <p className="mt-5 text-moss leading-relaxed max-w-lg mx-auto">
+              {homeCopy.pathCta.sub}
+            </p>
+            <div className="mt-9 flex flex-col items-center gap-3">
+              <Button href={homeCopy.paths.weddings.href} size="lg">
+                {homeCopy.paths.weddings.label}
+              </Button>
+              <Button
+                href={homeCopy.paths.graduation.href}
+                size="lg"
+                variant="ghost"
+              >
+                {homeCopy.paths.graduation.label}
+              </Button>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <FaqSection items={couplesFaq} />
 
       <GuaranteeSection />
@@ -63,22 +92,10 @@ export default function Home() {
       <FinalCta
         heading={homeCopy.finalCta.heading}
         sub={homeCopy.finalCta.sub}
-        cta={homeCopy.finalCta.cta}
-        ctaHref="/book?type=couples"
+        cta={homeCopy.paths.weddings.label}
+        ctaHref={homeCopy.paths.weddings.href}
+        secondaryCta={homeCopy.paths.graduation}
       />
-
-      {/* graduation cross-link strip */}
-      <section className="border-t border-line bg-porcelain">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 py-8 flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1 text-center">
-          <p className="font-display text-lg">{homeCopy.gradStrip.text}</p>
-          <Link
-            href="/graduation"
-            className="font-display italic text-lg text-gold hover:text-gold-deep transition-colors"
-          >
-            {homeCopy.gradStrip.linkLabel}
-          </Link>
-        </div>
-      </section>
     </>
   );
 }

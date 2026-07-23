@@ -11,7 +11,29 @@ type CouldBeYouWallProps = {
   links?: GalleryLink[];
   /** closes the section with a booking button under the gallery links */
   cta?: SectionCtaContent;
+  /** "lg" renders noticeably bigger cards (weddings wall) */
+  size?: "md" | "lg";
 };
+
+const CARD_SIZES = {
+  md: {
+    width: "w-48 sm:w-56 lg:w-60",
+    margin: "-mx-3 sm:-mx-4",
+    bleed: "",
+    imageSizes: "(min-width: 640px) 240px, 192px",
+  },
+  /*
+   * lg mobile: two 60vw cards per row that overlap each other and bleed
+   * past the phone edges (the row container is widened with negative
+   * margins so flex-wrap doesn't fold them into a single column).
+   */
+  lg: {
+    width: "w-[60vw] sm:w-80 lg:w-[21rem]",
+    margin: "-mx-4",
+    bleed: "-mx-10 sm:mx-0",
+    imageSizes: "(min-width: 640px) 336px, 60vw",
+  },
+} as const;
 
 /**
  * Social-proof pile for the graduation page: client IG-post screenshots
@@ -33,7 +55,9 @@ export function CouldBeYouWall({
   shots,
   links = [],
   cta,
+  size = "md",
 }: CouldBeYouWallProps) {
+  const card = CARD_SIZES[size];
   return (
     <section className="py-14 md:py-20 overflow-x-clip">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
@@ -43,12 +67,14 @@ export function CouldBeYouWall({
           </h2>
         </Reveal>
 
-        <div className="mt-12 lg:mt-20 flex flex-wrap justify-center -my-4">
+        <div
+          className={`mt-12 lg:mt-20 flex flex-wrap justify-center -my-4 ${card.bleed}`}
+        >
           {shots.map((shot, i) => (
             <Reveal
               key={shot.src}
               delay={(i % 3) as 0 | 1 | 2}
-              className={`${SCATTER[i % SCATTER.length]} relative w-48 sm:w-56 lg:w-60 shrink-0 -mx-3 sm:-mx-4 my-4 transition-transform duration-300 hover:rotate-0 hover:scale-105 hover:z-20`}
+              className={`${SCATTER[i % SCATTER.length]} relative ${card.width} shrink-0 ${card.margin} my-4 transition-transform duration-300 hover:rotate-0 hover:scale-105 hover:z-20`}
             >
               <div className="overflow-hidden rounded-2xl border border-line bg-porcelain p-2.5 shadow-[0_16px_36px_rgba(30,61,47,0.14)]">
                 <Image
@@ -56,7 +82,7 @@ export function CouldBeYouWall({
                   alt={shot.alt}
                   width={shot.width}
                   height={shot.height}
-                  sizes="(min-width: 640px) 240px, 192px"
+                  sizes={card.imageSizes}
                   className="w-full h-auto rounded-lg"
                 />
               </div>

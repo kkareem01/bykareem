@@ -22,7 +22,7 @@ export const weddingsCopy = {
     h1: "Wedding photos and film you'll actually relive —",
     h1Accent: "even if you two are “the awkward ones.”",
     sub: "One directed team for photos and cinema, anywhere in Georgia — every moment mapped before the day, and your sneak peek back in 48 hours, guaranteed in writing.",
-    cta: "Book My Free Consult",
+    cta: "See If Your Date's Open",
   },
 
   /** One trust line under every CTA — pre-answers time, money, risk. */
@@ -100,12 +100,12 @@ export const weddingsCopy = {
     priceLead: "with collections starting at",
     price: "$3,000.",
     ctaPrimary: "Yes Kareem, Let's Talk!",
-    ctaSecondary: "Book your free consult call",
+    ctaSecondary: "One call. Exact quote. Zero pressure.",
   },
 
   finalCta: {
     heading: "Your date only happens once.",
     sub: "The calendar holds twelve weddings a season, and dates go to whoever calls first. The consult is free, takes about 30 minutes, and ends with an exact quote in writing. No deposit due today.",
-    cta: "Book My Free Consult",
+    cta: "Claim Your Date",
   },
 } as const;

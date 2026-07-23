@@ -5,7 +5,7 @@ type ButtonProps = {
   href?: string;
   onClick?: () => void;
   children: ReactNode;
-  variant?: "primary" | "ghost";
+  variant?: "primary" | "ghost" | "ghost-inverse";
   size?: "md" | "lg";
   type?: "button" | "submit";
   disabled?: boolean;
@@ -20,6 +20,9 @@ const variants = {
     "gold-sheen text-hunter-deep hover:shadow-[0_8px_30px_rgba(184,145,46,0.4)] active:translate-y-px",
   ghost:
     "border border-hunter/25 text-hunter hover:border-gold hover:text-gold bg-transparent",
+  /* outline button legible on the dark hunter-green sections */
+  "ghost-inverse":
+    "border border-snow/35 text-snow hover:border-gold hover:text-gold bg-transparent",
 };
 
 const sizes = {

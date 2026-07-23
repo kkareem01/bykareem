@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import {
   couplesCouldBeYouShots,
   couplesSessionStrip,
-  filmReel,
   galleries,
   gradCouldBeYouShots,
   gradSessionStrip,
@@ -136,22 +135,9 @@ describe("could-be-you walls (social proof strips)", () => {
   });
 });
 
-describe("film reel", () => {
-  it("always has a poster so the section renders before a video exists", () => {
-    expectValidImage(filmReel.poster);
-  });
-
-  it("videoSrc is either null or a root-relative mp4 path", () => {
-    if (filmReel.videoSrc !== null) {
-      expect(filmReel.videoSrc).toMatch(/^\/.+\.(mp4|webm)$/);
-    }
-  });
-});
-
 describe("portfolio copy", () => {
   it("has non-empty strings for every section heading", () => {
     expect(portfolioCopy.hero.heading.length).toBeGreaterThan(0);
-    expect(portfolioCopy.film.heading.length).toBeGreaterThan(0);
     expect(portfolioCopy.stories.heading.length).toBeGreaterThan(0);
     expect(portfolioCopy.couplesGallery.heading.length).toBeGreaterThan(0);
     expect(portfolioCopy.gradGallery.heading.length).toBeGreaterThan(0);

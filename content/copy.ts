@@ -101,7 +101,6 @@ export const homeCopy = {
     body: [
       "I'm a photographer and filmmaker based in Georgia, and I built bykareem around one belief: the best photos happen in the moments between the poses.",
       "I direct the whole way through — prompts, movement, real laughter — so you never stand there wondering what to do with your hands. Then I edit fast, because a memory relived while it's still warm hits different than one delivered a season later.",
-      "PLACEHOLDER — swap in your real story: how you started, what you shoot on, why you care about this work.",
     ],
   },
   testimonialsSection: {

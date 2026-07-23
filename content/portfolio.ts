@@ -40,41 +40,6 @@ export type Story = {
   images: PortfolioImage[];
 };
 
-/** Placeholder dimensions keyed by the aspect suffix in the SVG filenames. */
-const DIMENSIONS = {
-  "4x5": { width: 1200, height: 1500 },
-  "2x3": { width: 1200, height: 1800 },
-  "3x2": { width: 1500, height: 1000 },
-  "16x9": { width: 1600, height: 900 },
-} as const;
-
-type AspectKey = keyof typeof DIMENSIONS;
-
-/** Placeholder helper — real images should become plain literals with real dimensions. */
-function shot(file: string, aspect: AspectKey, alt: string): PortfolioImage {
-  return {
-    src: `/placeholders/portfolio/${file}`,
-    alt,
-    ...DIMENSIONS[aspect],
-  };
-}
-
-/**
- * The highlight film. Poster always renders; once a reel is exported, set
- * `videoSrc` to its path (e.g. "/films/reel-2026.mp4") and the section
- * upgrades to muted looping video with a sound toggle.
- * Keep the reel 45–60s: proof of feeling, not a full film.
- */
-export const filmReel = {
-  poster: shot(
-    "film-poster-1-16x9.svg",
-    "16x9",
-    "Still frame from the bykareem highlight reel — placeholder",
-  ),
-  /** PLACEHOLDER — export a 45–60s highlight reel and set the path here */
-  videoSrc: null as string | null,
-} as const;
-
 /**
  * Curated walls, one per audience. 12–15 favorites each, never mixed —
  * a grad scrolling past wedding work (or vice versa) reads "not for me."
@@ -428,11 +393,6 @@ export const portfolioCopy = {
     eyebrow: "the work",
     heading: "Moments, not poses.",
     sub: "A small, honest selection — and two stories so you can see how a day unfolds, not just the highlights.",
-  },
-  film: {
-    eyebrow: "photo + film, one team",
-    heading: "Ten seconds of film says what forty photos can't.",
-    videoFallbackNote: "Highlight reel coming soon — the stills below will hold you over.",
   },
   couplesGallery: {
     eyebrow: "weddings & engagements",

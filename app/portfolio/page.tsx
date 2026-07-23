@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  filmReel,
-  galleries,
-  portfolioCopy,
-  stories,
-} from "@/content/portfolio";
+import { galleries, portfolioCopy, stories } from "@/content/portfolio";
+import { filmsCopy, nikkahFilm } from "@/content/films";
 import { FeaturedStories } from "@/components/sections/FeaturedStories";
-import { FilmReel } from "@/components/sections/FilmReel";
+import { FilmPlayer } from "@/components/sections/FilmPlayer";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { type GalleryLink } from "@/components/sections/PortfolioGallery";
 import { SessionCollage } from "@/components/sections/SessionCollage";
@@ -59,12 +55,10 @@ export default function PortfolioPage() {
       </section>
 
       <div id="film" className="scroll-mt-20">
-        <FilmReel
-          eyebrow={portfolioCopy.film.eyebrow}
-          heading={portfolioCopy.film.heading}
-          poster={filmReel.poster}
-          videoSrc={filmReel.videoSrc}
-          fallbackNote={portfolioCopy.film.videoFallbackNote}
+        <FilmPlayer
+          eyebrow={filmsCopy.portfolio.eyebrow}
+          heading={filmsCopy.portfolio.heading}
+          film={nikkahFilm}
         />
       </div>
 

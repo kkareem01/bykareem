@@ -9,7 +9,9 @@ import {
   getStoryByAudience,
   portfolioCopy,
 } from "@/content/portfolio";
+import { filmsCopy, reactionFilm, weddingFilm } from "@/content/films";
 import { SessionCollage } from "@/components/sections/SessionCollage";
+import { FilmPlayer } from "@/components/sections/FilmPlayer";
 import { Hero } from "@/components/sections/Hero";
 import { CouldBeYouWall } from "@/components/sections/CouldBeYouWall";
 import { NarrativeSection } from "@/components/sections/NarrativeSection";
@@ -50,6 +52,13 @@ export default function WeddingsPage() {
         variant="stacked"
       />
 
+      {/* motion + sound up front — a whole day, before the stills */}
+      <FilmPlayer
+        eyebrow={filmsCopy.weddingsFilm.eyebrow}
+        heading={filmsCopy.weddingsFilm.heading}
+        film={weddingFilm}
+      />
+
       {/* 1 — their current circumstances, closed out by a consult button */}
       <NarrativeSection
         heading={weddingsCopy.problem.heading}
@@ -65,6 +74,14 @@ export default function WeddingsPage() {
       <ReviewsWall
         heading={weddingsCopy.socialProof.heading}
         shots={couplesReviewShots}
+      />
+
+      {/* the proof stills can't give: a family reacting to their own film */}
+      <FilmPlayer
+        eyebrow={filmsCopy.reaction.eyebrow}
+        heading={filmsCopy.reaction.heading}
+        film={reactionFilm}
+        tone="plain"
       />
 
       {/* 2 — the dream outcome */}

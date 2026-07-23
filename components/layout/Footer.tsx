@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { footer, nav, site } from "@/content/site-config";
+import { ProtectedTel } from "@/components/ui/ProtectedTel";
 import { FooterCtaLink } from "./FooterCtaLink";
 
 export function Footer() {
@@ -35,12 +36,7 @@ export function Footer() {
           >
             {site.email}
           </a>
-          <a
-            href={`tel:${site.phone.replace(/\D/g, "")}`}
-            className="hover:text-gold-light transition-colors"
-          >
-            {site.phone}
-          </a>
+          <ProtectedTel className="hover:text-gold-light transition-colors" />
           <div className="flex gap-4 mt-2">
             <a
               href={site.instagram}

@@ -12,8 +12,11 @@ export const site = {
   legalName: "bykareem photo & film",
   region: "Georgia",
   serviceArea: "Serving Atlanta, Athens & all of Georgia",
-  /** PLACEHOLDER — set the real phone before launch */
-  phone: "(404) 000-0000",
+  /**
+   * The public phone number is deliberately NOT stored here as plain
+   * text — it lives encoded in components/ui/ProtectedTel.tsx so spam
+   * scrapers can't harvest it from page source or the JS bundle.
+   */
   /** PLACEHOLDER — set the real public email before launch */
   email: "hello@bykareem.com",
   /** PLACEHOLDER — set the production domain before launch */

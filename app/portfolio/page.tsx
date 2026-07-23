@@ -13,12 +13,25 @@ import { type GalleryLink } from "@/components/sections/PortfolioGallery";
 import { SessionCollage } from "@/components/sections/SessionCollage";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import {
+  SectionJumpNav,
+  type JumpSection,
+} from "@/components/ui/SectionJumpNav";
 
 export const metadata: Metadata = {
   title: "Portfolio — Moments, not poses",
   description:
     "Selected wedding, engagement, and graduation work from bykareem — documentary-style photo and film across Georgia, including complete start-to-finish stories.",
 };
+
+/** side-rail anchors — ids live on scroll-offset wrappers below */
+const jumpSections: JumpSection[] = [
+  { id: "film", label: "Film" },
+  { id: "couples", label: "Couples" },
+  { id: "stories", label: "Stories" },
+  { id: "grads", label: "Grads" },
+  { id: "book", label: "Book" },
+];
 
 /**
  * Film-first landing: the reel proves the feeling in ten seconds, the
@@ -32,6 +45,8 @@ export default function PortfolioPage() {
 
   return (
     <>
+      <SectionJumpNav sections={jumpSections} />
+
       <section className="pt-28 md:pt-36 pb-4">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <SectionHeading
@@ -43,20 +58,24 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <FilmReel
-        eyebrow={portfolioCopy.film.eyebrow}
-        heading={portfolioCopy.film.heading}
-        poster={filmReel.poster}
-        videoSrc={filmReel.videoSrc}
-        fallbackNote={portfolioCopy.film.videoFallbackNote}
-      />
+      <div id="film" className="scroll-mt-20">
+        <FilmReel
+          eyebrow={portfolioCopy.film.eyebrow}
+          heading={portfolioCopy.film.heading}
+          poster={filmReel.poster}
+          videoSrc={filmReel.videoSrc}
+          fallbackNote={portfolioCopy.film.videoFallbackNote}
+        />
+      </div>
 
-      <SessionCollage
-        eyebrow={portfolioCopy.couplesGallery.eyebrow}
-        heading={portfolioCopy.couplesGallery.heading}
-        images={galleries.couples}
-        links={couplesLinks}
-      />
+      <div id="couples" className="scroll-mt-20">
+        <SessionCollage
+          eyebrow={portfolioCopy.couplesGallery.eyebrow}
+          heading={portfolioCopy.couplesGallery.heading}
+          images={galleries.couples}
+          links={couplesLinks}
+        />
+      </div>
 
       {/* soft mid-scroll CTA — peak emotion happens mid-page, not at the end */}
       <section className="border-y border-line bg-porcelain">
@@ -71,28 +90,34 @@ export default function PortfolioPage() {
         </Reveal>
       </section>
 
-      <FeaturedStories
-        eyebrow={portfolioCopy.stories.eyebrow}
-        heading={portfolioCopy.stories.heading}
-        sub={portfolioCopy.stories.sub}
-        stories={stories}
-        cardCta={portfolioCopy.stories.cardCta}
-      />
+      <div id="stories" className="scroll-mt-20">
+        <FeaturedStories
+          eyebrow={portfolioCopy.stories.eyebrow}
+          heading={portfolioCopy.stories.heading}
+          sub={portfolioCopy.stories.sub}
+          stories={stories}
+          cardCta={portfolioCopy.stories.cardCta}
+        />
+      </div>
 
-      <SessionCollage
-        eyebrow={portfolioCopy.gradGallery.eyebrow}
-        heading={portfolioCopy.gradGallery.heading}
-        images={galleries.graduation}
-        links={gradLinks}
-        tone="tint"
-      />
+      <div id="grads" className="scroll-mt-20">
+        <SessionCollage
+          eyebrow={portfolioCopy.gradGallery.eyebrow}
+          heading={portfolioCopy.gradGallery.heading}
+          images={galleries.graduation}
+          links={gradLinks}
+          tone="tint"
+        />
+      </div>
 
-      <FinalCta
-        heading="Like what you see?"
-        sub="The free consult call takes 20 minutes and ends with an exact quote for your date."
-        cta="Book a Free Consult"
-        ctaHref="/book"
-      />
+      <div id="book" className="scroll-mt-20">
+        <FinalCta
+          heading="Like what you see?"
+          sub="The free consult call takes 20 minutes and ends with an exact quote for your date."
+          cta="Book a Free Consult"
+          ctaHref="/book"
+        />
+      </div>
     </>
   );
 }

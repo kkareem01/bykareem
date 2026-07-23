@@ -69,7 +69,8 @@ export default async function ConfirmedPage({
             <h1 className="display text-4xl">Booking not found</h1>
             <p className="mt-6 text-moss">
               That confirmation link doesn&apos;t match a booking. If you just
-              booked, check your email for the confirmation.
+              booked, head back and try again — or reach out and I&apos;ll
+              confirm your spot.
             </p>
             <div className="mt-10">
               <Link href="/book" className="text-gold hover:text-gold-deep">

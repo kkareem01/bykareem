@@ -149,12 +149,12 @@ export const bookingCopy: BookingCopy = {
     confirm: "Confirm my spot",
   },
   confirmNote:
-    "You'll get an email confirmation with a calendar invite. I'll give you a call at the number you provide.",
+    "I'll give you a call at the number you provide to confirm everything.",
   slotTaken:
     "Ah — someone just grabbed that time. Here are the times still open:",
   confirmed: {
     heading: "You're booked.",
-    sub: "Check your inbox for the confirmation and calendar invite. Here's what happens next:",
+    sub: "You're all set — here's what happens next:",
     steps: [
       "I call you at your chosen time — no prep needed.",
       "We talk through your date, your vision, and what matters most.",
@@ -178,12 +178,12 @@ export const gradBookingCopy: BookingCopy = {
     confirm: "Book My Grad Session",
   },
   confirmNote:
-    "You'll get an email confirmation with a calendar invite, and I'll text you to lock in your campus meeting spot. No payment due today.",
+    "I'll text you to lock in your campus meeting spot. No payment due today.",
   slotTaken:
     "Ah — someone just grabbed that time. Here are the times still open:",
   confirmed: {
     heading: "You're on the calendar.",
-    sub: "Check your inbox for the confirmation and calendar invite. Here's what happens next:",
+    sub: "You're all set — here's what happens next:",
     steps: [
       "I text you within 24 hours to confirm your campus, your route, and where we meet.",
       "You get the one-page prep guide — outfits, cap and gown, what to bring.",

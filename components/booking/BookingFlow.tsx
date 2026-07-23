@@ -212,7 +212,12 @@ export function BookingFlow({
     <div className="booking-section">
       <style dangerouslySetInnerHTML={{ __html: bookingCardCss }} />
       <div className="booking-card" data-step={step}>
-        <StepPill step={step} />
+        <StepPill
+          step={step}
+          bookLabel={
+            audience === "graduation" ? "Pick your time" : "Pick a time to chat"
+          }
+        />
         <div className="booking-card__body">
           <div className="booking-pane" data-region="form">
             <BookingForm

@@ -2,11 +2,17 @@
 
 import type { BookingStep } from "./booking-titles";
 
-/** Two-step indicator strip at the top of the card (form → book). */
-export function StepPill({ step }: { step: BookingStep }) {
+/** Two-step indicator strip at the top of the card (form → pick a time). */
+export function StepPill({
+  step,
+  bookLabel,
+}: {
+  step: BookingStep;
+  bookLabel: string;
+}) {
   const items = [
     { label: "Fill out the form", active: step <= 2, done: step === 3 },
-    { label: "Book your event", active: step === 3, done: false },
+    { label: bookLabel, active: step === 3, done: false },
   ];
   return (
     <div className="booking-step-pill">

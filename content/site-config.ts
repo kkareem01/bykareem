@@ -20,7 +20,7 @@ export const site = {
   /** PLACEHOLDER — set the real public email before launch */
   email: "hello@bykareem.com",
   /** PLACEHOLDER — set the production domain before launch */
-  url: "https://bykareem.com",
+  url: "https://bykareem.kareemelkhatib.com",
   instagram: "https://instagram.com/bykareem",
   tiktok: "https://tiktok.com/@bykareem",
 } as const;

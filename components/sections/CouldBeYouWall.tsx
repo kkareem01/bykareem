@@ -28,10 +28,10 @@ const CARD_SIZES = {
    * margins so flex-wrap doesn't fold them into a single column).
    */
   lg: {
-    width: "w-[60vw] sm:w-80 lg:w-[21rem]",
+    width: "w-[54vw] sm:w-80 lg:w-[21rem]",
     margin: "-mx-4",
-    bleed: "-mx-10 sm:mx-0",
-    imageSizes: "(min-width: 640px) 336px, 60vw",
+    bleed: "-mx-5 sm:mx-0",
+    imageSizes: "(min-width: 640px) 336px, 54vw",
   },
 } as const;
 

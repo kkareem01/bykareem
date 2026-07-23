@@ -3,7 +3,7 @@ export type Faq = { q: string; a: string };
 export const couplesFaq: Faq[] = [
   {
     q: "How much does it cost?",
-    a: "Collections start at $3,000, and every wedding is quoted as one complete experience — not a menu of line items. Most couples land between the starting figure and about double it, depending on coverage. You'll get an exact, in-writing quote on your free consult call, and it never changes after you sign.",
+    a: "Collections start at $3,000, and every wedding is quoted as one complete experience — not a menu of line items. Most couples land between the starting figure and about double it, depending on coverage. You'll get an exact, in-writing quote when we chat, and it never changes after you sign.",
   },
   {
     q: "Why a call instead of prices on the page?",
@@ -30,8 +30,8 @@ export const couplesFaq: Faq[] = [
     a: "Most couples book 6–14 months ahead, and only twelve weddings make the calendar each season — popular dates go first. If your date is closer than that, book the call anyway; if your date is already spoken for, you'll hear it straight on the call, not after a deposit.",
   },
   {
-    q: "What happens on the consult call?",
-    a: "Thirty relaxed minutes: you talk about your day and what matters most, I explain how the experience works, and you leave with an exact quote. No deposit is taken on the call, and there's zero obligation.",
+    q: "What happens when we chat?",
+    a: "Thirty relaxed minutes: you talk about your day and what matters most, I explain how the experience works, and you leave with an exact quote. No deposit is taken, and there's zero obligation.",
   },
 ];
 

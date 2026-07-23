@@ -1,6 +1,7 @@
 "use client";
 
 import { monthLabel } from "@/lib/booking/format";
+import { buildTzList, formatTzLabel } from "@/lib/booking/tz";
 
 export type MonthDay = { date: string; hasOpenSlots: boolean };
 
@@ -9,94 +10,131 @@ type CalendarProps = {
   month: number;
   days: MonthDay[];
   selectedDate: string | null;
-  loading: boolean;
-  canGoPrev: boolean;
-  canGoNext: boolean;
+  /** true at steps 1-2: calendar shown but greyed with a "fill the form" pill */
+  locked: boolean;
+  canPrev: boolean;
+  canNext: boolean;
+  timezone: string;
   onSelect: (date: string) => void;
   onPrev: () => void;
   onNext: () => void;
+  onTimezoneChange: (tz: string) => void;
 };
 
-const WEEKDAYS = ["S", "M", "T", "W", "T", "F", "S"];
+const WEEKDAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
 function dayOfWeekUtc(date: string): number {
   const [y, m, d] = date.split("-").map(Number);
   return new Date(Date.UTC(y, m - 1, d)).getUTCDay();
 }
 
+function todayISO(): string {
+  return new Date().toISOString().slice(0, 10);
+}
+
+/** Month grid + timezone selector, styled as the suit store navy calendar. */
 export function Calendar({
   year,
   month,
   days,
   selectedDate,
-  loading,
-  canGoPrev,
-  canGoNext,
+  locked,
+  canPrev,
+  canNext,
+  timezone,
   onSelect,
   onPrev,
   onNext,
+  onTimezoneChange,
 }: CalendarProps) {
   const leadingBlanks = days.length > 0 ? dayOfWeekUtc(days[0].date) : 0;
+  const today = todayISO();
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-4">
-        <button
-          type="button"
-          onClick={onPrev}
-          disabled={!canGoPrev}
-          aria-label="Previous month"
-          className="w-9 h-9 rounded-full border border-line text-hunter disabled:opacity-30 hover:border-gold hover:text-gold transition-colors"
-        >
-          ←
-        </button>
-        <p className="font-display text-lg">{monthLabel(year, month)}</p>
-        <button
-          type="button"
-          onClick={onNext}
-          disabled={!canGoNext}
-          aria-label="Next month"
-          className="w-9 h-9 rounded-full border border-line text-hunter disabled:opacity-30 hover:border-gold hover:text-gold transition-colors"
-        >
-          →
-        </button>
+    <div className={`booking-calendar ${locked ? "is-locked" : ""}`}>
+      {locked ? (
+        <div className="booking-calendar__lock">
+          <div className="booking-calendar__lock-pill">
+            Please fill out the form before choosing your time slot.
+          </div>
+        </div>
+      ) : (
+        <div className="booking-calendar__tz">
+          <span>Time zone:</span>
+          <select
+            aria-label="Time zone"
+            value={timezone}
+            onChange={(e) => onTimezoneChange(e.target.value)}
+          >
+            {buildTzList(timezone).map((tz) => (
+              <option key={tz} value={tz}>
+                {formatTzLabel(tz, new Date())}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      <div className="booking-calendar__header">
+        <div className="booking-calendar__month">{monthLabel(year, month)}</div>
+        <div className="booking-calendar__nav">
+          <button
+            type="button"
+            onClick={onPrev}
+            disabled={!canPrev}
+            aria-label="Previous month"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            onClick={onNext}
+            disabled={!canNext}
+            aria-label="Next month"
+          >
+            ›
+          </button>
+        </div>
       </div>
 
-      <div className="grid grid-cols-7 gap-1 text-center">
-        {WEEKDAYS.map((d, i) => (
-          <p key={`${d}-${i}`} className="eyebrow py-2">
-            {d}
-          </p>
+      <div className="booking-calendar__weekdays">
+        {WEEKDAYS.map((w) => (
+          <div className="booking-calendar__weekday" key={w}>
+            {w}
+          </div>
         ))}
+      </div>
+      <div className="booking-calendar__grid">
         {Array.from({ length: leadingBlanks }, (_, i) => (
-          <div key={`blank-${i}`} />
+          <div
+            className="booking-calendar__day booking-calendar__day--blank"
+            key={`blank-${i}`}
+          />
         ))}
         {days.map((day) => {
           const num = Number(day.date.slice(-2));
+          const past = day.date < today;
+          const open = day.hasOpenSlots && !past;
           const selected = day.date === selectedDate;
+          let cls = "booking-calendar__day";
+          if (past) cls += " booking-calendar__day--past";
+          else if (!day.hasOpenSlots) cls += " booking-calendar__day--closed";
+          else cls += " booking-calendar__day--open";
+          if (selected) cls += " booking-calendar__day--selected";
           return (
             <button
-              key={day.date}
               type="button"
-              disabled={!day.hasOpenSlots || loading}
-              onClick={() => onSelect(day.date)}
+              key={day.date}
+              className={cls}
+              disabled={!open}
               aria-pressed={selected}
-              className={`aspect-square rounded-full text-sm transition-colors ${
-                selected
-                  ? "bg-gold text-porcelain"
-                  : day.hasOpenSlots
-                    ? "text-hunter hover:bg-mist"
-                    : "text-moss/30 cursor-default"
-              }`}
+              onClick={open ? () => onSelect(day.date) : undefined}
             >
               {num}
             </button>
           );
         })}
       </div>
-      {loading ? (
-        <p className="mt-3 text-center text-xs text-moss">Loading…</p>
-      ) : null}
     </div>
   );
 }

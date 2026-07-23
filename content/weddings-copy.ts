@@ -105,7 +105,7 @@ export const weddingsCopy = {
 
   finalCta: {
     heading: "Your date only happens once.",
-    sub: "The calendar holds twelve weddings a season, and dates go to whoever calls first. The consult is free, takes about 30 minutes, and ends with an exact quote in writing. No deposit due today.",
+    sub: "The calendar holds twelve weddings a season, and dates go to whoever reaches out first. The chat is free, takes about 30 minutes, and ends with an exact quote in writing. No deposit due today.",
     cta: "Claim Your Date",
   },
 } as const;

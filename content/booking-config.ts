@@ -36,11 +36,11 @@ export const bookingConfig: BookingConfig = {
   },
   blackoutDates: [],
   consultTypes: {
-    couples: { label: "Wedding & Engagement Consult", slotDurationMinutes: 30, buffer: 15 },
+    couples: { label: "Weddings & Engagements", slotDurationMinutes: 30, buffer: 15 },
     // Graduation books the session itself, not a call — 90 min + the
     // Closing Fifteen, with travel/reset buffer between sessions.
     graduation: { label: "Graduation Session", slotDurationMinutes: 105, buffer: 30 },
-    general: { label: "General Inquiry Call", slotDurationMinutes: 20, buffer: 10 },
+    general: { label: "Other", slotDurationMinutes: 20, buffer: 10 },
   },
   defaultSlotDurationMinutes: 30,
   leadTimeMinutes: 720,

@@ -8,30 +8,32 @@ type DetailsFieldsProps = {
   onChange: (name: string, value: string) => void;
 };
 
-const inputCls =
-  "w-full rounded-xl border border-line bg-porcelain px-4 py-3 text-sm text-hunter placeholder:text-moss/50 focus:outline-none focus:border-gold";
+const todayISO = () => new Date().toISOString().slice(0, 10);
 
-/** Renders the per-consult-type answer fields from FIELD_SCHEMAS. */
+/**
+ * Per-consult-type qualifying questions, rendered inside the card's extended
+ * block with `.field` markup (labels shown — these are real questions).
+ */
 export function DetailsFields({ fields, answers, onChange }: DetailsFieldsProps) {
   return (
     <>
-      {fields.map((field) => (
-        <label key={field.name} className="block">
-          <span className="text-sm text-hunter">
-            {field.label}
-            {field.required ? <span className="text-gold"> *</span> : null}
-          </span>
-          <div className="mt-1.5">
+      {fields.map((field) => {
+        const id = `bk-f-${field.name}`;
+        const value = answers[field.name] ?? "";
+        return (
+          <div className="field" data-field={field.name} key={field.name}>
+            <label htmlFor={id}>
+              {field.label}
+              {field.required ? " *" : ""}
+            </label>
             {field.type === "select" ? (
               <select
-                value={answers[field.name] ?? ""}
-                onChange={(e) => onChange(field.name, e.target.value)}
+                id={id}
+                value={value}
                 required={field.required}
-                className={inputCls}
+                onChange={(e) => onChange(field.name, e.target.value)}
               >
-                <option value="" disabled>
-                  Choose…
-                </option>
+                <option value="">Select</option>
                 {field.options?.map((opt) => (
                   <option key={opt} value={opt}>
                     {opt}
@@ -40,28 +42,29 @@ export function DetailsFields({ fields, answers, onChange }: DetailsFieldsProps)
               </select>
             ) : field.type === "textarea" ? (
               <textarea
-                value={answers[field.name] ?? ""}
-                onChange={(e) => onChange(field.name, e.target.value)}
+                id={id}
+                rows={3}
+                value={value}
                 required={field.required}
                 maxLength={field.maxLength}
                 placeholder={field.placeholder}
-                rows={4}
-                className={inputCls}
+                onChange={(e) => onChange(field.name, e.target.value)}
               />
             ) : (
               <input
+                id={id}
                 type={field.type === "date" ? "date" : "text"}
-                value={answers[field.name] ?? ""}
-                onChange={(e) => onChange(field.name, e.target.value)}
+                value={value}
                 required={field.required}
                 maxLength={field.maxLength}
                 placeholder={field.placeholder}
-                className={inputCls}
+                min={field.type === "date" ? todayISO() : undefined}
+                onChange={(e) => onChange(field.name, e.target.value)}
               />
             )}
           </div>
-        </label>
-      ))}
+        );
+      })}
     </>
   );
 }

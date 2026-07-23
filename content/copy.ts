@@ -137,19 +137,19 @@ export type BookingCopy = {
   };
 };
 
-/** Consult-call copy — couples and general inquiries book a free call. */
+/** Booking copy — couples and general inquiries set up a quick chat. */
 export const bookingCopy: BookingCopy = {
-  title: "Book your free consult call",
-  sub: "Pick a time that works. The call is 20–30 minutes, obligation-free, and ends with an exact quote.",
+  title: "Let's set up a quick chat",
+  sub: "Pick a time that works. It's a quick 20–30 minute chat, no pressure — just to talk through your shoot and get you an exact quote.",
   steps: {
     type: "What's the occasion?",
     date: "Pick a day",
     time: "Pick a time",
     details: "Tell me about you",
-    confirm: "Confirm your call",
+    confirm: "Confirm my spot",
   },
   confirmNote:
-    "You'll get an email confirmation with a calendar invite. I'll call you at the number you provide.",
+    "You'll get an email confirmation with a calendar invite. I'll give you a call at the number you provide.",
   slotTaken:
     "Ah — someone just grabbed that time. Here are the times still open:",
   confirmed: {
@@ -164,7 +164,7 @@ export const bookingCopy: BookingCopy = {
 };
 
 /**
- * Graduation books the Milestone Session itself — no consult call in
+ * Graduation books the Milestone Session itself — no quick chat in
  * between. Copy keeps the promise of the page CTA: date, time, done.
  */
 export const gradBookingCopy: BookingCopy = {

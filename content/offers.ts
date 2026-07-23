@@ -163,7 +163,7 @@ export const couplesOffer: Offer = {
   pricing: {
     stackValueLabel: "$6,800+ in stacked value",
     investmentLabel: "Collections start at $3,000",
-    note: "PLACEHOLDER anchors — set real numbers before launch. Exact quote designed on your consult call.",
+    note: "PLACEHOLDER anchors — set real numbers before launch. Exact quote designed when we chat.",
   },
 };
 

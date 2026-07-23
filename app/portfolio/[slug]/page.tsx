@@ -92,7 +92,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
 
       <FinalCta
         heading="Want a day that looks like this?"
-        sub="The free consult call takes 20 minutes and ends with an exact quote for your date."
+        sub="The free chat takes 20 minutes and ends with an exact quote for your date."
         cta="Tell Me About Your Day"
         ctaHref={bookHref[story.audience]}
       />

@@ -23,11 +23,11 @@ function env(name: string, fallback = ""): string {
 
 export function bookingIcs(booking: Booking): string {
   const label =
-    bookingConfig.consultTypes[booking.audience]?.label ?? "Consult call";
+    bookingConfig.consultTypes[booking.audience]?.label ?? "Quick chat";
   const description =
     booking.audience === "graduation"
       ? `Your graduation session. I'll text you at ${booking.customer.phone} to confirm the campus meeting spot. Ref ${booking.id}.`
-      : `Free consult call. I'll call you at ${booking.customer.phone}. Ref ${booking.id}.`;
+      : `A quick chat. I'll give you a call at ${booking.customer.phone}. Ref ${booking.id}.`;
   return buildICS({
     id: booking.id,
     slot: { date: booking.slot.date, time: booking.slot.time },

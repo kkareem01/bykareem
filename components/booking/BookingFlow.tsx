@@ -2,29 +2,28 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getBookingCopy } from "@/content/copy";
 import { bookingConfig } from "@/content/booking-config";
-import { CONSULT_TYPES, FIELD_SCHEMAS } from "@/lib/booking/consult-types";
+import { FIELD_SCHEMAS } from "@/lib/booking/consult-types";
 import type { ConsultType } from "@/lib/booking/types";
-import { formatLongDate, formatTime12h } from "@/lib/booking/format";
-import { Button } from "@/components/ui/Button";
-import { Calendar, type MonthDay } from "./Calendar";
-import { DetailsFields } from "./DetailsFields";
+import { browserTimezone } from "@/lib/booking/tz";
 import { getStoredAttribution } from "./attribution";
-
-type Step = "date" | "details";
+import { bookingCardCss } from "./booking-card-css";
+import { StepPill } from "./StepPill";
+import { BookingForm } from "./BookingForm";
+import { Calendar, type MonthDay } from "./Calendar";
+import { Slots, type Slot, type TimeFormat } from "./Slots";
+import {
+  validateStep1,
+  validateStep2,
+  type BookingStep,
+  type Customer,
+} from "./booking-titles";
 
 type MonthState = { year: number; month: number };
 
 function currentMonth(): MonthState {
   const now = new Date();
   return { year: now.getFullYear(), month: now.getMonth() + 1 };
-}
-
-function nextMonth(m: MonthState): MonthState {
-  return m.month === 12
-    ? { year: m.year + 1, month: 1 }
-    : { year: m.year, month: m.month + 1 };
 }
 
 function monthIndex(m: MonthState): number {
@@ -38,23 +37,26 @@ export function BookingFlow({
   lockType = false,
 }: {
   initialType: ConsultType;
-  /** true when the page arrived with a preset type — hides the type picker */
   lockType?: boolean;
 }) {
   const router = useRouter();
+
   const [audience, setAudience] = useState<ConsultType>(initialType);
-  const [step, setStep] = useState<Step>("date");
+  const [step, setStep] = useState<BookingStep>(1);
 
   const [cursor, setCursor] = useState<MonthState>(currentMonth);
   const [days, setDays] = useState<MonthDay[]>([]);
   const [monthLoading, setMonthLoading] = useState(true);
+  const [monthRefresh, setMonthRefresh] = useState(0);
 
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
-  const [slots, setSlots] = useState<{ time: string; available: boolean }[]>([]);
+  const [slots, setSlots] = useState<Slot[]>([]);
   const [slotsLoading, setSlotsLoading] = useState(false);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [timeFormat, setTimeFormat] = useState<TimeFormat>("12h");
+  const [userTz, setUserTz] = useState<string>(bookingConfig.timezone);
 
-  const [customer, setCustomer] = useState({
+  const [customer, setCustomer] = useState<Customer>({
     firstName: "",
     lastName: "",
     phone: "",
@@ -65,16 +67,48 @@ export function BookingFlow({
   const [honeypot, setHoneypot] = useState("");
   const formStartedAt = useRef(0);
 
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const fields = FIELD_SCHEMAS[audience];
+
   useEffect(() => {
     formStartedAt.current = Date.now();
+    setUserTz(browserTimezone());
   }, []);
 
-  const [submitting, setSubmitting] = useState(false);
-  const [errors, setErrors] = useState<string[]>([]);
-  const [slotTaken, setSlotTaken] = useState(false);
+  // Load the month grid whenever the cursor, occasion, or a conflict changes.
+  useEffect(() => {
+    let cancelled = false;
+    setMonthLoading(true);
+    fetch(
+      `/api/availability/month?year=${cursor.year}&month=${cursor.month}&audience=${audience}`,
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        if (cancelled) return;
+        setDays(json.ok ? json.data.days : []);
+        setMonthLoading(false);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setDays([]);
+        setMonthLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [cursor, audience, monthRefresh]);
 
-  // Bumped to refetch the month after a SLOT_TAKEN conflict.
-  const [monthRefresh, setMonthRefresh] = useState(0);
+  // Two-way sync between step 1 and step 2, keyed off the three core fields:
+  //   step 1 + core valid   → reveal step 2
+  //   step 2 + core invalid → fold back to step 1
+  // (React keeps focus on the live input across these re-renders.)
+  useEffect(() => {
+    const coreValid = validateStep1(customer) === null;
+    if (step === 1 && coreValid) setStep(2);
+    else if (step === 2 && !coreValid) setStep(1);
+  }, [customer.phone, customer.firstName, customer.lastName, step]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const loadSlots = useCallback(
     async (date: string) => {
@@ -95,52 +129,45 @@ export function BookingFlow({
     [audience],
   );
 
-  useEffect(() => {
-    let cancelled = false;
-    fetch(
-      `/api/availability/month?year=${cursor.year}&month=${cursor.month}&audience=${audience}`,
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        if (cancelled) return;
-        setDays(json.ok ? json.data.days : []);
-        setMonthLoading(false);
-      })
-      .catch(() => {
-        if (cancelled) return;
-        setDays([]);
-        setMonthLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [cursor, audience, monthRefresh]);
-
   const pickType = (t: ConsultType) => {
+    if (t === audience) return;
     setAudience(t);
+    setAnswers({});
     setSelectedDate(null);
     setSelectedTime(null);
-    setAnswers({});
-    setMonthLoading(true);
-    setStep("date");
+    setError(null);
+    setStep(1);
   };
 
-  const moveCursor = (next: MonthState) => {
-    setMonthLoading(true);
-    setCursor(next);
-  };
+  const moveCursor = (next: MonthState) => setCursor(next);
 
   const pickDate = (date: string) => {
     setSelectedDate(date);
-    setSlotTaken(false);
+    setError(null);
     void loadSlots(date);
   };
 
-  const submit = async () => {
+  const handleSubmitStep = () => {
+    if (step === 1) {
+      const err = validateStep1(customer);
+      if (err) return setError(err);
+      setError(null);
+      setStep(2);
+      return;
+    }
+    if (step === 2) {
+      const err = validateStep2(customer, answers, fields);
+      if (err) return setError(err);
+      setError(null);
+      setStep(3);
+    }
+  };
+
+  const confirmBooking = async () => {
     if (!selectedDate || !selectedTime || submitting) return;
+    if (honeypot) return; // silent bot reject
     setSubmitting(true);
-    setErrors([]);
-    setSlotTaken(false);
+    setError(null);
 
     const attribution = getStoredAttribution();
     try {
@@ -151,313 +178,114 @@ export function BookingFlow({
           audience,
           customer: { ...customer, consent: customer.consent as true },
           slot: { date: selectedDate, time: selectedTime },
-          timezone:
-            Intl.DateTimeFormat().resolvedOptions().timeZone ??
-            "America/New_York",
+          timezone: userTz,
           answers,
           honeypot,
           formStartedAt: formStartedAt.current,
           ...(attribution ? { attribution } : {}),
         }),
       });
-      const json = await res.json();
+      const json = await res.json().catch(() => ({}));
 
       if (json.ok) {
         router.push(`/book/confirmed?id=${json.data.id}`);
         return;
       }
-      if (json.code === "SLOT_TAKEN") {
-        setSlotTaken(true);
-        setStep("date");
-        if (selectedDate) void loadSlots(selectedDate);
-        setMonthLoading(true);
+      if (res.status === 409 || json.code === "SLOT_TAKEN") {
+        setSelectedTime(null);
+        await loadSlots(selectedDate);
         setMonthRefresh((k) => k + 1);
+        setError("That time was just taken. Please pick another.");
       } else {
-        setErrors([json.error ?? "Something went wrong. Please try again."]);
+        setError(json.error ?? "Could not confirm. Please try again.");
       }
     } catch {
-      setErrors(["Network error. Please check your connection and try again."]);
+      setError("Network error. Please check your connection and try again.");
     } finally {
       setSubmitting(false);
     }
   };
 
-  const openSlots = slots.filter((s) => s.available);
-  const fields = FIELD_SCHEMAS[audience];
-  const detailsValid =
-    customer.firstName.trim() &&
-    customer.lastName.trim() &&
-    customer.phone.trim() &&
-    customer.email.trim() &&
-    customer.consent &&
-    fields.every((f) => !f.required || (answers[f.name] ?? "").trim() !== "");
-
-  const inputCls =
-    "w-full rounded-xl border border-line bg-porcelain px-4 py-3 text-sm text-hunter placeholder:text-moss/50 focus:outline-none focus:border-gold";
-
-  const copy = getBookingCopy(audience);
+  const showCalendar = step !== 2;
 
   return (
-    <div className="max-w-xl mx-auto">
-      {/* step 1: consult type — hidden when the page arrived pre-picked */}
-      {lockType ? (
-        <p className="mb-10 text-sm text-moss">
-          Booking something else?{" "}
-          <a href="/book" className="text-gold hover:text-gold-deep">
-            See all options →
-          </a>
-        </p>
-      ) : (
-        <>
-          <p className="eyebrow eyebrow--gold mb-3">{copy.steps.type}</p>
-          <div className="flex flex-wrap gap-2 mb-10">
-            {CONSULT_TYPES.map((t) => (
-              <button
-                key={t}
-                type="button"
-                onClick={() => pickType(t)}
-                aria-pressed={audience === t}
-                className={`px-4 py-2.5 rounded-full text-sm border transition-colors ${
-                  audience === t
-                    ? "bg-gold text-porcelain border-gold"
-                    : "border-line text-hunter hover:border-gold"
-                }`}
-              >
-                {bookingConfig.consultTypes[t]?.label ?? t}
-              </button>
-            ))}
+    <div className="booking-section">
+      <style dangerouslySetInnerHTML={{ __html: bookingCardCss }} />
+      <div className="booking-card" data-step={step}>
+        <StepPill step={step} />
+        <div className="booking-card__body">
+          <div className="booking-pane" data-region="form">
+            <BookingForm
+              audience={audience}
+              step={step}
+              lockType={lockType}
+              customer={customer}
+              answers={answers}
+              fields={fields}
+              honeypot={honeypot}
+              error={error}
+              onPickType={pickType}
+              onCustomerChange={(patch) =>
+                setCustomer((c) => ({ ...c, ...patch }))
+              }
+              onAnswerChange={(name, value) =>
+                setAnswers((a) => ({ ...a, [name]: value }))
+              }
+              onHoneypotChange={setHoneypot}
+              onSubmitStep={handleSubmitStep}
+            />
           </div>
-        </>
-      )}
 
-      {slotTaken ? (
-        <p className="mb-6 rounded-xl bg-mist border border-line px-4 py-3 text-sm">
-          {copy.slotTaken}
-        </p>
-      ) : null}
-
-      {step === "date" ? (
-        <>
-          {/* step 2: date */}
-          <p className="eyebrow eyebrow--gold mb-3">{copy.steps.date}</p>
-          <Calendar
-            year={cursor.year}
-            month={cursor.month}
-            days={days}
-            selectedDate={selectedDate}
-            loading={monthLoading}
-            canGoPrev={monthIndex(cursor) > monthIndex(currentMonth())}
-            canGoNext={
-              monthIndex(cursor) <
-              monthIndex(currentMonth()) + MAX_MONTHS_AHEAD
-            }
-            onSelect={pickDate}
-            onPrev={() =>
-              moveCursor(
-                cursor.month === 1
-                  ? { year: cursor.year - 1, month: 12 }
-                  : { year: cursor.year, month: cursor.month - 1 },
-              )
-            }
-            onNext={() => moveCursor(nextMonth(cursor))}
-          />
-
-          {/* step 3: time */}
-          {selectedDate ? (
-            <div className="mt-10">
-              <p className="eyebrow eyebrow--gold mb-1">
-                {copy.steps.time}
-              </p>
-              <p className="text-sm text-moss mb-4">
-                {formatLongDate(selectedDate)} · times shown in{" "}
-                {bookingConfig.timezone.replace("America/", "").replace("_", " ")}{" "}
-                time
-              </p>
-              {slotsLoading ? (
-                <p className="text-sm text-moss">Loading times…</p>
-              ) : openSlots.length === 0 ? (
-                <p className="text-sm text-moss">
-                  No times left on this day — pick another date.
-                </p>
-              ) : (
-                <div className="flex flex-wrap gap-2">
-                  {openSlots.map((s) => (
-                    <button
-                      key={s.time}
-                      type="button"
-                      onClick={() => setSelectedTime(s.time)}
-                      aria-pressed={selectedTime === s.time}
-                      className={`px-4 py-2.5 rounded-full text-sm border transition-colors ${
-                        selectedTime === s.time
-                          ? "bg-gold text-porcelain border-gold"
-                          : "border-line text-hunter hover:border-gold"
-                      }`}
-                    >
-                      {formatTime12h(s.time)}
-                    </button>
-                  ))}
-                </div>
-              )}
-              {selectedTime ? (
-                <div className="mt-8">
-                  <Button onClick={() => setStep("details")} size="lg">
-                    Continue →
-                  </Button>
-                </div>
+          {showCalendar ? (
+            <div className="booking-pane" data-region="calendar-pane">
+              <Calendar
+                year={cursor.year}
+                month={cursor.month}
+                days={days}
+                selectedDate={selectedDate}
+                locked={step !== 3}
+                canPrev={monthIndex(cursor) > monthIndex(currentMonth())}
+                canNext={
+                  monthIndex(cursor) <
+                  monthIndex(currentMonth()) + MAX_MONTHS_AHEAD
+                }
+                timezone={userTz}
+                onSelect={pickDate}
+                onPrev={() =>
+                  moveCursor(
+                    cursor.month === 1
+                      ? { year: cursor.year - 1, month: 12 }
+                      : { year: cursor.year, month: cursor.month - 1 },
+                  )
+                }
+                onNext={() =>
+                  moveCursor(
+                    cursor.month === 12
+                      ? { year: cursor.year + 1, month: 1 }
+                      : { year: cursor.year, month: cursor.month + 1 },
+                  )
+                }
+                onTimezoneChange={setUserTz}
+              />
+              {step === 3 ? (
+                <Slots
+                  selectedDate={selectedDate}
+                  slots={slots}
+                  loading={slotsLoading}
+                  timeFormat={timeFormat}
+                  storeTimezone={bookingConfig.timezone}
+                  userTimezone={userTz}
+                  selectedTime={selectedTime}
+                  submitting={submitting}
+                  onToggleFormat={setTimeFormat}
+                  onSelectTime={setSelectedTime}
+                  onConfirm={confirmBooking}
+                />
               ) : null}
             </div>
           ) : null}
-        </>
-      ) : (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            void submit();
-          }}
-          className="space-y-5"
-        >
-          {/* step 4: details */}
-          <div className="flex items-baseline justify-between">
-            <p className="eyebrow eyebrow--gold">{copy.steps.details}</p>
-            <button
-              type="button"
-              onClick={() => setStep("date")}
-              className="text-sm text-gold hover:text-gold-deep"
-            >
-              ← Change time
-            </button>
-          </div>
-
-          <p className="rounded-xl bg-mist border border-line px-4 py-3 text-sm">
-            {selectedDate && selectedTime
-              ? `${formatLongDate(selectedDate)} at ${formatTime12h(selectedTime)}`
-              : null}
-          </p>
-
-          <div className="grid grid-cols-2 gap-4">
-            <label className="block">
-              <span className="text-sm">
-                First name <span className="text-gold">*</span>
-              </span>
-              <input
-                className={`${inputCls} mt-1.5`}
-                value={customer.firstName}
-                onChange={(e) =>
-                  setCustomer((c) => ({ ...c, firstName: e.target.value }))
-                }
-                required
-                maxLength={60}
-                autoComplete="given-name"
-              />
-            </label>
-            <label className="block">
-              <span className="text-sm">
-                Last name <span className="text-gold">*</span>
-              </span>
-              <input
-                className={`${inputCls} mt-1.5`}
-                value={customer.lastName}
-                onChange={(e) =>
-                  setCustomer((c) => ({ ...c, lastName: e.target.value }))
-                }
-                required
-                maxLength={60}
-                autoComplete="family-name"
-              />
-            </label>
-          </div>
-
-          <label className="block">
-            <span className="text-sm">
-              Phone <span className="text-gold">*</span>
-            </span>
-            <input
-              className={`${inputCls} mt-1.5`}
-              type="tel"
-              value={customer.phone}
-              onChange={(e) =>
-                setCustomer((c) => ({ ...c, phone: e.target.value }))
-              }
-              required
-              autoComplete="tel"
-              placeholder="(404) 555-1234"
-            />
-          </label>
-
-          <label className="block">
-            <span className="text-sm">
-              Email <span className="text-gold">*</span>
-            </span>
-            <input
-              className={`${inputCls} mt-1.5`}
-              type="email"
-              value={customer.email}
-              onChange={(e) =>
-                setCustomer((c) => ({ ...c, email: e.target.value }))
-              }
-              required
-              autoComplete="email"
-            />
-          </label>
-
-          <DetailsFields
-            fields={fields}
-            answers={answers}
-            onChange={(name, value) =>
-              setAnswers((a) => ({ ...a, [name]: value }))
-            }
-          />
-
-          {/* honeypot — hidden from humans, tempting to bots */}
-          <div className="hidden" aria-hidden="true">
-            <label>
-              Company website
-              <input
-                tabIndex={-1}
-                autoComplete="off"
-                value={honeypot}
-                onChange={(e) => setHoneypot(e.target.value)}
-              />
-            </label>
-          </div>
-
-          <label className="flex items-start gap-3 text-sm text-moss">
-            <input
-              type="checkbox"
-              checked={customer.consent}
-              onChange={(e) =>
-                setCustomer((c) => ({ ...c, consent: e.target.checked }))
-              }
-              required
-              className="mt-0.5 accent-[#b8912e]"
-            />
-            <span>
-              I agree to be contacted about my booking by phone and email.{" "}
-              <span className="text-gold">*</span>
-            </span>
-          </label>
-
-          {errors.length > 0 ? (
-            <div className="rounded-xl border border-gold/40 bg-gold/5 px-4 py-3 text-sm text-gold-deep">
-              {errors.map((e) => (
-                <p key={e}>{e}</p>
-              ))}
-            </div>
-          ) : null}
-
-          <Button
-            type="submit"
-            size="lg"
-            className="w-full"
-            disabled={!detailsValid || submitting}
-          >
-            {submitting ? "Booking…" : copy.steps.confirm}
-          </Button>
-          <p className="text-xs text-moss text-center">
-            {copy.confirmNote}
-          </p>
-        </form>
-      )}
+        </div>
+      </div>
     </div>
   );
 }

@@ -91,11 +91,11 @@ export const FIELD_SCHEMAS: Record<ConsultType, Field[]> = {
   general: [
     {
       name: "occasion",
-      label: "What's the shoot for?",
+      label: "What are you looking for?",
       type: "text",
       required: true,
       maxLength: 120,
-      placeholder: "Proposal, birthday, brand shoot, event…",
+      placeholder: "Tell me a bit about the shoot you have in mind…",
     },
     {
       name: "eventDate",
@@ -105,7 +105,7 @@ export const FIELD_SCHEMAS: Record<ConsultType, Field[]> = {
     },
     {
       name: "notes",
-      label: "Tell me what you're picturing",
+      label: "Anything else I should know?",
       type: "textarea",
       required: false,
       maxLength: 600,

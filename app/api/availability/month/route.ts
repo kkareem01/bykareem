@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { bookingConfig } from "@/content/booking-config";
 import { isValidConsultType } from "@/lib/booking/consult-types";
-import { ensureBootstrapped } from "@/lib/booking/db";
 import { err, ok } from "@/lib/booking/http";
 import { log } from "@/lib/booking/log";
+import { bookedTimesForMonth } from "@/lib/booking/booked-times";
 import { listMonth } from "@/lib/booking/slots";
-import { getBookedTimesForMonth } from "@/lib/booking/store";
 
 /** GET /api/availability/month?year=2026&month=8&audience=couples */
 export async function GET(request: NextRequest) {
@@ -29,8 +28,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    await ensureBootstrapped();
-    const bookingsByDate = await getBookedTimesForMonth(year, month);
+    const bookingsByDate = await bookedTimesForMonth(year, month);
     const days = listMonth(year, month, bookingConfig, audience, bookingsByDate);
     return NextResponse.json(ok({ year, month, audience, days }));
   } catch (e) {

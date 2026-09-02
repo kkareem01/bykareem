@@ -47,6 +47,7 @@ export function confirmUrlFor(bookingId: string): string {
 export function ownerBookingSmsBody(
   booking: Booking,
   audienceLabel: string,
+  note?: string,
 ): string {
   const c = booking.customer;
   const when = `${booking.slot.date} ${booking.slot.time}`;
@@ -55,7 +56,66 @@ export function ownerBookingSmsBody(
     `${c.firstName} ${c.lastName} ${c.phone}`,
     `When: ${when}`,
     `Ref ${booking.id}`,
+    ...(note ? [note] : []),
   ].join("\n");
+}
+
+/** TEMPORARY no-database mode: the owner alert is the only record. */
+export const UNSAVED_NOTE =
+  "NOT SAVED (no database). Confirm this one by hand.";
+
+/**
+ * Owner SMS + owner email for a booking that was never persisted. Returns
+ * true when at least one channel delivered — the caller must refuse the
+ * booking otherwise, or it would be silently lost.
+ */
+export async function notifyOwnerUnsaved(booking: Booking): Promise<boolean> {
+  const audienceLabel =
+    bookingConfig.consultTypes[booking.audience]?.label ?? booking.audience;
+  const attempts: Promise<boolean>[] = [];
+
+  const ownerPhone = env("OWNER_PHONE");
+  if (ownerPhone) {
+    attempts.push(
+      sendSms({
+        to: ownerPhone,
+        body: ownerBookingSmsBody(booking, audienceLabel, UNSAVED_NOTE),
+      }).then((r) => {
+        if (!r.ok) log.error(`unsaved owner SMS failed ${booking.id}`, r.error);
+        return r.ok;
+      }),
+    );
+  }
+
+  const ownerEmail = env("OWNER_EMAIL");
+  if (ownerEmail) {
+    const businessName = env("BUSINESS_NAME", "bykareem");
+    const owner = ownerNotificationEmail({
+      booking,
+      businessName,
+      businessPhone: env("BUSINESS_PHONE"),
+      audienceLabel,
+    });
+    attempts.push(
+      sendEmail({
+        to: ownerEmail,
+        from: `${businessName} <${env("FROM_EMAIL") || "bookings@localhost"}>`,
+        subject: `[UNSAVED] ${owner.subject}`,
+        html: `<p><strong>${UNSAVED_NOTE}</strong></p>${owner.html}`,
+        text: `${UNSAVED_NOTE}\n\n${owner.text}`,
+      }).then((r) => {
+        if (!r.ok) log.error(`unsaved owner email failed ${booking.id}`, r.error);
+        return r.ok;
+      }),
+    );
+  }
+
+  if (attempts.length === 0) {
+    log.error(`no owner channel configured; refusing unsaved ${booking.id}`);
+    return false;
+  }
+  const results = await Promise.allSettled(attempts);
+  return results.some((r) => r.status === "fulfilled" && r.value);
 }
 
 /** Fire customer + owner emails; record sent/partial/failed on the row. */

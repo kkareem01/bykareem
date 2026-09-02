@@ -13,6 +13,11 @@ import { migrate } from "./migrate";
 let client: Client | null = null;
 let bootstrapPromise: Promise<void> | null = null;
 
+/** TEMPORARY: routes degrade to a no-persistence mode when this is false. */
+export function isDbConfigured(): boolean {
+  return Boolean(process.env.TURSO_DATABASE_URL);
+}
+
 export function getDb(): Client {
   if (client && !client.closed) return client;
 

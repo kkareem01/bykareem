@@ -11,6 +11,7 @@ import { bookingCardCss } from "./booking-card-css";
 import { StepPill } from "./StepPill";
 import { BookingForm } from "./BookingForm";
 import { Calendar, type MonthDay } from "./Calendar";
+import { CALENDAR_ERROR_MESSAGE } from "./calendar-status";
 import { Slots, type Slot, type TimeFormat } from "./Slots";
 import {
   validateStep1,
@@ -47,6 +48,7 @@ export function BookingFlow({
   const [cursor, setCursor] = useState<MonthState>(currentMonth);
   const [days, setDays] = useState<MonthDay[]>([]);
   const [monthLoading, setMonthLoading] = useState(true);
+  const [monthError, setMonthError] = useState<string | null>(null);
   const [monthRefresh, setMonthRefresh] = useState(0);
 
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -81,18 +83,25 @@ export function BookingFlow({
   useEffect(() => {
     let cancelled = false;
     setMonthLoading(true);
+    setMonthError(null);
     fetch(
       `/api/availability/month?year=${cursor.year}&month=${cursor.month}&audience=${audience}`,
     )
       .then((res) => res.json())
       .then((json) => {
         if (cancelled) return;
-        setDays(json.ok ? json.data.days : []);
+        if (json?.ok && Array.isArray(json.data?.days)) {
+          setDays(json.data.days);
+        } else {
+          setDays([]);
+          setMonthError(CALENDAR_ERROR_MESSAGE);
+        }
         setMonthLoading(false);
       })
       .catch(() => {
         if (cancelled) return;
         setDays([]);
+        setMonthError(CALENDAR_ERROR_MESSAGE);
         setMonthLoading(false);
       });
     return () => {
@@ -188,7 +197,15 @@ export function BookingFlow({
       const json = await res.json().catch(() => ({}));
 
       if (json.ok) {
-        router.push(`/book/confirmed?id=${json.data.id}`);
+        const query = new URLSearchParams({ id: json.data.id });
+        if (json.data.persisted === false) {
+          // TEMPORARY no-database mode: the confirmation page has no row to
+          // read, so echo the slot back to it.
+          query.set("date", selectedDate);
+          query.set("time", selectedTime);
+          query.set("type", audience);
+        }
+        router.push(`/book/confirmed?${query.toString()}`);
         return;
       }
       if (res.status === 409 || json.code === "SLOT_TAKEN") {
@@ -247,6 +264,8 @@ export function BookingFlow({
                 year={cursor.year}
                 month={cursor.month}
                 days={days}
+                loading={monthLoading}
+                error={monthError}
                 selectedDate={selectedDate}
                 locked={step !== 3}
                 canPrev={monthIndex(cursor) > monthIndex(currentMonth())}

@@ -377,6 +377,20 @@ export const bookingCardCss = `
 .booking-calendar__day--selected:hover { background: var(--navy); color: #FFF; }
 .booking-calendar__day--selected::after { background: #FFF; }
 
+/* Status line under the grid: loading / fetch failed */
+.booking-calendar__status {
+  margin-top: 10px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  padding: 12px;
+  background: var(--off-white);
+  border: 1px dashed var(--rule);
+  border-radius: 4px;
+}
+.booking-calendar__status.is-error { color: var(--ink); border-style: solid; }
+
 /* Locked state (steps 1+2) — calendar visible but greyed */
 .booking-calendar.is-locked { pointer-events: none; opacity: 0.5; }
 .booking-calendar__lock {

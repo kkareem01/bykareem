@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getBookingCopy } from "@/content/copy";
-import { ensureBootstrapped } from "@/lib/booking/db";
+import { viewFromBooking, viewFromParams } from "@/lib/booking/confirmed-view";
+import { ensureBootstrapped, isDbConfigured } from "@/lib/booking/db";
 import { formatLongDate, formatTime12h } from "@/lib/booking/format";
 import { BOOKING_ID_RE } from "@/lib/booking/id";
 import { getBooking } from "@/lib/booking/store";
@@ -17,13 +18,17 @@ export default async function ConfirmedPage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const { id } = await searchParams;
+  const { id, date, time, type } = await searchParams;
   const bookingId = typeof id === "string" && BOOKING_ID_RE.test(id) ? id : null;
 
   let booking = null;
-  if (bookingId) {
+  if (bookingId && isDbConfigured()) {
     await ensureBootstrapped();
-    booking = await getBooking(bookingId);
+    const row = await getBooking(bookingId);
+    booking = row ? viewFromBooking(row) : null;
+  } else if (bookingId) {
+    // TEMPORARY no-database mode: trust the validated slot echoed in the URL.
+    booking = viewFromParams({ id, date, time, type });
   }
 
   return (
@@ -36,8 +41,8 @@ export default async function ConfirmedPage({
               {getBookingCopy(booking.audience).confirmed.heading}
             </h1>
             <p className="mt-6 rounded-xl bg-mist border border-line px-4 py-3">
-              {formatLongDate(booking.slot.date)} at{" "}
-              {formatTime12h(booking.slot.time)}
+              {formatLongDate(booking.date)} at{" "}
+              {formatTime12h(booking.time)}
               <span className="block mt-1 text-xs text-moss">
                 Ref {booking.id}
               </span>
@@ -58,9 +63,11 @@ export default async function ConfirmedPage({
               ))}
             </ol>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Button href={`/api/bookings/${booking.id}/ics`} variant="ghost">
-                Add to calendar
-              </Button>
+              {booking.icsAvailable ? (
+                <Button href={`/api/bookings/${booking.id}/ics`} variant="ghost">
+                  Add to calendar
+                </Button>
+              ) : null}
               <Button href="/">Back to the site</Button>
             </div>
           </>

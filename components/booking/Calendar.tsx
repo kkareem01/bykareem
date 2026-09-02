@@ -2,6 +2,7 @@
 
 import { monthLabel } from "@/lib/booking/format";
 import { buildTzList, formatTzLabel } from "@/lib/booking/tz";
+import { calendarStatus } from "./calendar-status";
 
 export type MonthDay = { date: string; hasOpenSlots: boolean };
 
@@ -9,6 +10,10 @@ type CalendarProps = {
   year: number;
   month: number;
   days: MonthDay[];
+  /** month fetch in flight — grid may be empty meanwhile */
+  loading: boolean;
+  /** month fetch failed — user-facing message */
+  error: string | null;
   selectedDate: string | null;
   /** true at steps 1-2: calendar shown but greyed with a "fill the form" pill */
   locked: boolean;
@@ -37,6 +42,8 @@ export function Calendar({
   year,
   month,
   days,
+  loading,
+  error,
   selectedDate,
   locked,
   canPrev,
@@ -49,6 +56,7 @@ export function Calendar({
 }: CalendarProps) {
   const leadingBlanks = days.length > 0 ? dayOfWeekUtc(days[0].date) : 0;
   const today = todayISO();
+  const status = calendarStatus({ loading, error, dayCount: days.length });
 
   return (
     <div className={`booking-calendar ${locked ? "is-locked" : ""}`}>
@@ -135,6 +143,15 @@ export function Calendar({
           );
         })}
       </div>
+      {status ? (
+        <div
+          className={`booking-calendar__status${error ? " is-error" : ""}`}
+          role="status"
+          aria-live="polite"
+        >
+          {status}
+        </div>
+      ) : null}
     </div>
   );
 }
